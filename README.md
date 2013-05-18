@@ -4,4 +4,10 @@ I like very much [RailsAPI Ruby and Rails merged documentation](http://railsapi.
 
 ## Documentation
 
-The documentation is here: http://prognommers.github.io/ruby-rails-documentation/
+### Ruby / Rails versions
+
+At the moment, the documentation is relative to Ruby 2.0.0-p195 and Rails 4.0.0-rc1 .
+
+### location
+
+You can find the documentation here: http://prognommers.github.io/ruby-rails-documentation/
