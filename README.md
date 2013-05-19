@@ -41,12 +41,14 @@ cd ..
 git clone https://github.com/ProGNOMmers/rails -b ruby-rails-documentation
 cd rails
 rake -I ~/ruby-rails-documentation/sdoc/lib rdoc
+cd ..
 
 # Merge
 ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/sdoc-merge \
   --title "Ruby v2.0.0-p195, Rails v4.0.0-rc.1" \
-  --op ~/ruby-rails-documentation/merged \
+  --op merged \
   --names "Ruby,Rails" \
-  ~/ruby-rails-documentation/ruby* doc/rdoc/
-# The documentation will be created inside the ~/ruby-rails-documentationmerged/ folder
+  ruby*/sdoc rails/doc/rdoc/
+# The documentation will be created inside the newly created 
+# ~/ruby-rails-documentation/merged/ folder
 ```
