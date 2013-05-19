@@ -49,6 +49,7 @@ ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/
   --op merged \
   --names "Ruby,Rails" \
   ruby*/sdoc rails/doc/rdoc/
+  
 # The documentation will be created inside the newly created 
 # ~/ruby-rails-documentation/merged/ folder
 ```
