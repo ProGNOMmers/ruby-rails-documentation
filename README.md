@@ -29,7 +29,7 @@ cd ~/ruby-rails-documentation
 git clone https://github.com/ProGNOMmers/sdoc -b ruby-rails-documentation
 
 # Ruby documentation
-curl -O http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p195.tar.bz2 /tmp/ruby-source-archive.tar.bz2
+curl -o /tmp/ruby-source-archive.tar.bz2 http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p195.tar.bz2
 tar xvjf /tmp/ruby-source-archive.tar.bz2
 cd ruby*
 export SDOC_FORCE_MAIN_PAGE=README
@@ -49,7 +49,7 @@ ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/
   --op merged \
   --names "Ruby,Rails" \
   ruby*/sdoc rails/doc/rdoc/
-  
+
 # The documentation will be created inside the newly created 
 # ~/ruby-rails-documentation/merged/ folder
 ```
