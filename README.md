@@ -43,6 +43,10 @@ cd rails
 rake -I ~/ruby-rails-documentation/sdoc/lib rdoc
 
 # Merge
-ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/sdoc-merge --title "Ruby v2.0.0-p195, Rails v4.0.0-rc.1" --op ~/ruby-rails-documentation/merged --names "Ruby,Rails" ~/ruby-rails-documentation/ruby* doc/rdoc/
+ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/sdoc-merge \
+  --title "Ruby v2.0.0-p195, Rails v4.0.0-rc.1" \
+  --op ~/ruby-rails-documentation/merged \
+  --names "Ruby,Rails" \
+  ~/ruby-rails-documentation/ruby* doc/rdoc/
 # The documentation will be created inside the ~/ruby-rails-documentationmerged/ folder
 ```
