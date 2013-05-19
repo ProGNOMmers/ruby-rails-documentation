@@ -29,8 +29,7 @@ cd ~/ruby-rails-documentation
 git clone https://github.com/ProGNOMmers/sdoc -b ruby-rails-documentation
 
 # Ruby documentation
-curl -o /tmp/ruby-source-archive.tar.bz2 http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p195.tar.bz2
-tar xvjf /tmp/ruby-source-archive.tar.bz2
+curl -s http://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p195.tar.bz2 | tar xvj
 cd ruby*
 export SDOC_FORCE_MAIN_PAGE=README
 ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/sdoc --all -o sdoc .
