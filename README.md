@@ -1,6 +1,6 @@
 # Updated Ruby and Rails documentation
 
-I love the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide an version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/.
+I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide an version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/.
 
 ## Documentation
 
