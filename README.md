@@ -50,4 +50,4 @@ ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/
   ruby*/sdoc rails/doc/rdoc/
 ```
 
-If you didn't get any issue you should see the documentation opening ~/ruby-rails-documentation/merged/index.html in any browser.
+If you didn't get any issue you should see the documentation opening `~/ruby-rails-documentation/merged/index.html` in any browser.
