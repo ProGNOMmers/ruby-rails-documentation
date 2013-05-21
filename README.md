@@ -1,12 +1,12 @@
 # Updated Ruby and Rails documentation
 
-I like very much [RailsAPI Ruby and Rails merged documentation](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but the Ruby and Rails documentations hosted on RailsAPI are often outdated; I'll try to provide an updated RailsAPI-like Ruby/Rails merged documentation on the Github pages of this project.
+I love the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide an version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/.
 
 ## Documentation
 
 ### Ruby / Rails versions
 
-At the moment, the documentation is relative to Ruby 2.0.0-p195 and Rails 4.0.0-rc1 .
+At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. It will be updated after a Ruby or a Rails release as soon as possible.
 
 ### Location
 
@@ -20,7 +20,7 @@ This one sets the rdoc `--all` option, which by default documents private method
 
 I used some customized versions of [sdoc](https://github.com/ProGNOMmers/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/ProGNOMmers/rails/tree/ruby-rails-documentation).
 
-If you want to generate the documentation by yourself you have to execute the following procedure (prerequisites: curl; tar; git; ruby 2.0):
+If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby 2.0):
 
 ```sh
 mkdir ~/ruby-rails-documentation
@@ -44,11 +44,10 @@ cd ..
 
 # Merge
 ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/sdoc-merge \
-  --title "Ruby v2.0.0-p195, Rails v4.0.0-rc.1" \
+  --title 'Ruby v2.0.0-p195, Rails v4.0.0-rc.1' \
   --op merged \
-  --names "Ruby,Rails" \
+  --names 'Ruby,Rails' \
   ruby*/sdoc rails/doc/rdoc/
-
-# The documentation will be created inside the newly created 
-# ~/ruby-rails-documentation/merged/ folder
 ```
+
+If you didn't get any issue you should see the documentation opening ~/ruby-rails-documentation/merged/index.html in any browser.
