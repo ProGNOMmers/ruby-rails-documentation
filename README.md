@@ -51,3 +51,7 @@ ruby -I ~/ruby-rails-documentation/sdoc/lib ~/ruby-rails-documentation/sdoc/bin/
 ```
 
 If you didn't get any issue you should see the documentation opening `~/ruby-rails-documentation/merged/index.html` in any browser.
+
+## TODO
+
+GitHub links don't work. Investigate (probably it's an sdoc issue)
