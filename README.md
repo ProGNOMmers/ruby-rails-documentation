@@ -1,6 +1,6 @@
 # Updated Ruby and Rails documentation
 
-I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide an version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/).
+I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide a version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/).
 
 ## Documentation
 
@@ -10,8 +10,7 @@ At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. I
 
 ### Location
 
-The documentation is available online here: http://prognommers.github.io/ruby-rails-documentation/.
-If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/ProGNOMmers/ruby-rails-documentation.git -b gh-pages` (size: ~ 80 MB)
+The documentation is available online [here](http://prognommers.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/ProGNOMmers/ruby-rails-documentation.git -b gh-pages` (size: ~ 80 MB).
 
 ### Differences between the official documentations and this one
 
