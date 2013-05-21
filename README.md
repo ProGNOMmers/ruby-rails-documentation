@@ -10,7 +10,7 @@ At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. I
 
 ### Location
 
-The documentation is available online [here](http://prognommers.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/ProGNOMmers/ruby-rails-documentation.git -b gh-pages` (size: ~ 80 MB).
+The documentation is available online [here](http://prognommers.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch (size: ~ 80 MB): `git clone git://github.com/ProGNOMmers/ruby-rails-documentation.git -b gh-pages`
 
 ### Differences between the official documentations and this one
 
