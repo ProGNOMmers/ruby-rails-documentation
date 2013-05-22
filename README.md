@@ -54,5 +54,5 @@ If you didn't get any issue you should see the documentation opening `~/ruby-rai
 
 ## TODO
 
-* GitHub links don't work. Investigate (probably it's an sdoc issue)
+* GitHub links don't work. Investigate (probably it's a sdoc issue)
 * Automatize via script the docs generation
