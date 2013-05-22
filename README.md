@@ -1,12 +1,12 @@
-# Updated Ruby and Rails documentation
+# Latest Ruby and Rails documentation
 
-I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but they are often outdated; I'll try to provide an updated version of them on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/).
+I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but their Ruby and Rails versions are often outdated; I'll try to provide the latest documentations on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/).
 
 ## Documentation
 
 ### Ruby / Rails versions
 
-At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. It will be updated after a Ruby or a Rails release as soon as possible.
+At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. It will be updated after a Ruby or a Rails release as soon as possible (just open an issue if I forget to do it).
 
 ### Location
 
