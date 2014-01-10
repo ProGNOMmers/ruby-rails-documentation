@@ -1,4 +1,4 @@
-# Ruby and Rails documentation
+# [Ruby and Rails documentation](http://mdesantis.github.io/ruby-rails-documentation/)
 
 I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
 
@@ -8,7 +8,7 @@ But RailsAPI is no more online. So this project aims to provide the Ruby and Rub
 
 ### Ruby / Rails versions
 
-At the moment, the documentation is about  on the [Ruby 2.0.0-p195 and Rails 4.0.0-rc1](http://mdesantis.github.io/ruby-rails-documentation/). It will be updated after a Ruby or a Rails release as soon as possible. If I forget to do it, just open an issue and I will provide to update it ;-)
+At the moment, the documentation is about [Ruby 2.0.0-p195 and Rails 4.0.0-rc1](http://mdesantis.github.io/ruby-rails-documentation/). It will be updated after a Ruby or a Rails release as soon as possible. If I forget it, just open an issue and I will provide to update it ;-)
 
 ### Location
 
@@ -56,5 +56,4 @@ If you didn't get any issue you should see the documentation opening `~/ruby-rai
 
 ## TODO
 
-* GitHub links don't work. Investigate (probably it's a sdoc issue)
 * Automatize via script the docs generation
