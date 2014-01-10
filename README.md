@@ -1,8 +1,8 @@
 # Ruby and Rails documentation
 
-I :heart:'d RailsAPI: it included the Ruby and RubyOnRails docs merged together.
+I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
 
-But RailsAPI is no more online. So this project aims to provide the Ruby and RubyOnRails merged documentations.
+But RailsAPI is no more online. So this project aims to provide the Ruby and Ruby On Rails merged documentations.
 
 ## Documentations
 
