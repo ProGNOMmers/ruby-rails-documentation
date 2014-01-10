@@ -1,0 +1,1381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>OpenSSL::Config</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            OpenSSL::Config 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/ext/openssl/lib/openssl/config_rb.html">ext/openssl/lib/openssl/config.rb</a></li>
+            
+            <li><a href="../../files/ext/openssl/ossl_c.html">ext/openssl/ossl.c</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h1 id="class-OpenSSL::Config-label-OpenSSL%3A%3AConfig"><a href="Config.html">OpenSSL::Config</a></h1>
+
+<p>Configuration for the openssl library.</p>
+
+<p>Many system&#39;s installation of openssl library will depend on your
+system configuration. See the value of OpenSSL::Config::DEFAULT_CONFIG_FILE
+for the location of the file for your host.</p>
+
+<p>See also <a
+href="http://www.openssl.org/docs/apps/config.html">www.openssl.org/docs/apps/config.html</a></p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D">[]</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-5B-5D-3D">[]=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add_value">add_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-check_modify">check_modify</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-clear_comments">clear_comments</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-each">each</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_reference">extract_reference</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-get_definition">get_definition</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-get_key_string">get_key_string</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-get_line">get_line</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-get_value">get_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-initialize_copy">initialize_copy</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-inspect">inspect</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parse">parse</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parse_config">parse_config</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-parse_config_lines">parse_config_lines</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-sections">sections</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-unescape_value">unescape_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="../Enumerable.html">
+              Enumerable
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">QUOTE_REGEXP_SQ</td>
+            <td>=</td>
+            <td class="attr-value">/\A([^&#39;\\]*(?:\\.[^&#39;\\]*)*)&#39;/</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>escape with backslash</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">QUOTE_REGEXP_DQ</td>
+            <td>=</td>
+            <td class="attr-value">/\A([^&quot;\\]*(?:&quot;&quot;[^&quot;\\]*|\\.[^&quot;\\]*)*)&quot;/</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>escape with backslash and doubled dq</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ESCAPE_MAP</td>
+            <td>=</td>
+            <td class="attr-value">{
+&quot;r&quot; =&gt; &quot;\r&quot;,
+&quot;n&quot; =&gt; &quot;\n&quot;,
+&quot;b&quot; =&gt; &quot;\b&quot;,
+&quot;t&quot; =&gt; &quot;\t&quot;,
+}</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>escaped char map</p></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEFAULT_CONFIG_FILE</td>
+            <td>=</td>
+            <td class="attr-value">rb_str_new2(default_config_file)</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>The default system configuration file for openssl</p></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(filename = nil)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates an instance of OpenSSL&#39;s configuration class.</p>
+
+<p>This can be used in contexts like <a
+href="X509/ExtensionFactory.html#method-i-config-3D">OpenSSL::X509::ExtensionFactory#config=</a></p>
+
+<p>If the optional <code>filename</code> parameter is provided, then it is
+read in and parsed via <a
+href="Config.html#method-i-parse_config">parse_config</a>.</p>
+
+<p>This can raise <a href="../IO.html">IO</a> exceptions based on the access,
+or availability of the file. A <a href="ConfigError.html">ConfigError</a>
+exception may be raised depending on the validity of the data being
+configured.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 245</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">filename</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@data</span> = {}
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">filename</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">filename</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">Config</span>.<span class="ruby-identifier">parse_config</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">section</span>, <span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">self</span>[<span class="ruby-identifier">section</span>] = <span class="ruby-identifier">hash</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D">
+            
+              <b>[]</b>(section)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-5B-5D" name="method-i-5B-5D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get a specific <code>section</code> from the current configuration</p>
+
+<p>Given the following configurating file being loaded:</p>
+
+<pre><code>config = OpenSSL::Config.load(&#39;foo.cnf&#39;)
+  #=&gt; #&lt;OpenSSL::Config sections=[&quot;default&quot;]&gt;
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=bar
+</code></pre>
+
+<p>You can get a hash of the specific section like so:</p>
+
+<pre><code>config[&#39;default&#39;]
+  #=&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;}
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D_source')" id="l_method-i-5B-5D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 339</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-keyword ruby-title">section</span>)
+  <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">section</span>] <span class="ruby-operator">||</span> {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-5B-5D-3D">
+            
+              <b>[]=</b>(section, pairs)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-5B-5D-3D" name="method-i-5B-5D-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets a specific <code>section</code> name with a <a
+href="../Hash.html">Hash</a> <code>pairs</code></p>
+
+<p>Given the following configuration being created:</p>
+
+<pre><code>config = OpenSSL::Config.new
+  #=&gt; #&lt;OpenSSL::Config sections=[]&gt;
+config[&#39;default&#39;] = {&quot;foo&quot;=&gt;&quot;bar&quot;,&quot;baz&quot;=&gt;&quot;buz&quot;}
+  #=&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;, &quot;baz&quot;=&gt;&quot;buz&quot;}
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=bar
+  #   baz=buz
+</code></pre>
+
+<p>It&#39;s important to note that this will essentially merge any of the keys
+in <code>pairs</code> with the existing <code>section</code>. For example:</p>
+
+<pre><code>config[&#39;default&#39;]
+  #=&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;, &quot;baz&quot;=&gt;&quot;buz&quot;}
+config[&#39;default&#39;] = {&quot;foo&quot; =&gt; &quot;changed&quot;}
+  #=&gt; {&quot;foo&quot;=&gt;&quot;changed&quot;}
+config[&#39;default&#39;]
+  #=&gt; {&quot;foo&quot;=&gt;&quot;changed&quot;, &quot;baz&quot;=&gt;&quot;buz&quot;}
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-5B-5D-3D_source')" id="l_method-i-5B-5D-3D_source">show</a>
+                
+              </p>
+              <div id="method-i-5B-5D-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 376</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-keyword ruby-title">section</span>, <span class="ruby-identifier">pairs</span>)
+  <span class="ruby-identifier">check_modify</span>
+  <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">section</span>] <span class="ruby-operator">||=</span> {}
+  <span class="ruby-identifier">pairs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add_value</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-add_value">
+            
+              <b>add_value</b>(section, key, value)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-add_value" name="method-i-add_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p><a href="../Set.html">Set</a> the target <code>key</code> with a given
+<code>value</code> under a specific <code>section</code>.</p>
+
+<p>Given the following configurating file being loaded:</p>
+
+<pre><code>config = OpenSSL::Config.load(&#39;foo.cnf&#39;)
+  #=&gt; #&lt;OpenSSL::Config sections=[&quot;default&quot;]&gt;
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=bar
+</code></pre>
+
+<p>You can set the value of <code>foo</code> under the <code>default</code>
+section to a new value:</p>
+
+<pre><code>config.add_value(&#39;default&#39;, &#39;foo&#39;, &#39;buzz&#39;)
+  #=&gt; &quot;buzz&quot;
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=buzz
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_value_source')" id="l_method-i-add_value_source">show</a>
+                
+              </p>
+              <div id="method-i-add_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 318</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_value</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">check_modify</span>
+  (<span class="ruby-ivar">@data</span>[<span class="ruby-identifier">section</span>] <span class="ruby-operator">||=</span> {})[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-each">
+            
+              <b>each</b>()
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-each" name="method-i-each" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>For a block.</p>
+
+<p>Receive the section and its pairs for the current configuration.</p>
+
+<pre><code>config.each do |section, key, value|
+  # ...
+end
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-each_source')" id="l_method-i-each_source">show</a>
+                
+              </p>
+              <div id="method-i-each_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 437</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">each</span>
+  <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">section</span>, <span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">yield</span> [<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_value">
+            
+              <b>get_value</b>(section, key)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-get_value" name="method-i-get_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Gets the value of <code>key</code> from the given <code>section</code></p>
+
+<p>Given the following configurating file being loaded:</p>
+
+<pre><code>config = OpenSSL::Config.load(&#39;foo.cnf&#39;)
+  #=&gt; #&lt;OpenSSL::Config sections=[&quot;default&quot;]&gt;
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=bar
+</code></pre>
+
+<p>You can get a specific value from the config if you know the
+<code>section</code> and <code>key</code> like so:</p>
+
+<pre><code>config.get_value(&#39;default&#39;,&#39;foo&#39;)
+  #=&gt; &quot;bar&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_value_source')" id="l_method-i-get_value_source">show</a>
+                
+              </p>
+              <div id="method-i-get_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 273</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_value</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;nil not allowed&#39;</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">section</span> = <span class="ruby-string">&#39;default&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">get_key_string</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-inspect">
+            
+              <b>inspect</b>()
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-inspect" name="method-i-inspect" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>String representation of this configuration object, including the class
+name and its sections.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-inspect_source')" id="l_method-i-inspect_source">show</a>
+                
+              </p>
+              <div id="method-i-inspect_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 448</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">inspect</span>
+  <span class="ruby-node">&quot;#&lt;#{self.class.name} sections=#{sections.inspect}&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse">
+            
+              <b>parse</b>(string)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-parse" name="method-i-parse" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Parses a given <code>string</code> as a blob that contains configuration
+for openssl.</p>
+
+<p>If the source of the <a href="../IO.html">IO</a> is a file, then consider
+using <a href="Config.html#method-i-parse_config">parse_config</a>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_source')" id="l_method-i-parse_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">c</span> = <span class="ruby-identifier">new</span>()
+  <span class="ruby-identifier">parse_config</span>(<span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">string</span>)).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">section</span>, <span class="ruby-identifier">hash</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">c</span>[<span class="ruby-identifier">section</span>] = <span class="ruby-identifier">hash</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">c</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse_config">
+            
+              <b>parse_config</b>(io)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-parse_config" name="method-i-parse_config" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Parses the configuration data read from <code>io</code>, see also <a
+href="Config.html#method-i-parse">parse</a>.</p>
+
+<p>Raises a <a href="ConfigError.html">ConfigError</a> on invalid
+configuration data.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_config_source')" id="l_method-i-parse_config_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_config_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse_config</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">parse_config_lines</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ConfigError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+    <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>.<span class="ruby-identifier">replace</span>(<span class="ruby-node">&quot;error in line #{io.lineno}: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sections">
+            
+              <b>sections</b>()
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-sections" name="method-i-sections" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the names of all sections in the current configuration</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-sections_source')" id="l_method-i-sections_source">show</a>
+                
+              </p>
+              <div id="method-i-sections_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 386</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">sections</span>
+  <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">keys</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>to_s</b>()
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Get the parsable form of the current configuration</p>
+
+<p>Given the following configuration being created:</p>
+
+<pre><code>config = OpenSSL::Config.new
+  #=&gt; #&lt;OpenSSL::Config sections=[]&gt;
+config[&#39;default&#39;] = {&quot;foo&quot;=&gt;&quot;bar&quot;,&quot;baz&quot;=&gt;&quot;buz&quot;}
+  #=&gt; {&quot;foo&quot;=&gt;&quot;bar&quot;, &quot;baz&quot;=&gt;&quot;buz&quot;}
+puts config.to_s
+  #=&gt; [ default ]
+  #   foo=bar
+  #   baz=buz
+</code></pre>
+
+<p>You can parse get the serialized configuration using <a
+href="Config.html#method-i-to_s">to_s</a> and then parse it later:</p>
+
+<pre><code>serialized_config = config.to_s
+# much later...
+new_config = OpenSSL::Config.parse(serialized_config)
+  #=&gt; #&lt;OpenSSL::Config sections=[&quot;default&quot;]&gt;
+puts new_config
+  #=&gt; [ default ]
+      foo=bar
+      baz=buz
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 416</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-identifier">ary</span> = []
+  <span class="ruby-ivar">@data</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">section</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;[ #{section} ]\n&quot;</span>
+    <span class="ruby-ivar">@data</span>[<span class="ruby-identifier">section</span>].<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{key}=#{@data[section][key]}\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ary</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ary</span>.<span class="ruby-identifier">join</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-check_modify">
+            
+              <b>check_modify</b>()
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-check_modify" name="method-i-check_modify" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-check_modify_source')" id="l_method-i-check_modify_source">show</a>
+                
+              </p>
+              <div id="method-i-check_modify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 464</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">check_modify</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Insecure: can&#39;t modify OpenSSL config&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">frozen?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clear_comments">
+            
+              <b>clear_comments</b>(line)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-clear_comments" name="method-i-clear_comments" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clear_comments_source')" id="l_method-i-clear_comments_source">show</a>
+                
+              </p>
+              <div id="method-i-clear_comments_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear_comments</span>(<span class="ruby-identifier">line</span>)
+  <span class="ruby-comment"># FCOMMENT</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/\A([\t\n\f ]*);.*\z/</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">1</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># COMMENT</span>
+  <span class="ruby-identifier">scanned</span> = []
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-node">/[#&#39;&quot;\]/</span>)
+    <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>
+    <span class="ruby-identifier">c</span> = <span class="ruby-identifier">m</span>[<span class="ruby-number">0</span>]
+    <span class="ruby-identifier">line</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;#&#39;</span>
+      <span class="ruby-identifier">line</span> = <span class="ruby-keyword">nil</span>
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;&#39;&quot;</span>, <span class="ruby-string">&#39;&quot;&#39;</span>
+      <span class="ruby-identifier">regexp</span> = (<span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;&#39;&quot;</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">QUOTE_REGEXP_SQ</span> <span class="ruby-operator">:</span> <span class="ruby-constant">QUOTE_REGEXP_DQ</span>
+      <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">regexp</span>)
+        <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">0</span>]
+        <span class="ruby-identifier">line</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+        <span class="ruby-identifier">line</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;\\&quot;</span>
+      <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-number">0</span>, <span class="ruby-number">1</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;must not reaced&#39;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+  <span class="ruby-identifier">scanned</span>.<span class="ruby-identifier">join</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_reference">
+            
+              <b>extract_reference</b>(value)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-extract_reference" name="method-i-extract_reference" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_reference_source')" id="l_method-i-extract_reference_source">show</a>
+                
+              </p>
+              <div id="method-i-extract_reference_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_reference</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">rest</span> = <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/\(([^)]*)\)|\{([^}]*)\}/</span>)
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">m</span>[<span class="ruby-number">1</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">2</span>]
+    <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+  <span class="ruby-keyword">elsif</span> [<span class="ruby-value">?(</span>, <span class="ruby-value">?{</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">value</span>[<span class="ruby-number">0</span>])
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ConfigError</span>, <span class="ruby-string">&quot;no close brace&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/[a-zA-Z0-9_]*(?:::[a-zA-Z0-9_]*)?/</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">0</span>], <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rest</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_definition">
+            
+              <b>get_definition</b>(io)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-get_definition" name="method-i-get_definition" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_definition_source')" id="l_method-i-get_definition_source">show</a>
+                
+              </p>
+              <div id="method-i-get_definition_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_definition</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">get_line</span>(<span class="ruby-identifier">io</span>)
+    <span class="ruby-keyword">while</span> <span class="ruby-regexp">/[^\]\\z/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">extra</span> = <span class="ruby-identifier">get_line</span>(<span class="ruby-identifier">io</span>)
+        <span class="ruby-identifier">line</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">extra</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_key_string">
+            
+              <b>get_key_string</b>(section, key)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-get_key_string" name="method-i-get_key_string" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_key_string_source')" id="l_method-i-get_key_string_source">show</a>
+                
+              </p>
+              <div id="method-i-get_key_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 468</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_key_string</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>)
+  <span class="ruby-constant">Config</span>.<span class="ruby-identifier">get_key_string</span>(<span class="ruby-ivar">@data</span>, <span class="ruby-identifier">section</span>, <span class="ruby-identifier">key</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_line">
+            
+              <b>get_line</b>(io)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-get_line" name="method-i-get_line" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_line_source')" id="l_method-i-get_line_source">show</a>
+                
+              </p>
+              <div id="method-i-get_line_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 226</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_line</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span> = <span class="ruby-identifier">io</span>.<span class="ruby-identifier">gets</span>
+    <span class="ruby-identifier">line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/[\r\n]*/</span>, <span class="ruby-string">&#39;&#39;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-initialize_copy">
+            
+              <b>initialize_copy</b>(other)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-initialize_copy" name="method-i-initialize_copy" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-initialize_copy_source')" id="l_method-i-initialize_copy_source">show</a>
+                
+              </p>
+              <div id="method-i-initialize_copy_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 460</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize_copy</span>(<span class="ruby-identifier">other</span>)
+  <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">other</span>.<span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parse_config_lines">
+            
+              <b>parse_config_lines</b>(io)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-parse_config_lines" name="method-i-parse_config_lines" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parse_config_lines_source')" id="l_method-i-parse_config_lines_source">show</a>
+                
+              </p>
+              <div id="method-i-parse_config_lines_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parse_config_lines</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-identifier">section</span> = <span class="ruby-string">&#39;default&#39;</span>
+  <span class="ruby-identifier">data</span> = {<span class="ruby-identifier">section</span> =<span class="ruby-operator">&gt;</span> {}}
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">definition</span> = <span class="ruby-identifier">get_definition</span>(<span class="ruby-identifier">io</span>)
+    <span class="ruby-identifier">definition</span> = <span class="ruby-identifier">clear_comments</span>(<span class="ruby-identifier">definition</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">definition</span>[<span class="ruby-number">0</span>] <span class="ruby-operator">==</span> <span class="ruby-value">?[</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-regexp">/\[([^\]]*)\]/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">definition</span>
+        <span class="ruby-identifier">section</span> = <span class="ruby-node">$1</span>.<span class="ruby-identifier">strip</span>
+        <span class="ruby-identifier">data</span>[<span class="ruby-identifier">section</span>] <span class="ruby-operator">||=</span> {}
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ConfigError</span>, <span class="ruby-string">&quot;missing close square bracket&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-regexp">/\A([^:\s]*)(?:::([^:\s]*))?\s*=(.*)\z/</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">definition</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-node">$2</span>
+          <span class="ruby-identifier">section</span> = <span class="ruby-node">$1</span>
+          <span class="ruby-identifier">key</span> = <span class="ruby-node">$2</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">key</span> = <span class="ruby-node">$1</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">unescape_value</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">section</span>, <span class="ruby-node">$3</span>)
+        (<span class="ruby-identifier">data</span>[<span class="ruby-identifier">section</span>] <span class="ruby-operator">||=</span> {})[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ConfigError</span>, <span class="ruby-string">&quot;missing equal sign&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">data</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-unescape_value">
+            
+              <b>unescape_value</b>(data, section, value)
+            
+            <a href="../../classes/OpenSSL/Config.html#method-i-unescape_value" name="method-i-unescape_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-unescape_value_source')" id="l_method-i-unescape_value_source">show</a>
+                
+              </p>
+              <div id="method-i-unescape_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ext/openssl/lib/openssl/config.rb, line 118</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">unescape_value</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">section</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">scanned</span> = []
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/[&#39;&quot;\$]/</span>)
+    <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>
+    <span class="ruby-identifier">c</span> = <span class="ruby-identifier">m</span>[<span class="ruby-number">0</span>]
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">c</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;&#39;&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">QUOTE_REGEXP_SQ</span>)
+        <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\(.)/</span>, <span class="ruby-string">&#39;\1&#39;</span>)
+        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;&quot;&#39;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">QUOTE_REGEXP_DQ</span>)
+        <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">m</span>[<span class="ruby-number">1</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/&quot;&quot;/</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\(.)/</span>, <span class="ruby-string">&#39;\1&#39;</span>)
+        <span class="ruby-identifier">value</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;\\&quot;</span>
+      <span class="ruby-identifier">c</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-number">0</span>, <span class="ruby-number">1</span>)
+      <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-constant">ESCAPE_MAP</span>[<span class="ruby-identifier">c</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">c</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;$&quot;</span>
+      <span class="ruby-identifier">ref</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">extract_reference</span>(<span class="ruby-identifier">value</span>)
+      <span class="ruby-identifier">refsec</span> = <span class="ruby-identifier">section</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">ref</span>.<span class="ruby-identifier">index</span>(<span class="ruby-string">&#39;::&#39;</span>)
+        <span class="ruby-identifier">refsec</span>, <span class="ruby-identifier">ref</span> = <span class="ruby-identifier">ref</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;::&#39;</span>, <span class="ruby-number">2</span>)
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span> = <span class="ruby-identifier">get_key_string</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">refsec</span>, <span class="ruby-identifier">ref</span>)
+        <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ConfigError</span>, <span class="ruby-string">&quot;variable has no value&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;must not reaced&#39;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">scanned</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-identifier">scanned</span>.<span class="ruby-identifier">join</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

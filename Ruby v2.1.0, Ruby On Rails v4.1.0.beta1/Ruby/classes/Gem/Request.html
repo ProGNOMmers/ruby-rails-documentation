@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Gem::Request</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Gem::Request 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/lib/rubygems/request_rb.html">lib/rubygems/request.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-add_rubygems_trusted_certs">add_rubygems_trusted_certs</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-configure_connection_for_https">configure_connection_for_https</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-connection_for">connection_for</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fetch">fetch</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-get_no_proxy_from_env">get_no_proxy_from_env</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-get_proxy_from_env">get_proxy_from_env</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-https-3F">https?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-no_proxy-3F">no_proxy?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-reset">reset</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-user_agent">user_agent</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="UserInteraction.html">
+              Gem::UserInteraction
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>proxy_uri</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(uri, request_class, last_modified, proxy)
+            
+            <a href="../../classes/Gem/Request.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">uri</span>, <span class="ruby-identifier">request_class</span>, <span class="ruby-identifier">last_modified</span>, <span class="ruby-identifier">proxy</span>)
+  <span class="ruby-ivar">@uri</span> = <span class="ruby-identifier">uri</span>
+  <span class="ruby-ivar">@request_class</span> = <span class="ruby-identifier">request_class</span>
+  <span class="ruby-ivar">@last_modified</span> = <span class="ruby-identifier">last_modified</span>
+  <span class="ruby-ivar">@requests</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> <span class="ruby-number">0</span>
+  <span class="ruby-ivar">@connections</span> = {}
+  <span class="ruby-ivar">@connections_mutex</span> = <span class="ruby-constant">Mutex</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@user_agent</span> = <span class="ruby-identifier">user_agent</span>
+
+  <span class="ruby-ivar">@proxy_uri</span> =
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">proxy</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:no_proxy</span> <span class="ruby-keyword">then</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>       <span class="ruby-keyword">then</span> <span class="ruby-identifier">get_proxy_from_env</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">scheme</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">URI</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">proxy</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">proxy</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@env_no_proxy</span> = <span class="ruby-identifier">get_no_proxy_from_env</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add_rubygems_trusted_certs">
+            
+              <b>add_rubygems_trusted_certs</b>(store)
+            
+            <a href="../../classes/Gem/Request.html#method-i-add_rubygems_trusted_certs" name="method-i-add_rubygems_trusted_certs" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_rubygems_trusted_certs_source')" id="l_method-i-add_rubygems_trusted_certs_source">show</a>
+                
+              </p>
+              <div id="method-i-add_rubygems_trusted_certs_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_rubygems_trusted_certs</span>(<span class="ruby-identifier">store</span>)
+  <span class="ruby-identifier">pattern</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./ssl_certs/*.pem&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>))
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ssl_cert_file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">store</span>.<span class="ruby-identifier">add_file</span> <span class="ruby-identifier">ssl_cert_file</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-configure_connection_for_https">
+            
+              <b>configure_connection_for_https</b>(connection)
+            
+            <a href="../../classes/Gem/Request.html#method-i-configure_connection_for_https" name="method-i-configure_connection_for_https" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-configure_connection_for_https_source')" id="l_method-i-configure_connection_for_https_source">show</a>
+                
+              </p>
+              <div id="method-i-configure_connection_for_https_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">configure_connection_for_https</span>(<span class="ruby-identifier">connection</span>)
+  <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;net/https&#39;</span>
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">use_ssl</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">verify_mode</span> =
+    <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_verify_mode</span> <span class="ruby-operator">||</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">VERIFY_PEER</span>
+  <span class="ruby-identifier">store</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_client_cert</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">pem</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_client_cert</span>
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">cert</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">X509</span><span class="ruby-operator">::</span><span class="ruby-constant">Certificate</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">pem</span>
+    <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">key</span> = <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">PKey</span><span class="ruby-operator">::</span><span class="ruby-constant">RSA</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">pem</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_ca_cert</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_ca_cert</span>
+      <span class="ruby-identifier">store</span>.<span class="ruby-identifier">add_path</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_ca_cert</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">store</span>.<span class="ruby-identifier">add_file</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">ssl_ca_cert</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">store</span>.<span class="ruby-identifier">set_default_paths</span>
+    <span class="ruby-identifier">add_rubygems_trusted_certs</span>(<span class="ruby-identifier">store</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">cert_store</span> = <span class="ruby-identifier">store</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">e</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:path</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;openssl&#39;</span>) <span class="ruby-operator">||</span>
+               <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/ -- openssl$/</span>
+
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(
+          <span class="ruby-string">&#39;Unable to require openssl, install OpenSSL and rebuild ruby (preferred) or use non-HTTPS sources&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-connection_for">
+            
+              <b>connection_for</b>(uri)
+            
+            <a href="../../classes/Gem/Request.html#method-i-connection_for" name="method-i-connection_for" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates or an HTTP connection based on <code>uri</code>, or retrieves an
+existing connection, using a proxy if needed.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-connection_for_source')" id="l_method-i-connection_for_source">show</a>
+                
+              </p>
+              <div id="method-i-connection_for_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">connection_for</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-identifier">net_http_args</span> = [<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>, <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">port</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@proxy_uri</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">no_proxy?</span>(<span class="ruby-identifier">uri</span>.<span class="ruby-identifier">host</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">net_http_args</span> <span class="ruby-operator">+=</span> [
+      <span class="ruby-ivar">@proxy_uri</span>.<span class="ruby-identifier">host</span>,
+      <span class="ruby-ivar">@proxy_uri</span>.<span class="ruby-identifier">port</span>,
+      <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">UriFormatter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@proxy_uri</span>.<span class="ruby-identifier">user</span>).<span class="ruby-identifier">unescape</span>,
+      <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">UriFormatter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@proxy_uri</span>.<span class="ruby-identifier">password</span>).<span class="ruby-identifier">unescape</span>,
+    ]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">connection_id</span> = [<span class="ruby-constant">Thread</span>.<span class="ruby-identifier">current</span>.<span class="ruby-identifier">object_id</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">net_http_args</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">&#39;:&#39;</span>
+
+  <span class="ruby-identifier">connection</span> = <span class="ruby-ivar">@connections_mutex</span>.<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-ivar">@connections</span>[<span class="ruby-identifier">connection_id</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">net_http_args</span>)
+    <span class="ruby-ivar">@connections</span>[<span class="ruby-identifier">connection_id</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">https?</span>(<span class="ruby-identifier">uri</span>) <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">started?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">configure_connection_for_https</span>(<span class="ruby-identifier">connection</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">started?</span>
+
+  <span class="ruby-identifier">connection</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">OpenSSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSL</span><span class="ruby-operator">::</span><span class="ruby-constant">SSLError</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTDOWN</span>,
+       <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EHOSTDOWN</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">RemoteFetcher</span><span class="ruby-operator">::</span><span class="ruby-constant">FetchError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>, <span class="ruby-identifier">uri</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fetch">
+            
+              <b>fetch</b>()
+            
+            <a href="../../classes/Gem/Request.html#method-i-fetch" name="method-i-fetch" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fetch_source')" id="l_method-i-fetch_source">show</a>
+                
+              </p>
+              <div id="method-i-fetch_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fetch</span>
+  <span class="ruby-identifier">request</span> = <span class="ruby-ivar">@request_class</span>.<span class="ruby-identifier">new</span> <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">request_uri</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">request</span>.<span class="ruby-identifier">basic_auth</span> <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">user</span>, <span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">password</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">add_field</span> <span class="ruby-string">&#39;User-Agent&#39;</span>, <span class="ruby-ivar">@user_agent</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">add_field</span> <span class="ruby-string">&#39;Connection&#39;</span>, <span class="ruby-string">&#39;keep-alive&#39;</span>
+  <span class="ruby-identifier">request</span>.<span class="ruby-identifier">add_field</span> <span class="ruby-string">&#39;Keep-Alive&#39;</span>, <span class="ruby-string">&#39;30&#39;</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@last_modified</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">request</span>.<span class="ruby-identifier">add_field</span> <span class="ruby-string">&#39;If-Modified-Since&#39;</span>, <span class="ruby-ivar">@last_modified</span>.<span class="ruby-identifier">httpdate</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">request</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+
+  <span class="ruby-identifier">connection</span> = <span class="ruby-identifier">connection_for</span> <span class="ruby-ivar">@uri</span>
+
+  <span class="ruby-identifier">retried</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">bad_response</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-ivar">@requests</span>[<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">object_id</span>] <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+
+    <span class="ruby-identifier">say</span> <span class="ruby-node">&quot;#{request.method} #{@uri}&quot;</span> <span class="ruby-keyword">if</span>
+      <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">really_verbose</span>
+
+    <span class="ruby-identifier">file_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-ivar">@uri</span>.<span class="ruby-identifier">path</span>)
+    <span class="ruby-comment"># perform download progress reporter only for gems</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">response_body_permitted?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">file_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\.gem$/</span>
+      <span class="ruby-identifier">reporter</span> = <span class="ruby-identifier">ui</span>.<span class="ruby-identifier">download_reporter</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">request</span>(<span class="ruby-identifier">request</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">incomplete_response</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPOK</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">incomplete_response</span>
+          <span class="ruby-identifier">reporter</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-identifier">incomplete_response</span>.<span class="ruby-identifier">content_length</span>)
+          <span class="ruby-identifier">downloaded</span> = <span class="ruby-number">0</span>
+          <span class="ruby-identifier">data</span> = <span class="ruby-string">&#39;&#39;</span>
+
+          <span class="ruby-identifier">incomplete_response</span>.<span class="ruby-identifier">read_body</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">segment</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">segment</span>
+            <span class="ruby-identifier">downloaded</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">segment</span>.<span class="ruby-identifier">length</span>
+            <span class="ruby-identifier">reporter</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">downloaded</span>)
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">reporter</span>.<span class="ruby-identifier">done</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">incomplete_response</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:body=</span>
+            <span class="ruby-identifier">incomplete_response</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">data</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">incomplete_response</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-value">:@body</span>, <span class="ruby-identifier">data</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">response</span> = <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">request</span> <span class="ruby-identifier">request</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">say</span> <span class="ruby-node">&quot;#{response.code} #{response.message}&quot;</span> <span class="ruby-keyword">if</span>
+      <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">really_verbose</span>
+
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTPBadResponse</span>
+    <span class="ruby-identifier">say</span> <span class="ruby-string">&quot;bad response&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">really_verbose</span>
+
+    <span class="ruby-identifier">reset</span> <span class="ruby-identifier">connection</span>
+
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">RemoteFetcher</span><span class="ruby-operator">::</span><span class="ruby-constant">FetchError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;too many bad responses&#39;</span>, <span class="ruby-ivar">@uri</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">bad_response</span>
+
+    <span class="ruby-identifier">bad_response</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">retry</span>
+  <span class="ruby-comment"># HACK work around EOFError bug in Net::HTTP</span>
+  <span class="ruby-comment"># NOTE Errno::ECONNABORTED raised a lot on Windows, and make impossible</span>
+  <span class="ruby-comment"># to install gems.</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">EOFError</span>, <span class="ruby-constant">Timeout</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>,
+         <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ECONNABORTED</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ECONNRESET</span>, <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">EPIPE</span>
+
+    <span class="ruby-identifier">requests</span> = <span class="ruby-ivar">@requests</span>[<span class="ruby-identifier">connection</span>.<span class="ruby-identifier">object_id</span>]
+    <span class="ruby-identifier">say</span> <span class="ruby-node">&quot;connection reset after #{requests} requests, retrying&quot;</span> <span class="ruby-keyword">if</span>
+      <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">really_verbose</span>
+
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">RemoteFetcher</span><span class="ruby-operator">::</span><span class="ruby-constant">FetchError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;too many connection resets&#39;</span>, <span class="ruby-ivar">@uri</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">retried</span>
+
+    <span class="ruby-identifier">reset</span> <span class="ruby-identifier">connection</span>
+
+    <span class="ruby-identifier">retried</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">retry</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">response</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_no_proxy_from_env">
+            
+              <b>get_no_proxy_from_env</b>()
+            
+            <a href="../../classes/Gem/Request.html#method-i-get_no_proxy_from_env" name="method-i-get_no_proxy_from_env" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns list of no_proxy entries (if any) from the environment</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_no_proxy_from_env_source')" id="l_method-i-get_no_proxy_from_env_source">show</a>
+                
+              </p>
+              <div id="method-i-get_no_proxy_from_env_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 196</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_no_proxy_from_env</span>
+  <span class="ruby-identifier">env_no_proxy</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;no_proxy&#39;</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-string">&#39;NO_PROXY&#39;</span>]
+
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">env_no_proxy</span>.<span class="ruby-identifier">nil?</span>  <span class="ruby-keyword">or</span> <span class="ruby-identifier">env_no_proxy</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">env_no_proxy</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp">/\s*,\s*/</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_proxy_from_env">
+            
+              <b>get_proxy_from_env</b>(scheme = &#39;http&#39;)
+            
+            <a href="../../classes/Gem/Request.html#method-i-get_proxy_from_env" name="method-i-get_proxy_from_env" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns a proxy <a href="../URI.html">URI</a> for the given
+<code>scheme</code> if one is set in the environment variables.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_proxy_from_env_source')" id="l_method-i-get_proxy_from_env_source">show</a>
+                
+              </p>
+              <div id="method-i-get_proxy_from_env_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_proxy_from_env</span> <span class="ruby-identifier">scheme</span> = <span class="ruby-string">&#39;http&#39;</span>
+  <span class="ruby-identifier">_scheme</span> = <span class="ruby-identifier">scheme</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-identifier">_SCHEME</span> = <span class="ruby-identifier">scheme</span>.<span class="ruby-identifier">upcase</span>
+  <span class="ruby-identifier">env_proxy</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_scheme}_proxy&quot;</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_SCHEME}_PROXY&quot;</span>]
+
+  <span class="ruby-identifier">no_env_proxy</span> = <span class="ruby-identifier">env_proxy</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">env_proxy</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">get_proxy_from_env</span> <span class="ruby-string">&#39;http&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">no_env_proxy</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">_scheme</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;http&#39;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>                       <span class="ruby-keyword">if</span> <span class="ruby-identifier">no_env_proxy</span>
+
+  <span class="ruby-identifier">uri</span> = <span class="ruby-constant">URI</span>(<span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">UriFormatter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env_proxy</span>).<span class="ruby-identifier">normalize</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">uri</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">user</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">password</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">user</span>     = <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_scheme}_proxy_user&quot;</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_SCHEME}_PROXY_USER&quot;</span>]
+    <span class="ruby-identifier">password</span> = <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_scheme}_proxy_pass&quot;</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ENV</span>[<span class="ruby-node">&quot;#{_SCHEME}_PROXY_PASS&quot;</span>]
+
+    <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">user</span>     = <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">UriFormatter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">user</span>).<span class="ruby-identifier">escape</span>
+    <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">password</span> = <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">UriFormatter</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">password</span>).<span class="ruby-identifier">escape</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">uri</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-https-3F">
+            
+              <b>https?</b>(uri)
+            
+            <a href="../../classes/Gem/Request.html#method-i-https-3F" name="method-i-https-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-https-3F_source')" id="l_method-i-https-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-https-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 231</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">https?</span>(<span class="ruby-identifier">uri</span>)
+  <span class="ruby-identifier">uri</span>.<span class="ruby-identifier">scheme</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;https&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-no_proxy-3F">
+            
+              <b>no_proxy?</b>(host)
+            
+            <a href="../../classes/Gem/Request.html#method-i-no_proxy-3F" name="method-i-no_proxy-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-no_proxy-3F_source')" id="l_method-i-no_proxy-3F_source">show</a>
+                
+              </p>
+              <div id="method-i-no_proxy-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">no_proxy?</span> <span class="ruby-identifier">host</span>
+  <span class="ruby-identifier">host</span> = <span class="ruby-identifier">host</span>.<span class="ruby-identifier">downcase</span>
+  <span class="ruby-ivar">@env_no_proxy</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pattern</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">pattern</span> = <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">downcase</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">host</span>[<span class="ruby-operator">-</span><span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">length</span>, <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">length</span> ] <span class="ruby-operator">==</span> <span class="ruby-identifier">pattern</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-reset">
+            
+              <b>reset</b>(connection)
+            
+            <a href="../../classes/Gem/Request.html#method-i-reset" name="method-i-reset" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Resets HTTP connection <code>connection</code>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-reset_source')" id="l_method-i-reset_source">show</a>
+                
+              </p>
+              <div id="method-i-reset_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">reset</span>(<span class="ruby-identifier">connection</span>)
+  <span class="ruby-ivar">@requests</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">object_id</span>
+
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">finish</span>
+  <span class="ruby-identifier">connection</span>.<span class="ruby-identifier">start</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-user_agent">
+            
+              <b>user_agent</b>()
+            
+            <a href="../../classes/Gem/Request.html#method-i-user_agent" name="method-i-user_agent" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-user_agent_source')" id="l_method-i-user_agent_source">show</a>
+                
+              </p>
+              <div id="method-i-user_agent_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File lib/rubygems/request.rb, line 254</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">user_agent</span>
+  <span class="ruby-identifier">ua</span> = <span class="ruby-node">&quot;RubyGems/#{Gem::VERSION} #{Gem::Platform.local}&quot;</span>
+
+  <span class="ruby-identifier">ruby_version</span> = <span class="ruby-constant">RUBY_VERSION</span>
+  <span class="ruby-identifier">ruby_version</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39;dev&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">RUBY_PATCHLEVEL</span> <span class="ruby-operator">==</span> <span class="ruby-number">-1</span>
+
+  <span class="ruby-identifier">ua</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; Ruby/#{ruby_version} (#{RUBY_RELEASE_DATE}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">RUBY_PATCHLEVEL</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-number">0</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">ua</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; patchlevel #{RUBY_PATCHLEVEL}&quot;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">RUBY_REVISION</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">ua</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; revision #{RUBY_REVISION}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">ua</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;)&quot;</span>
+
+  <span class="ruby-identifier">ua</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; #{RUBY_ENGINE}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-constant">RUBY_ENGINE</span>) <span class="ruby-keyword">and</span> <span class="ruby-constant">RUBY_ENGINE</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;ruby&#39;</span>
+
+  <span class="ruby-identifier">ua</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    
