@@ -1,6 +1,6 @@
 # Latest Ruby and Rails documentation
 
-I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but their Ruby and Rails versions are often outdated; I'll try to provide the latest documentation on the [Github pages of this project](http://prognommers.github.io/ruby-rails-documentation/).
+I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but their Ruby and Rails versions are often outdated; I'll try to provide the latest documentation on the [Github pages of this project](http://mdesantis.github.io/ruby-rails-documentation/).
 
 ## Documentation
 
@@ -10,7 +10,7 @@ At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. I
 
 ### Location
 
-The documentation is available online [here](http://prognommers.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch (size: ~ 80 MB): `git clone git://github.com/ProGNOMmers/ruby-rails-documentation.git -b gh-pages`
+The documentation is available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch (size: ~ 80 MB): `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
 
 ### Differences between the official documentations and this one
 
@@ -18,7 +18,7 @@ This one sets the rdoc `--all` option, which by default documents private method
 
 ### Generating the docs
 
-I used some customized versions of [sdoc](https://github.com/ProGNOMmers/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/ProGNOMmers/rails/tree/ruby-rails-documentation).
+I used some customized versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentation).
 
 If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby 2.0):
 
@@ -26,7 +26,7 @@ If you want to generate the documentation by yourself you can follow the procedu
 mkdir ~/ruby-rails-documentation
 cd ~/ruby-rails-documentation
 
-git clone https://github.com/ProGNOMmers/sdoc -b ruby-rails-documentation
+git clone https://github.com/mdesantis/sdoc -b ruby-rails-documentation
 
 # Ruby documentation
 curl -s http://ftp.ruby-lang.org/pub/ruby/ruby-2.0-stable.tar.bz2 | tar xvj
@@ -37,7 +37,7 @@ unset SDOC_FORCE_MAIN_PAGE
 cd ..
 
 # Rails documentation
-git clone https://github.com/ProGNOMmers/rails -b ruby-rails-documentation
+git clone https://github.com/mdesantis/rails -b ruby-rails-documentation
 cd rails
 rake -I ~/ruby-rails-documentation/sdoc/lib rdoc
 cd ..
