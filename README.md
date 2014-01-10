@@ -1,24 +1,42 @@
-# [Ruby and Rails documentation](http://mdesantis.github.io/ruby-rails-documentation/)
+# [Ruby and Ruby on Rails merged documentations](http://mdesantis.github.io/ruby-rails-documentation/)
 
 I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
 
-But RailsAPI is no more online. So this project aims to provide the Ruby and Ruby On Rails merged documentations.
+But RailsAPI is no more online. So this project aims to provide the Ruby and Ruby on Rails merged documentations.
 
-## Documentations
+## Ruby / Rails versions
 
-### Ruby / Rails versions
+At the moment, the available documentations are the following:
 
-At the moment, the documentation is about [Ruby 2.0.0-p195 and Rails 4.0.0-rc1](http://mdesantis.github.io/ruby-rails-documentation/). It will be updated after a Ruby or a Rails release as soon as possible. If I forget it, just open an issue and I will provide to update it ;-)
+<table>
+  <tr>
+    <th>Ruby</th>
+    <th>Ruby on Rails</th>
+    
+  </tr>
+  <tr>
+    <td>2.0.0-p195</td>
+    <td>4.0.0.rc1</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentation/Ruby%20v2.0.0-p195,%20Ruby%20On%20Rails%20v4.0.0.rc1/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.0</td>
+    <td>4.1.0.beta1</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentation/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v4.1.0.beta1/index.html">link</a></td>
+  </tr>
+</table>
 
-### Location
+New versions will be added as soon as a new Ruby or Ruby on Rails version will be released. If I forget to add them, just open an issue and I will do it ;-)
 
-The documentation is available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
+## Location
 
-### Differences between the official documentations and this one
+The documentations are available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
+
+## Differences between the official documentations and this one
 
 This one sets the rdoc `--all` option, which by default documents private methods too. I like the documentation to contain as many informations as possible.
 
-### Generating the docs
+## Generating the docs
 
 I used some customized versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentation).
 
