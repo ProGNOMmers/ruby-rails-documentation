@@ -1,16 +1,18 @@
-# Latest Ruby and Rails documentation
+# Ruby and Rails documentation
 
-I :heart: the [Ruby and Rails merged documentations on RailsAPI](http://railsapi.com/doc/rails-v3.2.6_ruby-v1.9.2/), but their Ruby and Rails versions are often outdated; I'll try to provide the latest documentation on the [Github pages of this project](http://mdesantis.github.io/ruby-rails-documentation/).
+I :heart:'d RailsAPI: it included the Ruby and RubyOnRails docs merged together.
 
-## Documentation
+But RailsAPI is no more online. So this project aims to provide the Ruby and RubyOnRails merged documentations.
+
+## Documentations
 
 ### Ruby / Rails versions
 
-At the moment, the documentation is about Ruby 2.0.0-p195 and Rails 4.0.0-rc1. It will be updated after a Ruby or a Rails release as soon as possible (if I forget to do it, just open an issue and I will provide to update it).
+At the moment, the documentation is about  on the [Ruby 2.0.0-p195 and Rails 4.0.0-rc1](http://mdesantis.github.io/ruby-rails-documentation/). It will be updated after a Ruby or a Rails release as soon as possible. If I forget to do it, just open an issue and I will provide to update it ;-)
 
 ### Location
 
-The documentation is available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch (size: ~ 80 MB): `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
+The documentation is available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
 
 ### Differences between the official documentations and this one
 
@@ -20,7 +22,7 @@ This one sets the rdoc `--all` option, which by default documents private method
 
 I used some customized versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentation).
 
-If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby 2.0):
+If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby):
 
 ```sh
 mkdir ~/ruby-rails-documentation
