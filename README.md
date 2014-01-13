@@ -38,6 +38,8 @@ This one has the rdoc `--all` option setting enabled, which documents private me
 
 ## Generating the docs
 
+The docs are generated using the `sdoc` utility, while the merging is accomplished using `sdoc-merge`.
+
 I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentations) and [Ruby on Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentations).
 
 If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby):
@@ -74,4 +76,4 @@ If you didn't get any issue you should see the documentation opening `~/ruby-rai
 
 ## TODO
 
-* Automatize via script the docs generation
+* Automatize via script the docs generation ([WIP](ruby_rails_documentations_generator.rb))
