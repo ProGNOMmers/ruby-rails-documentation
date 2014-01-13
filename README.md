@@ -8,7 +8,7 @@ But RailsAPI is no more online. So this project aims to provide the Ruby and Rub
 
 At the moment, the available documentations are the following:
 
-<table style="border-top-width:0px">
+<table>
   <tr>
     <th>Ruby</th>
     <th>Ruby on Rails</th>
