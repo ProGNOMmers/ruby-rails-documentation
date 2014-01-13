@@ -6,7 +6,7 @@ But RailsAPI is no more online. So this project aims to provide the Ruby and Rub
 
 ## Ruby / Rails versions
 
-At the moment, the available documentations are the following:
+The documentations are available online [here](http://mdesantis.github.io/ruby-rails-documentation/). At the moment, the available documentations are the following:
 
 <table>
   <tr>
@@ -26,19 +26,19 @@ At the moment, the available documentations are the following:
   </tr>
 </table>
 
-New versions will be added as soon as a new Ruby or Ruby on Rails version will be released. If I forget to add them, just open an issue and I will do it ;-)
+New versions will be added as soon as a new Ruby or Ruby on Rails version will be released. If I forget to add them, just open an issue ;-)
 
-## Location
+## Local copy
 
-The documentations are available online [here](http://mdesantis.github.io/ruby-rails-documentation/). If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
+If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentation.git -b gh-pages`
 
 ## Differences between the official documentations and this one
 
-This one sets the rdoc `--all` option, which by default documents private methods too. I like the documentation to contain as many informations as possible.
+This one has the rdoc `--all` option setting enabled, which documents private methods too. I like the documentation to contain as many informations as possible.
 
 ## Generating the docs
 
-I used some customized versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentation) and [Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentation).
+I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentation) and [Ruby on Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentation).
 
 If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby):
 
