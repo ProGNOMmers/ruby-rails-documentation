@@ -12,7 +12,7 @@ At the moment, the available documentations are the following:
   <tr>
     <th>Ruby</th>
     <th>Ruby on Rails</th>
-    <th>Documentations</th>
+    <th>Docs</th>
   </tr>
   <tr>
     <td>2.0.0-p195</td>
