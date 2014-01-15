@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/ruby_rails_documentations'
+
+output_dir     = File.join Dir.home, 'ruby-rails-documentations'
+sdoc_dir       = File.join Dir.home, 'Sviluppo/sdoc'
+ruby_dir       = File.join Dir.home, 'Sviluppo/ruby'
+rails_dir      = File.join Dir.home, 'Sviluppo/rails'
+ruby_versions  = '2.1.0'
+rails_versions = '4.1.0.beta1'
+
+ruby_versions  = %w(1 2)
+rails_versions = %w(1 2)
+
+FileUtils.rm_rf output_dir
+
+RubyRailsDocumentations.new(output_dir, sdoc_dir, ruby_dir, rails_dir).generate(ruby_versions, rails_versions)
+
+# git apply --check fix_empty_poster.patch
+
+puts output_dir

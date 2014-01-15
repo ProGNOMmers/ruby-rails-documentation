@@ -15,14 +15,14 @@ The documentations are available online [here](http://mdesantis.github.io/ruby-r
     <th>Docs</th>
   </tr>
   <tr>
-    <td>2.0.0-p195</td>
-    <td>4.0.0.rc1</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p195,%20Ruby%20On%20Rails%20v4.0.0.rc1/index.html">link</a></td>
-  </tr>
-  <tr>
     <td>2.1.0</td>
     <td>4.1.0.beta1</td>
     <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v4.1.0.beta1/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.0.0-p195</td>
+    <td>4.0.0.rc1</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p195,%20Ruby%20On%20Rails%20v4.0.0.rc1/index.html">link</a></td>
   </tr>
 </table>
 

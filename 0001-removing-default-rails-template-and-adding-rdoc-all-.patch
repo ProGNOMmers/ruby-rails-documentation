@@ -1,0 +1,26 @@
+From 131f772704616ef6616903c8a1ed99dea449fe9f Mon Sep 17 00:00:00 2001
+From: Maurizio De Santis <desantis.maurizio@gmail.com>
+Date: Sun, 19 May 2013 03:16:25 +0200
+Subject: [PATCH] removing default rails template and adding rdoc --all option
+
+---
+ railties/lib/rails/api/task.rb | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/railties/lib/rails/api/task.rb b/railties/lib/rails/api/task.rb
+index c829873..44ba8d6 100644
+--- a/railties/lib/rails/api/task.rb
++++ b/railties/lib/rails/api/task.rb
+@@ -90,7 +90,8 @@ module Rails
+         options << '-e'  << 'UTF-8'
+ 
+         options << '-f'  << 'sdoc'
+-        options << '-T'  << 'rails'
++
++        options << '--all'
+       rescue LoadError
+         $stderr.puts %(Unable to load SDoc, please add\n\n    gem 'sdoc', require: false\n\nto the Gemfile.)
+         exit 1
+-- 
+1.8.3.2
+

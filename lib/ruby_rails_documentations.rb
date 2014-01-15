@@ -32,29 +32,42 @@ require 'fileutils'
 require 'shellwords'
 require 'tmpdir'
 
-class RubyRailsDocumentationsGenerator
+class RubyRailsDocumentations
 
   TMP_DIR_PREFIX = 'ruby-rails-documentations'
 
   attr_reader :output_dir, :sdoc_dir, :ruby_dir, :rails_dir, :ruby_version, :rails_version
 
-  def initialize(output_dir, sdoc_dir, ruby_dir, rails_dir, ruby_version, rails_version)
-    @output_dir, @sdoc_dir, @ruby_dir, @rails_dir, @ruby_version, @rails_version = \
-      output_dir, sdoc_dir, ruby_dir, rails_dir, ruby_version, rails_version      
+  def initialize(output_dir, sdoc_dir, ruby_dir, rails_dir)
+    @output_dir, @sdoc_dir, @ruby_dir, @rails_dir = output_dir, sdoc_dir, ruby_dir, rails_dir
   end
 
-  # cd ruby
-  # SDOC_FORCE_MAIN_PAGE=README ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc --all -o sdoc .
-  def run
-    Dir.mktmpdir(TMP_DIR_PREFIX) do |temp_dir|
-      ruby_docs_dir = create_ruby_docs temp_dir
+  def generate(ruby_versions, rails_versions)
+    FileUtils.mkdir_p output_dir
 
-      rails_docs_dir = create_rails_docs temp_dir
-
-      merged_dir = merge temp_dir, ruby_docs_dir, rails_docs_dir
-
-      FileUtils.cp_r merged_dir, output_dir
+    if ruby_versions.is_a? Array
+      ruby_versions.each do |ruby_version|
+        generate ruby_version, rails_versions
+      end
+      return nil
     end
+
+    if rails_versions.is_a? Array
+      rails_versions.each do |rails_version|
+        generate ruby_versions, rails_version
+      end
+      return nil
+    end
+
+    @ruby_version, @rails_version = ruby_versions, rails_versions
+
+    Dir.mktmpdir(TMP_DIR_PREFIX) do |temp_dir|
+      merged_dir = merge temp_dir, create_ruby_docs(temp_dir), create_rails_docs(temp_dir)
+
+      FileUtils.cp_r merged_dir, version_output_dir
+    end
+
+    nil
   end
 
   private
@@ -65,36 +78,42 @@ class RubyRailsDocumentationsGenerator
   #   --names 'Ruby,Rails' \
   #   ruby*/sdoc rails/doc/rdoc/
   def merge(temp_dir, ruby_docs_dir, rails_docs_dir)
-    title      = "Ruby #{ruby_version}, Rails #{rails_version}"
-    names      = 'Ruby,Rails'
-    merged_dir = File.join temp_dir, 'merged'
+    title = "Ruby #{ruby_version}, Rails #{rails_version}"
+    names = 'Ruby,Rails'
+    dir   = File.join temp_dir, 'merged'
 
-    system %W( ruby -I  #{sdoc_lib_dir} #{sdoc_bin_sdoc_merge} --op #{merged_dir} --title #{title} --names #{names} #{ruby_docs_dir} #{rails_docs_dir} )
+    system %W( ruby -I  #{sdoc_lib_dir} #{sdoc_bin_sdoc_merge} --op #{dir} --title #{title} --names #{names} #{ruby_docs_dir} #{rails_docs_dir} )
 
-    merged_dir
+    dir
+  end
+
+  def version_output_dir
+    File.join output_dir, "Ruby v#{ruby_version}, Ruby on Rails v#{rails_version}"
   end
 
   # cd rails
   # rake -I ~/ruby-rails-documentations/sdoc/lib rdoc
   def create_rails_docs(temp_dir)
-    rails_docs_dir = File.join temp_dir, 'rails-docs'
+    dir = File.join temp_dir, 'rails-docs'
 
     env, options = {}, { chdir: rails_dir }
     system %W( rake -I #{sdoc_lib_dir} rdoc ), env, options
 
-    FileUtils.mv File.join(rails_dir, 'doc', 'rdoc'), rails_docs_dir
+    FileUtils.mv File.join(rails_dir, 'doc', 'rdoc'), dir
 
-    rails_docs_dir
+    dir
   end
 
+  # cd ruby
+  # SDOC_FORCE_MAIN_PAGE=README ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc --github --all -o sdoc .
   def create_ruby_docs(temp_dir)
-    ruby_docs_dir = File.join temp_dir, 'ruby-docs'
+    dir = File.join temp_dir, 'ruby-docs'
 
     env = { 'SDOC_FORCE_MAIN_PAGE' => 'README' }
-    system %W( ruby -I #{sdoc_lib_dir} #{sdoc_bin_sdoc} --all -o #{ruby_docs_dir} #{ruby_dir} ),
+    system %W( ruby -I #{sdoc_lib_dir} #{sdoc_bin_sdoc} --github --all -o #{dir} #{ruby_dir} ),
            env
 
-    ruby_docs_dir
+    dir
   end
 
   def sdoc_bin_sdoc
@@ -125,17 +144,5 @@ class RubyRailsDocumentationsGenerator
 
     [env, command, options].reject(&:empty?).join(' ')
   end
+
 end
-
-output_dir    = File.join Dir.home, 'ruby-rails-documentations'
-sdoc_dir      = File.join Dir.home, 'Sviluppo/sdoc'
-ruby_dir      = File.join Dir.home, 'Sviluppo/ruby'
-rails_dir     = File.join Dir.home, 'Sviluppo/rails'
-ruby_version  = '2.1.0'
-rails_version = '4.1.0.beta1'
-
-FileUtils.rm_rf output_dir
-
-RubyRailsDocumentationsGenerator.new(output_dir, sdoc_dir, ruby_dir, rails_dir, ruby_version, rails_version).run
-
-puts output_dir
