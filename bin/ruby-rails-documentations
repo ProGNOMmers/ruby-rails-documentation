@@ -1,21 +1,65 @@
 #!/usr/bin/env ruby
 
+require 'thor'
+
 require_relative '../lib/ruby_rails_documentations'
 
-output_dir     = File.join Dir.home, 'ruby-rails-documentations'
-sdoc_dir       = File.join Dir.home, 'Sviluppo/sdoc'
-ruby_dir       = File.join Dir.home, 'Sviluppo/ruby'
-rails_dir      = File.join Dir.home, 'Sviluppo/rails'
-ruby_versions  = '2.1.0'
-rails_versions = '4.1.0.beta1'
 
-ruby_versions  = %w(1 2)
-rails_versions = %w(1 2)
+class RubyRailsDocumentations
+  class CLI < Thor
+    package_name 'RubyRailsDocumentations'
 
-FileUtils.rm_rf output_dir
+    desc 'generate OUTPUT_DIR',
+         'generates Ruby and Ruby on Rails merged documentations for each couple of the Ruby and Rails versions specified; the results will be available inside OUTPUT_DIR'
+    long_desc <<-LONGDESC.gsub("\n", "\x5")
+      Generates Ruby and Ruby on Rails merged documentations for each couple of the Ruby and Rails versions specified; the results will be available inside OUTPUT_DIR.
 
-RubyRailsDocumentations.new(output_dir, sdoc_dir, ruby_dir, rails_dir).generate(ruby_versions, rails_versions)
+      Options:
+
+      Examples:
+
+      > $ bin/ruby-rails-documentations \\
+        generate ~/ruby-rails-documentations \\
+        --sdoc-dir=~/sdoc --ruby-dir=~/ruby --rails-dir=~/rails \\
+        --ruby-versions=1.9.3p484 2.0.0p353 2.1.0 \\
+        --rails-versions=3.0.20 3.1.12 3.2.16 4.0.2 4.1.0.beta1
+    LONGDESC
+    option :'sdoc-dir'       , required: true
+    option :'ruby-dir'       , required: true
+    option :'rails-dir'      , required: true
+    option :'ruby-versions'  , required: true , type: :array
+    option :'rails-versions' , required: true , type: :array
+    def generate(output_dir)
+      p options[:'sdoc-dir']
+      p options[:'ruby-dir']
+      p options[:'rails-dir']
+      p options[:'ruby-versions']
+      p options[:'rails-versions']
+
+      # output_dir     = File.join Dir.home, 'ruby-rails-documentations'
+      # sdoc_dir       = File.join Dir.home, 'Sviluppo/sdoc'
+      # ruby_dir       = File.join Dir.home, 'Sviluppo/ruby'
+      # rails_dir      = File.join Dir.home, 'Sviluppo/rails'
+      # ruby_versions  = '2.1.0'
+      # rails_versions = '4.1.0.beta1'
+
+      # ruby_versions  = %w(1 2)
+      # rails_versions = %w(1 2)
+
+      # FileUtils.rm_rf output_dir
+
+      # RubyRailsDocumentations.new(output_dir, sdoc_dir, ruby_dir, rails_dir).generate(ruby_versions, rails_versions)
+
+      # puts output_dir
+    end
+
+    self
+  end.start(ARGV)
+end
 
 # git apply --check fix_empty_poster.patch
 
-puts output_dir
+
+
+# ruby_rails_documentations --help
+# ruby_rails_documentations generate --sdoc-dir ~/Sviluppo/sdoc --ruby-dir ~/Sviluppo/ruby --rails-dir ~/Sviluppo/rails --ruby-versions 1.9.3p484 2.0.0p353 2.1.0 --rails-versions 3.0.20 3.1.12 3.2.16 4.0.2 4.1.0.beta1 --output-dir ~/ruby-rails-documentations
