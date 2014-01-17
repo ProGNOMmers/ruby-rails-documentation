@@ -34,7 +34,8 @@ require 'tmpdir'
 
 class RubyRailsDocumentations
 
-  TMP_DIR_PREFIX = 'ruby-rails-documentations'
+  TMP_DIR_PREFIX     = 'ruby-rails-documentations'
+  RUBY_VERSION_REGEX = /\A(\d)\.(\d)\.(\d)(-p(\d+))?\z/
 
   attr_reader :output_dir, :sdoc_dir, :ruby_dir, :rails_dir, :ruby_version, :rails_version
 
@@ -96,6 +97,11 @@ class RubyRailsDocumentations
   def create_rails_docs(temp_dir)
     dir = File.join temp_dir, 'rails-docs'
 
+    if rails_git_checkout
+      env, options = {}, { chdir: rails_dir }
+      system %W( git checkout #{rails_git_version} ), env, options
+    end
+
     env, options = {}, { chdir: rails_dir }
     system %W( rake -I #{sdoc_lib_dir} rdoc ), env, options
 
@@ -109,11 +115,32 @@ class RubyRailsDocumentations
   def create_ruby_docs(temp_dir)
     dir = File.join temp_dir, 'ruby-docs'
 
+    if ruby_git_checkout
+      env, options = {}, { chdir: ruby_dir }
+      system %W( git checkout #{ruby_git_version} ), env, options
+    end
+
     env = { 'SDOC_FORCE_MAIN_PAGE' => 'README' }
     system %W( ruby -I #{sdoc_lib_dir} #{sdoc_bin_sdoc} --github --all -o #{dir} #{ruby_dir} ),
            env
 
     dir
+  end
+
+  def rails_git_version
+    "v#{rails_version}"
+  end
+
+  def ruby_git_version
+    if ruby_version =~ RUBY_VERSION_REGEX
+      major, minor, tiny, _, patch = ruby_version.scan(RUBY_VERSION_REGEX).first
+      ''.tap do |s|
+        s << "v#{major}_#{minor}_#{tiny}"
+        s << "_#{patch}" if patch
+      end
+    else
+      "v#{ruby_version}"
+    end
   end
 
   def sdoc_bin_sdoc

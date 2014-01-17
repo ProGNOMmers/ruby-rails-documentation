@@ -16,10 +16,18 @@ class RubyRailsDocumentations
      > $ bin/ruby-rails-documentations generate ~/ruby-rails-documentations --sdoc-dir=~/sdoc --ruby-dir=~/ruby --rails-dir=~/rails --ruby-versions=1.9.3p484 2.0.0p353 2.1.0 --rails-versions=3.0.20 3.1.12 3.2.16 4.0.2 4.1.0.beta1
     LONGDESC
     option :'sdoc-dir'       , required: true                , desc: %[SDoc directory, f.e. `ruby -e "p Gem::Specification.find_by_name('sdoc').gem_dir"`]
-    option :'ruby-dir'       , required: true                , desc: 'Ruby source directory; it is required to be a valid Ruby source git checkout, in order to switch between the versions using `git tag`'
-    option :'rails-dir'      , required: true                , desc: 'Ruby on Rails source directory; it is required to be a valid Ruby on Rails source git checkout, in order to switch between the versions using `git tag`'
-    option :'ruby-versions'  , required: true , type: :array , desc: 'The Ruby versions whose documentations will be generated'
-    option :'rails-versions' , required: true , type: :array , desc: 'The Ruby on Rails versions whose documentations will be generated'
+    option :'ruby-dir'       , required: true                , desc: <<-DESC.gsub(/^ {6}/, '').gsub("\n", '')
+      Ruby source directory. It is required to be a valid Ruby git clone, 
+      in order to switch between the versions using `git checkout`. 
+      Note that the supplied versions will be reformatted (see 'Version formats' section)
+    DESC
+    option :'rails-dir'      , required: true                , desc: <<-DESC.gsub(/^ {6}/, '').gsub("\n", '')
+      Ruby on Rails source directory. It is required to be a valid Ruby on Rails git clone, 
+      in order to switch between the versions using `git checkout`. 
+      Note that the supplied versions will be reformatted (see 'Version formats' section)
+    DESC
+    option :'ruby-versions'  , required: true , type: :array , desc: %[The Ruby versions whose documentations will be generated]
+    option :'rails-versions' , required: true , type: :array , desc: %[The Ruby on Rails versions whose documentations will be generated]
     def generate(output_dir)
       @sdoc_dir, @ruby_dir, @rails_dir, @ruby_versions, @rails_versions = \
         options[:'sdoc-dir'], options[:'ruby-dir'], options[:'rails-dir'], options[:'ruby-versions'], options[:'rails-versions']
