@@ -42,38 +42,29 @@ The docs are generated using the `sdoc` utility, while the merging is accomplish
 
 I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentations) and [Ruby on Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentations).
 
-If you want to generate the documentation by yourself you can follow the procedure below (prerequisites: curl, tar, git, ruby):
+### Prerequisites
 
-```sh
-mkdir ~/ruby-rails-documentations
-cd ~/ruby-rails-documentations
+* ruby
+* git
+* a Ruby git clone: `git clone https://github.com/ruby/ruby`
+* a Ruby on Rails git clone: `git clone https://github.com/rails/rails`
+* the ruby-rails-documentations branch of my sdoc fork: `git clone https://github.com/mdesantis/sdoc -b ruby-rails-documentations`
+* the clone of this repository: `git clone https://github.com/mdesantis/ruby-rails-documentations`
 
-git clone https://github.com/mdesantis/sdoc -b ruby-rails-documentations
+### Generation
 
-# Ruby documentation
-curl -s http://ftp.ruby-lang.org/pub/ruby/ruby-2.0-stable.tar.bz2 | tar xvj
-cd ruby*
-export SDOC_FORCE_MAIN_PAGE=README
-ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc --all -o sdoc .
-unset SDOC_FORCE_MAIN_PAGE
-cd ..
+* From a shell, cd into the project clone folder
+* Run `ruby -Ilib bin/ruby-rails-documentations help`
+* Follow the instructions
 
-# Rails documentation
-git clone https://github.com/mdesantis/rails -b ruby-rails-documentations
-cd rails
-rake -I ~/ruby-rails-documentations/sdoc/lib rdoc
-cd ..
+# TODO
 
-# Merge
-ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc-merge \
-  --title 'Ruby v2.0.0-p195, Rails v4.0.0-rc.1' \
-  --op merged \
-  --names 'Ruby,Rails' \
-  ruby*/sdoc rails/doc/rdoc/
-```
+Explain why I modified sdoc
+Clean up the scripts
+Better docs generation instructions
+Simplify the generation
+Gemify
 
-If you didn't get any issue you should see the documentation opening `~/ruby-rails-documentations/merged/index.html` in any browser.
+# License
 
-## TODO
-
-* Automatize via script the docs generation ([WIP](ruby_rails_documentations_generator.rb))
+MIT (see [LICENSE](LICENSE))
