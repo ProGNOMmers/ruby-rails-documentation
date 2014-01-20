@@ -57,7 +57,7 @@ I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/rub
 * Run `ruby -Ilib bin/ruby-rails-documentations help`
 * Follow the instructions
 
-# TODO
+## TODO
 
 * Explain why I modified sdoc
 * Clean up the scripts
@@ -65,6 +65,6 @@ I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/rub
 * Simplify the generation
 * Gemify
 
-# License
+## License
 
 MIT (see [LICENSE](LICENSE))
