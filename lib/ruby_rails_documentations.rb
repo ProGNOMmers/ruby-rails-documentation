@@ -34,7 +34,7 @@ require 'tmpdir'
 
 class RubyRailsDocumentations
 
-  TMP_DIR_PREFIX     = 'ruby-rails-documentations'
+  TMP_DIR_PREFIX     = 'ruby-rails-docs'
   RUBY_VERSION_REGEX = /\A(\d)\.(\d)\.(\d)(-p(\d+))?\z/
 
   attr_reader :output_dir, :sdoc_dir, :ruby_dir, :rails_dir, :ruby_version, :rails_version
@@ -97,10 +97,8 @@ class RubyRailsDocumentations
   def create_rails_docs(temp_dir)
     dir = File.join temp_dir, 'rails-docs'
 
-    if rails_git_checkout
-      env, options = {}, { chdir: rails_dir }
-      system %W( git checkout #{rails_git_version} ), env, options
-    end
+    env, options = {}, { chdir: rails_dir }
+    system %W( git checkout #{rails_git_version} ), env, options
 
     env, options = {}, { chdir: rails_dir }
     system %W( rake -I #{sdoc_lib_dir} rdoc ), env, options
@@ -115,10 +113,8 @@ class RubyRailsDocumentations
   def create_ruby_docs(temp_dir)
     dir = File.join temp_dir, 'ruby-docs'
 
-    if ruby_git_checkout
-      env, options = {}, { chdir: ruby_dir }
-      system %W( git checkout #{ruby_git_version} ), env, options
-    end
+    env, options = {}, { chdir: ruby_dir }
+    system %W( git checkout #{ruby_git_version} ), env, options
 
     env = { 'SDOC_FORCE_MAIN_PAGE' => 'README' }
     system %W( ruby -I #{sdoc_lib_dir} #{sdoc_bin_sdoc} --github --all -o #{dir} #{ruby_dir} ),
@@ -156,17 +152,14 @@ class RubyRailsDocumentations
   end
 
   def system(command, env = {}, options = {})
-    case Kernel.system env, *command, options
-    when false
-      abort "The command #{pretty_system_arguments command, env, options} has failed. Aborting"
-    when nil
-      abort "The command #{pretty_system_arguments command, env, options} does not exist. Aborting"
+    unless Kernel.system env, *command, options
+      abort "The execution of the command #{pretty_system_arguments command, env, options} failed with status #{$?.exitstatus}. Aborting"
     end
   end
 
   def pretty_system_arguments(command, env, options)
     env     = env.map{ |k, v| "#{k.shellescape}=#{v.shellescape}" }.join(' ')
-    command = command.join(' ').shellescape
+    command = command.map(&:shellescape).join(' ')
     options = options.empty? ? '' : options.to_s
 
     [env, command, options].reject(&:empty?).join(' ')

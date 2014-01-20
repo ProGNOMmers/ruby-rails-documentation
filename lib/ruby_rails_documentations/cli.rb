@@ -49,7 +49,7 @@ class RubyRailsDocumentations
 
       # FileUtils.rm_rf output_dir
 
-      # RubyRailsDocumentations.new(output_dir, sdoc_dir, ruby_dir, rails_dir).generate(ruby_versions, rails_versions)
+      RubyRailsDocumentations.new(output_dir, @sdoc_dir, @ruby_dir, @rails_dir).generate(@ruby_versions, @rails_versions)
 
       # puts output_dir
     end
