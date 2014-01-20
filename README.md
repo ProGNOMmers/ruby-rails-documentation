@@ -59,11 +59,11 @@ I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/rub
 
 # TODO
 
-Explain why I modified sdoc
-Clean up the scripts
-Better docs generation instructions
-Simplify the generation
-Gemify
+* Explain why I modified sdoc
+* Clean up the scripts
+* Better docs generation instructions
+* Simplify the generation
+* Gemify
 
 # License
 
