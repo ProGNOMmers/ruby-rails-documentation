@@ -2,7 +2,7 @@
 
 I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
 
-But RailsAPI is no more online. So this project aims to provide the Ruby and Ruby on Rails merged documentations.
+But RailsAPI is online no more, so this project aims to replace it.
 
 ## Current releases
 
@@ -114,7 +114,7 @@ I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/rub
 
 ### Generation
 
-* From a shell, cd into the project clone folder
+* Using a terminal, `cd` into the project clone folder
 * Run `ruby -Ilib bin/ruby-rails-documentations help`
 * Follow the instructions
 
@@ -133,7 +133,7 @@ README.EXT.ja
 README.ja
 ```
 
-to 1.9.3-p484 `.document` file so to add these files to the documentation and set the Ruby docs main page to the README.
+to [1.9.3-p484 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_484/.document) so to add these files to the documentation and set the Ruby docs main page to the README.
 
 * I use a Ruby on Rails fork in order to enable the rdoc `--all` option which adds private methods to the documentation.
 * I use my sdoc fork in order to add RDoc 4.1.0 compatibility and force the Ruby documentation main page (it would default to ChangeLog even using the RDoc `--main-page` option).
