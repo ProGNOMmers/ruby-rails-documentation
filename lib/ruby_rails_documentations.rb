@@ -34,7 +34,7 @@ require 'tmpdir'
 
 class RubyRailsDocumentations
 
-  TMP_DIR_PREFIX     = 'ruby-rails-docs'
+  TEMP_DIR_PREFIX    = 'ruby-rails-docs'
   RUBY_VERSION_REGEX = /\A(\d)\.(\d)\.(\d)(-p(\d+))?\z/
 
   attr_reader :output_dir, :sdoc_dir, :ruby_dir, :rails_dir, :ruby_version, :rails_version
@@ -44,34 +44,38 @@ class RubyRailsDocumentations
   end
 
   def generate(ruby_versions, rails_versions)
+    Dir.mktmpdir(TEMP_DIR_PREFIX) do |temp_dir|
+      generate_with_temp_dir ruby_versions, rails_versions, temp_dir
+    end
+  end
+
+  private
+
+  def generate_with_temp_dir(ruby_versions, rails_versions, temp_dir)
     FileUtils.mkdir_p output_dir
 
     if ruby_versions.is_a? Array
       ruby_versions.each do |ruby_version|
-        generate ruby_version, rails_versions
+        generate_with_temp_dir ruby_version, rails_versions, temp_dir
       end
       return nil
     end
 
     if rails_versions.is_a? Array
       rails_versions.each do |rails_version|
-        generate ruby_versions, rails_version
+        generate_with_temp_dir ruby_versions, rails_version, temp_dir
       end
       return nil
     end
 
     @ruby_version, @rails_version = ruby_versions, rails_versions
 
-    Dir.mktmpdir(TMP_DIR_PREFIX) do |temp_dir|
-      merged_dir = merge temp_dir, create_ruby_docs(temp_dir), create_rails_docs(temp_dir)
+    merged_dir = merge temp_dir, create_ruby_docs(temp_dir), create_rails_docs(temp_dir)
 
-      FileUtils.cp_r merged_dir, version_output_dir
-    end
+    FileUtils.cp_r merged_dir, version_output_dir
 
     nil
   end
-
-  private
 
   # ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc-merge \
   #   --title 'Ruby v2.0.0-p195, Rails v4.0.0-rc.1' \
@@ -79,9 +83,11 @@ class RubyRailsDocumentations
   #   --names 'Ruby,Rails' \
   #   ruby*/sdoc rails/doc/rdoc/
   def merge(temp_dir, ruby_docs_dir, rails_docs_dir)
-    title = "Ruby #{ruby_version}, Rails #{rails_version}"
+    title = "Ruby v#{ruby_version}, Rails v#{rails_version}"
     names = 'Ruby,Rails'
-    dir   = File.join temp_dir, 'merged'
+    dir   = File.join temp_dir, "merged-docs-ruby-v#{ruby_version}-rails-v#{rails_version}"
+
+    return dir if File.exist? dir
 
     system %W( ruby -I  #{sdoc_lib_dir} #{sdoc_bin_sdoc_merge} --op #{dir} --title #{title} --names #{names} #{ruby_docs_dir} #{rails_docs_dir} )
 
@@ -95,10 +101,15 @@ class RubyRailsDocumentations
   # cd rails
   # rake -I ~/ruby-rails-documentations/sdoc/lib rdoc
   def create_rails_docs(temp_dir)
-    dir = File.join temp_dir, 'rails-docs'
+    dir = File.join temp_dir, "rails-docs-v#{rails_version}"
+
+    return dir if File.exist? dir
 
     env, options = {}, { chdir: rails_dir }
     system %W( git checkout #{rails_git_version} ), env, options
+
+    env, options = {}, { chdir: rails_dir }
+    system %W( rake clobber ), env, options
 
     env, options = {}, { chdir: rails_dir }
     system %W( rake -I #{sdoc_lib_dir} rdoc ), env, options
@@ -111,7 +122,9 @@ class RubyRailsDocumentations
   # cd ruby
   # SDOC_FORCE_MAIN_PAGE=README ruby -I ~/ruby-rails-documentations/sdoc/lib ~/ruby-rails-documentations/sdoc/bin/sdoc --github --all -o sdoc .
   def create_ruby_docs(temp_dir)
-    dir = File.join temp_dir, 'ruby-docs'
+    dir = File.join temp_dir, "ruby-docs-v#{ruby_version}"
+
+    return dir if File.exist? dir
 
     env, options = {}, { chdir: ruby_dir }
     system %W( git checkout #{ruby_git_version} ), env, options
