@@ -6,5 +6,5 @@ RubyRailsDocumentations::CLI.start
 
 # git apply --check fix_empty_poster.patch
 
-# ruby_rails_documentations --help
-# ruby_rails_documentations generate --sdoc-dir ~/Sviluppo/sdoc --ruby-dir ~/Sviluppo/ruby --rails-dir ~/Sviluppo/rails --ruby-versions 1.9.3p484 2.0.0p353 2.1.0 --rails-versions 3.0.20 3.1.12 3.2.16 4.0.2 4.1.0.beta1 --output-dir ~/ruby-rails-documentations
+# ruby -Ilib bin/ruby-rails-documentations --help
+# ruby -Ilib bin/ruby-rails-documentations generate ~/ruby-rails-documentations --sdoc-dir ~/Sviluppo/sdoc --ruby-dir ~/Sviluppo/ruby --rails-dir ~/Sviluppo/rails --ruby-versions 1.9.3-p545 2.0.0-p451 2.1.1 --rails-versions 3.0.20 3.1.12 3.2.17 4.0.4 4.1.0

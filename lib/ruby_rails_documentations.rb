@@ -165,6 +165,7 @@ class RubyRailsDocumentations
   end
 
   def system(command, env = {}, options = {})
+    puts "#{pretty_system_arguments command, env, options}\n"
     unless Kernel.system env, *command, options
       abort "The execution of the command #{pretty_system_arguments command, env, options} failed with status #{$?.exitstatus}. Aborting"
     end
@@ -172,10 +173,14 @@ class RubyRailsDocumentations
 
   def pretty_system_arguments(command, env, options)
     env     = env.map{ |k, v| "#{k.shellescape}=#{v.shellescape}" }.join(' ')
-    command = command.map(&:shellescape).join(' ')
+    command = "#{command.map(&:shellescape).join(' ')}"
+    chdir   = options[:chdir]
+    options = options.reject { |k| k == :chdir }
     options = options.empty? ? '' : options.to_s
 
-    [env, command, options].reject(&:empty?).join(' ')
+    [env, command, options].reject(&:empty?).join(' ').tap do |string|
+      string.prepend "[#{chdir}] " if chdir
+    end
   end
 
 end

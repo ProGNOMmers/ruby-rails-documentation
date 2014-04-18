@@ -133,13 +133,20 @@ README.EXT.ja
 README.ja
 ```
 
-to [1.9.3-p484 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_484/.document) so to add these files to the documentation and set the Ruby docs main page to the README.
+to [1.9.3-p484 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_484/.document) so to add these files to the documentation and set the Ruby docs main page to the README
 
-* I use a Ruby on Rails fork in order to enable the rdoc `--all` option which adds private methods to the documentation.
-* I use my sdoc fork in order to add RDoc 4.1.0 compatibility and force the Ruby documentation main page (it would default to ChangeLog even using the RDoc `--main-page` option).
+* I use a Ruby on Rails fork in order to:
+* * port the Rails 4.x docs generation, which includes sdoc support, to 3.x, which doesn't
+* * enable the rdoc `--all` option which adds private methods to the documentation
+* I use my sdoc fork in order to add RDoc 4.1.0 compatibility and force the Ruby documentation main page (it would default to ChangeLog even using the RDoc `--main-page` option)
+
+## Known Issues
+
+* Ruby documentation has `ChangeLog` as default page, while it should be `README`.
 
 ## TODO
 
+* Reference the commits of the customizations
 * Clean up the scripts
 * Better docs generation instructions
 * Simplify the generation
