@@ -101,7 +101,7 @@ If you want a local copy, you can download the [gh-pages archive <sub> ~ 200 MB<
 
 The docs are generated using the `sdoc` utility, while the merging is accomplished using `sdoc-merge`.
 
-I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentations) and [Ruby on Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentations).
+I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/ruby-rails-documentations), Ruby and [Ruby on Rails](https://github.com/mdesantis/rails/tree/ruby-rails-documentations).
 
 ### Prerequisites
 
@@ -133,7 +133,7 @@ README.EXT.ja
 README.ja
 ```
 
-to [1.9.3-p545 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_545/.document) so to add these files to the documentation and set the Ruby docs main page to the README (actually it doesn't work, see [Known Issues](#known-issues))
+to [1.9.3-p545 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_545/.document) so to add these files to the documentation and set the Ruby docs main page to the README (currently it doesn't work, see [Known Issues](#known-issues))
 
 * I use a Ruby on Rails fork in order to:
 * port the Rails 4.x docs generation, which includes sdoc support, to 3.x, which doesn't
