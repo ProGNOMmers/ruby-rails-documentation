@@ -105,18 +105,18 @@ I used some custom versions of [sdoc](https://github.com/mdesantis/sdoc/tree/rub
 
 ### Prerequisites
 
-* ruby
-* git
-* a Ruby git clone: `git clone https://github.com/ruby/ruby`
-* a Ruby on Rails git clone: `git clone https://github.com/rails/rails`
-* the ruby-rails-documentations branch of my sdoc fork: `git clone https://github.com/mdesantis/sdoc -b ruby-rails-documentations`
-* the clone of this repository: `git clone https://github.com/mdesantis/ruby-rails-documentations`
+1. Ruby
+2. Git
+3. A Ruby git clone: `git clone https://github.com/ruby/ruby`
+4. A Ruby on Rails git clone: `git clone https://github.com/rails/rails`
+5. The ruby-rails-documentations branch of my sdoc fork: `git clone https://github.com/mdesantis/sdoc -b ruby-rails-documentations`
+6. The clone of this repository: `git clone https://github.com/mdesantis/ruby-rails-documentations`
 
 ### Generation
 
-* Using a terminal, `cd` into the project clone folder
-* Run `ruby -Ilib bin/ruby-rails-documentations help`
-* Follow the instructions
+1. Using a terminal, `cd` into the project clone folder
+2. Run `ruby -Ilib bin/ruby-rails-documentations help`
+3. Follow the instructions
 
 ## Notes
 
@@ -136,11 +136,11 @@ README.ja
 to [1.9.3-p545 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_545/.document) so to add these files to the documentation and set the Ruby docs main page to the README (actually it doesn't work, see [Known Issues](#known-issues))
 
 * I use a Ruby on Rails fork in order to:
-* * port the Rails 4.x docs generation, which includes sdoc support, to 3.x, which doesn't
-* * enable the rdoc `--all` option which adds private methods to the documentation
+* port the Rails 4.x docs generation, which includes sdoc support, to 3.x, which doesn't
+* enable the rdoc `--all` option which adds private methods to the documentation
 * I use my sdoc fork in order to add RDoc 4.1.0 compatibility and force the Ruby documentation main page (it would default to ChangeLog even using the RDoc `--main-page` option)
 
-## Known Issues
+## Known issues
 
 * Ruby documentation has `ChangeLog` as default page, while it should be `README`.
 
