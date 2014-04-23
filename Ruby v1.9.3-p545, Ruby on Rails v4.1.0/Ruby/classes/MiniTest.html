@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>MiniTest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            MiniTest 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/__/ruby/lib/minitest/autorun_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/autorun.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/minitest/benchmark_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/benchmark.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/minitest/mock_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/mock.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/minitest/pride_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/pride.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/minitest/spec_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/spec.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/minitest/unit_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/unit.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/test/unit_rb.html">/home/mdesantis/Sviluppo/ruby/lib/test/unit.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/test/unit/assertions_rb.html">/home/mdesantis/Sviluppo/ruby/lib/test/unit/assertions.rb</a></li>
+            
+            <li><a href="../files/__/ruby/lib/test/unit/parallel_rb.html">/home/mdesantis/Sviluppo/ruby/lib/test/unit/parallel.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A simple and clean mock object framework.</p>
+
+<p>Minimal (mostly drop-in) replacement for test-unit.</p>
+
+<h1 id="module-MiniTest-label-minitest%2F%2A">minitest/*</h1>
+<ul><li>
+<p><a
+href="http://rubyforge.org/projects/bfts">rubyforge.org/projects/bfts</a></p>
+</li></ul>
+
+<h2 id="module-MiniTest-label-DESCRIPTION%3A">DESCRIPTION:</h2>
+
+<p>minitest provides a complete suite of testing facilities supporting TDD,
+BDD, mocking, and benchmarking.</p>
+
+<p>minitest/unit is a small and incredibly fast unit testing framework. It
+provides a rich set of assertions to make your tests clean and readable.</p>
+
+<p>minitest/spec is a functionally complete spec engine. It hooks onto
+minitest/unit and seamlessly bridges test assertions over to spec
+expectations.</p>
+
+<p>minitest/benchmark is an awesome way to assert the performance of your
+algorithms in a repeatable manner. Now you can assert that your newb
+co-worker doesn&#39;t replace your linear algorithm with an exponential
+one!</p>
+
+<p>minitest/mock by Steven Baker, is a beautifully tiny mock object framework.</p>
+
+<p>minitest/pride shows pride in testing and adds coloring to your test
+output.</p>
+
+<p>minitest/unit is meant to have a clean implementation for language
+implementors that need a minimal set of methods to bootstrap a working test
+suite. For example, there is no magic involved for test-case discovery.</p>
+
+<h2 id="module-MiniTest-label-FEATURES%2FPROBLEMS%3A">FEATURES/PROBLEMS:</h2>
+<ul><li>
+<p>minitest/autorun - the easy and explicit way to run all your tests.</p>
+</li><li>
+<p>minitest/unit - a very fast, simple, and clean test system.</p>
+</li><li>
+<p>minitest/spec - a very fast, simple, and clean spec system.</p>
+</li><li>
+<p>minitest/mock - a simple and clean mock system.</p>
+</li><li>
+<p>minitest/benchmark - an awesome way to assert your algorithm&#39;s
+performance.</p>
+</li><li>
+<p>minitest/pride - show your pride in testing!</p>
+</li><li>
+<p>Incredibly small and fast runner, but no bells and whistles.</p>
+</li></ul>
+
+<h2 id="module-MiniTest-label-RATIONALE%3A">RATIONALE:</h2>
+
+<p>See design_rationale.rb to see how specs and tests work in minitest.</p>
+
+<h2 id="module-MiniTest-label-SYNOPSIS%3A">SYNOPSIS:</h2>
+
+<p>Given that you&#39;d like to test the following class:</p>
+
+<pre><code>class Meme
+  def i_can_has_cheezburger?
+    &quot;OHAI!&quot;
+  end
+
+  def will_it_blend?
+    &quot;YES!&quot;
+  end
+end
+</code></pre>
+
+<h3 id="module-MiniTest-label-Unit+tests">Unit tests</h3>
+
+<pre><code>require &#39;minitest/autorun&#39;
+
+class TestMeme &lt; MiniTest::Unit::TestCase
+  def setup
+    @meme = Meme.new
+  end
+
+  def test_that_kitty_can_eat
+    assert_equal &quot;OHAI!&quot;, @meme.i_can_has_cheezburger?
+  end
+
+  def test_that_it_will_not_blend
+    refute_match /^no/i, @meme.will_it_blend?
+  end
+end
+</code></pre>
+
+<h3 id="module-MiniTest-label-Specs">Specs</h3>
+
+<pre><code>require &#39;minitest/autorun&#39;
+
+describe Meme do
+  before do
+    @meme = Meme.new
+  end
+
+  describe &quot;when asked about cheeseburgers&quot; do
+    it &quot;must respond positively&quot; do
+      @meme.i_can_has_cheezburger?.must_equal &quot;OHAI!&quot;
+    end
+  end
+
+  describe &quot;when asked about blending possibilities&quot; do
+    it &quot;won&#39;t say no&quot; do
+      @meme.will_it_blend?.wont_match /^no/i
+    end
+  end
+end
+</code></pre>
+
+<h3 id="module-MiniTest-label-Benchmarks">Benchmarks</h3>
+
+<p>Add benchmarks to your regular unit tests. If the unit tests fail, the
+benchmarks won&#39;t run.</p>
+
+<pre><code># optionally run benchmarks, good for CI-only work!
+require &#39;minitest/benchmark&#39; if ENV[&quot;BENCH&quot;]
+
+class TestMeme &lt; MiniTest::Unit::TestCase
+  # Override self.bench_range or default range is [1, 10, 100, 1_000, 10_000]
+  def bench_my_algorithm
+    assert_performance_linear 0.9999 do |n| # n is a range value
+      n.times do
+        @obj.my_algorithm
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>Or add them to your specs. If you make benchmarks optional, you&#39;ll need
+to wrap your benchmarks in a conditional since the methods won&#39;t be
+defined.</p>
+
+<pre><code>describe Meme do
+  if ENV[&quot;BENCH&quot;] then
+    bench_performance_linear &quot;my_algorithm&quot;, 0.9999 do |n|
+      100.times do
+        @obj.my_algorithm(n)
+      end
+    end
+  end
+end
+</code></pre>
+
+<p>outputs something like:</p>
+
+<pre><code># Running benchmarks:
+
+TestBlah    100     1000    10000
+bench_my_algorithm   0.006167        0.079279        0.786993
+bench_other_algorithm        0.061679        0.792797        7.869932</code></pre>
+
+<p>Output is tab-delimited to make it easy to paste into a spreadsheet.</p>
+
+<h3 id="module-MiniTest-label-Mocks">Mocks</h3>
+
+<pre><code>class MemeAsker
+  def initialize(meme)
+    @meme = meme
+  end
+
+  def ask(question)
+    method = question.tr(&quot; &quot;,&quot;_&quot;) + &quot;?&quot;
+    @meme.send(method)
+  end
+end
+
+require &#39;minitest/autorun&#39;
+
+describe MemeAsker do
+  before do
+    @meme = MiniTest::Mock.new
+    @meme_asker = MemeAsker.new @meme
+  end
+
+  describe &quot;#ask&quot; do
+    describe &quot;when passed an unpunctuated question&quot; do
+      it &quot;should invoke the appropriate predicate method on the meme&quot; do
+        @meme.expect :will_it_blend?, :return_value
+        @meme_asker.ask &quot;will it blend&quot;
+        @meme.verify
+      end
+    end
+  end
+end
+</code></pre>
+
+<h3 id="module-MiniTest-label-Customizable+Test+Runner+Types%3A">Customizable <a href="Test.html">Test</a> Runner Types:</h3>
+
+<p><a href="MiniTest/Unit.html#method-c-runner-3D">MiniTest::Unit.runner=</a>
+provides an easy way of creating custom test runners for specialized needs.
+Justin Weiss provides the following real-world example to create an
+alternative to regular fixture loading:</p>
+
+<pre><code>class MiniTestWithHooks::Unit &lt; MiniTest::Unit
+  def before_suites
+  end
+
+  def after_suites
+  end
+
+  def _run_suites(suites, type)
+    begin
+      before_suites
+      super(suites, type)
+    ensure
+      after_suites
+    end
+  end
+
+  def _run_suite(suite, type)
+    begin
+      suite.before_suite
+      super(suite, type)
+    ensure
+      suite.after_suite
+    end
+  end
+end
+
+module MiniTestWithTransactions
+  class Unit &lt; MiniTestWithHooks::Unit
+    include TestSetupHelper
+
+    def before_suites
+      super
+      setup_nested_transactions
+      # load any data we want available for all tests
+    end
+
+    def after_suites
+      teardown_nested_transactions
+      super
+    end
+  end
+end
+
+MiniTest::Unit.runner = MiniTestWithTransactions::Unit.new
+</code></pre>
+
+<h2 id="module-MiniTest-label-REQUIREMENTS%3A">REQUIREMENTS:</h2>
+<ul><li>
+<p>Ruby 1.8, maybe even 1.6 or lower. No magic is involved.</p>
+</li></ul>
+
+<h2 id="module-MiniTest-label-INSTALL%3A">INSTALL:</h2>
+
+<pre><code>sudo gem install minitest</code></pre>
+
+<p>On 1.9, you already have it. To get newer candy you can still install the
+gem, but you&#39;ll need to activate the gem explicitly to use it:</p>
+
+<pre><code>require &#39;rubygems&#39;
+gem &#39;minitest&#39; # ensures you&#39;re using the gem, and not the built in MT
+require &#39;minitest/autorun&#39;
+
+# ... usual testing stuffs ...
+</code></pre>
+
+<h2 id="module-MiniTest-label-LICENSE%3A">LICENSE:</h2>
+
+<p>(The MIT License)</p>
+
+<p>Copyright © Ryan Davis, Seattle.rb</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+&#39;Software&#39;), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the
+following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &#39;AS IS&#39;, WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="MiniTest/Assertions.html">MiniTest::Assertions</a>
+        </li>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="MiniTest/Expectations.html">MiniTest::Expectations</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="MiniTest/Assertion.html">MiniTest::Assertion</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="MiniTest/Mock.html">MiniTest::Mock</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="MiniTest/Skip.html">MiniTest::Skip</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="MiniTest/Spec.html">MiniTest::Spec</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="MiniTest/Unit.html">MiniTest::Unit</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">MINI_DIR</td>
+            <td>=</td>
+            <td class="attr-value">File.dirname(File.dirname(file))</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"><p>&#39;./lib&#39; in project dir, or &#39;/usr/local/blahblah&#39; if
+installed</p></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>    

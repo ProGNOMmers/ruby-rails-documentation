@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::Callbacks</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActiveSupport::Callbacks 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activesupport/lib/active_support/callbacks_rb.html">activesupport/lib/active_support/callbacks.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p><a href="Callbacks.html">Callbacks</a> are hooks into the life cycle of an
+object that allow you to trigger logic before or after an alteration of the
+object state.</p>
+
+<p>Mixing in this module allows you to define callbacks in your class.</p>
+
+<p>Example:</p>
+
+<pre><code>class Storage
+  include ActiveSupport::Callbacks
+
+  define_callbacks :save
+end
+
+class ConfigStorage &lt; Storage
+  set_callback :save, :before, :saving_message
+  def saving_message
+    puts &quot;saving...&quot;
+  end
+
+  set_callback :save, :after do |object|
+    puts &quot;saved&quot;
+  end
+
+  def save
+    run_callbacks :save do
+      puts &quot;- save&quot;
+    end
+  end
+end
+
+config = ConfigStorage.new
+config.save
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>saving...
+- save
+saved</code></pre>
+
+<p><a href="Callbacks.html">Callbacks</a> from parent classes are inherited.</p>
+
+<p>Example:</p>
+
+<pre><code>class Storage
+  include ActiveSupport::Callbacks
+
+  define_callbacks :save
+
+  set_callback :save, :before, :prepare
+  def prepare
+    puts &quot;preparing save&quot;
+  end
+end
+
+class ConfigStorage &lt; Storage
+  set_callback :save, :before, :saving_message
+  def saving_message
+    puts &quot;saving...&quot;
+  end
+
+  set_callback :save, :after do |object|
+    puts &quot;saved&quot;
+  end
+
+  def save
+    run_callbacks :save do
+      puts &quot;- save&quot;
+    end
+  end
+end
+
+config = ConfigStorage.new
+config.save
+</code></pre>
+
+<p>Output:</p>
+
+<pre><code>preparing save
+saving...
+- save
+saved</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Callbacks/ClassMethods.html">ActiveSupport::Callbacks::ClassMethods</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Callbacks/Callback.html">ActiveSupport::Callbacks::Callback</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Callbacks/CallbackChain.html">ActiveSupport::Callbacks::CallbackChain</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-callback">callback</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-run_callbacks">run_callbacks</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-callback">
+            
+              <b>callback</b>(kind)
+            
+            <a href="../../classes/ActiveSupport/Callbacks.html#method-i-callback" name="method-i-callback" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-callback_source')" id="l_method-i-callback_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-callback_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">callback</span>(<span class="ruby-identifier">kind</span>)
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span>(<span class="ruby-string">&quot;callback is deprecated. Please use run_callbacks&quot;</span>)
+  <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;_run_#{kind}_callbacks&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-run_callbacks">
+            
+              <b>run_callbacks</b>(kind, *args, &amp;block)
+            
+            <a href="../../classes/ActiveSupport/Callbacks.html#method-i-run_callbacks" name="method-i-run_callbacks" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-run_callbacks_source')" id="l_method-i-run_callbacks_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L93" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-run_callbacks_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">run_callbacks</span>(<span class="ruby-identifier">kind</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;_run_#{kind}_callbacks&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

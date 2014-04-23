@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::AttributeMethods::Dirty</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActiveRecord::AttributeMethods::Dirty 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/activerecord/lib/active_record/attribute_methods/dirty_rb.html">activerecord/lib/active_record/attribute_methods/dirty.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-_field_changed-3F">_field_changed?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-changes_from_nil_to_empty_string-3F">changes_from_nil_to_empty_string?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-changes_from_zero_to_string-3F">changes_from_zero_to_string?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-clone_with_time_zone_conversion_attribute-3F">clone_with_time_zone_conversion_attribute?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-update">update</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-write_attribute">write_attribute</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="../../ActiveModel/Dirty.html">
+              ActiveModel::Dirty
+            </a>
+          
+        </li>
+      
+        <li>
+          
+            <a href="Write.html">
+              ActiveRecord::AttributeMethods::Write
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-_field_changed-3F">
+            
+              <b>_field_changed?</b>(attr, old, value)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-_field_changed-3F" name="method-i-_field_changed-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_field_changed-3F_source')" id="l_method-i-_field_changed-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_field_changed-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_field_changed?</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">column</span> = <span class="ruby-identifier">column_for_attribute</span>(<span class="ruby-identifier">attr</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">column</span>.<span class="ruby-identifier">number?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">changes_from_nil_to_empty_string?</span>(<span class="ruby-identifier">column</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>) <span class="ruby-operator">||</span>
+                          <span class="ruby-identifier">changes_from_zero_to_string?</span>(<span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>))
+      <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">value</span> = <span class="ruby-identifier">column</span>.<span class="ruby-identifier">type_cast</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">old</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-changes_from_nil_to_empty_string-3F">
+            
+              <b>changes_from_nil_to_empty_string?</b>(column, old, value)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-changes_from_nil_to_empty_string-3F" name="method-i-changes_from_nil_to_empty_string-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-changes_from_nil_to_empty_string-3F_source')" id="l_method-i-changes_from_nil_to_empty_string-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-changes_from_nil_to_empty_string-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">changes_from_nil_to_empty_string?</span>(<span class="ruby-identifier">column</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># For nullable numeric columns, NULL gets stored in database for blank (i.e. &#39;&#39;) values.</span>
+  <span class="ruby-comment"># Hence we don&#39;t record it as a change if the value changes from nil to &#39;&#39;.</span>
+  <span class="ruby-comment"># If an old value of 0 is set to &#39;&#39; we want this to get changed to nil as otherwise it&#39;ll</span>
+  <span class="ruby-comment"># be typecast back to 0 (&#39;&#39;.to_i =&gt; 0)</span>
+  <span class="ruby-identifier">column</span>.<span class="ruby-identifier">null</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">old</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">old</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">blank?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-changes_from_zero_to_string-3F">
+            
+              <b>changes_from_zero_to_string?</b>(old, value)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-changes_from_zero_to_string-3F" name="method-i-changes_from_zero_to_string-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-changes_from_zero_to_string-3F_source')" id="l_method-i-changes_from_zero_to_string-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L105" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-changes_from_zero_to_string-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">changes_from_zero_to_string?</span>(<span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># For columns with old 0 and value non-empty string</span>
+  <span class="ruby-identifier">old</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">present?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;0&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clone_with_time_zone_conversion_attribute-3F">
+            
+              <b>clone_with_time_zone_conversion_attribute?</b>(attr, old)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-clone_with_time_zone_conversion_attribute-3F" name="method-i-clone_with_time_zone_conversion_attribute-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clone_with_time_zone_conversion_attribute-3F_source')" id="l_method-i-clone_with_time_zone_conversion_attribute-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L93" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-clone_with_time_zone_conversion_attribute-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clone_with_time_zone_conversion_attribute?</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">old</span>)
+  <span class="ruby-identifier">old</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;Time&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">time_zone_aware_attributes</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">skip_time_zone_conversion_for_attributes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_sym</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-update">
+            
+              <b>update</b>(*)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-update" name="method-i-update" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-update_source')" id="l_method-i-update_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L70" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-update_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">update</span>(<span class="ruby-operator">*</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">partial_updates?</span>
+    <span class="ruby-comment"># Serialized attributes should always be written in case they&#39;ve been</span>
+    <span class="ruby-comment"># changed in place.</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">changed</span> <span class="ruby-operator">|</span> (<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">keys</span> <span class="ruby-operator">&amp;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">serialized_attributes</span>.<span class="ruby-identifier">keys</span>))
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-write_attribute">
+            
+              <b>write_attribute</b>(attr, value)
+            
+            <a href="../../../classes/ActiveRecord/AttributeMethods/Dirty.html#method-i-write_attribute" name="method-i-write_attribute" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Wrap <a href="Dirty.html#method-i-write_attribute">#write_attribute</a> to
+remember original attribute value.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-write_attribute_source')" id="l_method-i-write_attribute_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b8fba557e139830cbc180bc11dbf92990f53edc5/activerecord/lib/active_record/attribute_methods/dirty.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-write_attribute_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_methods/dirty.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">write_attribute</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">attr</span> = <span class="ruby-identifier">attr</span>.<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-comment"># The attribute already has an unsaved change.</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute_changed?</span>(<span class="ruby-identifier">attr</span>)
+    <span class="ruby-identifier">old</span> = <span class="ruby-ivar">@changed_attributes</span>[<span class="ruby-identifier">attr</span>]
+    <span class="ruby-ivar">@changed_attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">attr</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">_field_changed?</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">old</span> = <span class="ruby-identifier">clone_attribute_value</span>(<span class="ruby-value">:read_attribute</span>, <span class="ruby-identifier">attr</span>)
+    <span class="ruby-comment"># Save Time objects as TimeWithZone if time_zone_aware_attributes == true</span>
+    <span class="ruby-identifier">old</span> = <span class="ruby-identifier">old</span>.<span class="ruby-identifier">in_time_zone</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">clone_with_time_zone_conversion_attribute?</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">old</span>)
+    <span class="ruby-ivar">@changed_attributes</span>[<span class="ruby-identifier">attr</span>] = <span class="ruby-identifier">old</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">_field_changed?</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">old</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Carry on.</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

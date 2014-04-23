@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CHANGELOG.md</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            CHANGELOG.md
+        </h1>
+        <ul class="files">
+            <li>activesupport/CHANGELOG.md</li>
+            <li>Last modified: 2014-04-18 16:10:04 +0200</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h2 id="label-Rails+3.2.15+%28Oct+16%2C+2013%29">Rails 3.2.15 (Oct 16, 2013)</h2>
+<ul><li>
+<p>Fix <a
+href="../../classes/ActiveSupport/Cache/FileStore.html#method-i-cleanup">ActiveSupport::Cache::FileStore#cleanup</a>
+to no longer rely on missing each_key method.</p>
+
+<p><em>Murray Steele</em></p>
+</li><li>
+<p>Add respond_to_missing? for TaggedLogging which is best practice when
+overriding method_missing. This permits wrapping TaggedLogging by another
+log abstraction such as em-logger.</p>
+
+<p><em>Wolfram Arnold</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.14+%28Jul+22%2C+2013%29">Rails 3.2.14 (Jul 22, 2013)</h2>
+<ul><li>
+<p>Make <code>Time.at_with_coercion</code> retain the second fraction and
+return local time.</p>
+
+<p>Fixes #11350</p>
+
+<p><em>Neer Friedman</em>, <em>Andrew White</em></p>
+</li><li>
+<p>Fix <code>ActiveSupport::TaggedLogging</code> incorrectly providing program
+name the same as log message even when block is not provided.</p>
+
+<p><em>Carson Reinke</em></p>
+</li><li>
+<p>Override <code>Time.at</code> to support the passing of Time-like values
+when called with a single argument.</p>
+
+<p><em>Andrew White</em></p>
+</li><li>
+<p>Revert the changes on unicode character encoding from
+<code>ActiveSupport::JSON.encode</code>. This was causing a regression
+where the resulting string is always returning UTF-8. Also it changes the
+behavior of this method on a stable release. Fixes #9498.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Fix <code>ActiveSupport::TimeZone.parse</code> when time is at a local DST
+jump. Fixes #9678.</p>
+
+<p><em>Andrew White</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.13+%28Mar+18%2C+2013%29">Rails 3.2.13 (Mar 18, 2013)</h2>
+<ul><li>
+<p>Fix DateTime comparison with DateTime::Infinity object.</p>
+
+<p><em>Dan Kubb</em></p>
+</li><li>
+<p>Remove surrogate unicode character encoding from <a
+href="../../classes/ActiveSupport/JSON.html#method-c-encode">ActiveSupport::JSON.encode</a>
+The encoding scheme was broken for unicode characters outside the basic
+multilingual plane; since json is assumed to be UTF-8, and we already force
+the encoding to UTF-8 simply pass through the un-encoded characters.</p>
+
+<p><em>Brett Carter</em></p>
+</li><li>
+<p>Fix mocha v0.13.0 compatibility. <em>James Mead</em></p>
+</li><li>
+<p><code>#as_json</code> isolates options when encoding a hash. [Backport
+#8185] Fix #8182</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Handle the possible Permission Denied errors atomic.rb might trigger due to
+its chown and chmod calls. [Backport #8027]</p>
+
+<p><em>Daniele Sluijters</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.12+%28Feb+11%2C+2013%29">Rails 3.2.12 (Feb 11, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.11+%28Jan+8%2C+2012%29">Rails 3.2.11 (Jan 8, 2012)</h2>
+<ul><li>
+<p><a href="../../classes/Hash.html#method-i-from_xml">Hash#from_xml</a>
+raises when it encounters type=“symbol” or type=“yaml”. Use <a
+href="../../classes/Hash.html#method-i-from_trusted_xml">Hash#from_trusted_xml</a>
+to parse this XML.</p>
+
+<p>CVE-2013-0156</p>
+
+<p><em>Jeremy Kemper</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.10+%28Jan+2%2C+2013%29">Rails 3.2.10 (Jan 2, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.9+%28Nov+12%2C+2012%29">Rails 3.2.9 (Nov 12, 2012)</h2>
+<ul><li>
+<p>Add logger.push_tags and .pop_tags to complement logger.tagged:</p>
+
+<pre><code>class Job
+  def before
+    Rails.logger.push_tags :jobs, self.class.name
+  end
+
+  def after
+    Rails.logger.pop_tags 2
+  end
+end
+</code></pre>
+
+<p><em>Jeremy Kemper</em></p>
+</li><li>
+<p>Add %:z and %::z format string support to <a
+href="../../classes/ActiveSupport/TimeWithZone.html#method-i-strftime">ActiveSupport::TimeWithZone#strftime</a>.
+[fixes #6962] <em>kennyj</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.8+%28Aug+9%2C+2012%29">Rails 3.2.8 (Aug 9, 2012)</h2>
+<ul><li>
+<p>Fix <a href="../../classes/ActiveSupport.html">ActiveSupport</a>
+integration with Mocha &gt; 0.12.1. <em>Mike Gunderloy</em></p>
+</li><li>
+<p>Reverted the deprecation of <a
+href="../../classes/ActiveSupport/JSON/Variable.html">ActiveSupport::JSON::Variable</a>.
+<em>Rafael Mendonça França</em></p>
+</li><li>
+<p><a
+href="../../classes/ERB/Util.html#method-c-html_escape">ERB::Util.html_escape</a>
+now escapes single quotes. <em>Santiago Pastorino</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.7+%28Jul+26%2C+2012%29">Rails 3.2.7 (Jul 26, 2012)</h2>
+<ul><li>
+<p>Hash#fetch(fetch) is not the same as doing <a href="key">hash</a></p>
+</li><li>
+<p>adds a missing require [fixes #6896]</p>
+</li><li>
+<p>make sure the inflection rules are loaded when cherry-picking
+active_support/core_ext/string/inflections.rb [fixes #6884]</p>
+</li><li>
+<p>Merge pull request #6857 from rsutphin/as_core_ext_time_missing_require</p>
+</li><li>
+<p>bump AS deprecation_horizon to 4.0</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.6+%28Jun+12%2C+2012%29">Rails 3.2.6 (Jun 12, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.5+%28Jun+1%2C+2012%29">Rails 3.2.5 (Jun 1, 2012)</h2>
+<ul><li>
+<p><a
+href="../../classes/ActiveSupport/JSON/Variable.html">ActiveSupport::JSON::Variable</a>
+is deprecated. Define your own as_json and encode_json methods for custom
+JSON string literals. <em>Erich Menge</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.4+%28May+31%2C+2012%29">Rails 3.2.4 (May 31, 2012)</h2>
+<ul><li>
+<p>Added beginning_of_hour and end_of_hour to Time and DateTime core
+extensions. <em>Mark J. Titorenko</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.3+%28March+30%2C+2012%29">Rails 3.2.3 (March 30, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.2+%28March+1%2C+2012%29">Rails 3.2.2 (March 1, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.1+%28January+26%2C+2012%29">Rails 3.2.1 (January 26, 2012)</h2>
+<ul><li>
+<p>Documentation fixes and improvements.</p>
+</li><li>
+<p>Update time zone offset information. <em>Ravil Bayramgalin</em></p>
+</li><li>
+<p>The deprecated <code>ActiveSupport::Base64.decode64</code> calls
+<code>::Base64.decode64</code> now. <em>Jonathan Viney</em></p>
+</li><li>
+<p>Fixes uninitialized constant
+<code>ActiveSupport::TaggedLogging::ERROR</code>. <em>kennyj</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.0+%28January+20%2C+2012%29">Rails 3.2.0 (January 20, 2012)</h2>
+<ul><li>
+<p><a href="../../classes/ActiveSupport/Base64.html">ActiveSupport::Base64</a>
+is deprecated in favor of <a href="../../classes/Base64.html">::Base64</a>.
+<em>Sergey Nartimov</em></p>
+</li><li>
+<p><a
+href="../../classes/Module.html#method-i-synchronize">Module#synchronize</a>
+is deprecated with no replacement. Please use <code>monitor</code> from
+ruby&#39;s standard library.</p>
+</li><li>
+<p>(Date|DateTime|Time)#beginning_of_week accept an optional argument to be
+able to set the day at which weeks are assumed to start.</p>
+</li><li>
+<p>Deprecated <a
+href="../../classes/ActiveSupport/MessageEncryptor.html#method-i-encrypt">ActiveSupport::MessageEncryptor#encrypt</a>
+and decrypt. <em>José Valim</em></p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/Notifications.html#method-i-subscribed">ActiveSupport::Notifications#subscribed</a>
+provides subscriptions to events while a block runs. <em>fxn</em></p>
+</li><li>
+<p>Module#qualified_const_(defined?|get|set) are analogous to the
+corresponding methods in the standard API, but accept qualified constant
+names. <em>fxn</em></p>
+</li><li>
+<p>Added inflection deconstantize which complements demodulize. This
+inflection removes the righmost segment in a qualified constant name.
+<em>fxn</em></p>
+</li><li>
+<p>Added ActiveSupport:TaggedLogging that can wrap any standard <a
+href="../../classes/Logger.html">Logger</a> class to provide tagging
+capabilities <em>DHH</em></p>
+
+<pre><code>Logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+Logger.tagged(&quot;BCX&quot;) { Logger.info &quot;Stuff&quot; }                            # Logs &quot;[BCX] Stuff&quot;
+Logger.tagged(&quot;BCX&quot;, &quot;Jason&quot;) { Logger.info &quot;Stuff&quot; }                   # Logs &quot;[BCX] [Jason] Stuff&quot;
+Logger.tagged(&quot;BCX&quot;) { Logger.tagged(&quot;Jason&quot;) { Logger.info &quot;Stuff&quot; } } # Logs &quot;[BCX] [Jason] Stuff&quot;</code></pre>
+</li><li>
+<p>Added safe_constantize that constantizes a string but returns nil instead
+of an exception if the constant (or part of it) does not exist <em>Ryan
+Oblak</em></p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/OrderedHash.html">ActiveSupport::OrderedHash</a>
+is now marked as extractable when using <a
+href="../../classes/Array.html#method-i-extract_options-21">Array#extract_options!</a>
+<em>Prem Sichanugrist</em></p>
+</li><li>
+<p>Added Array#prepend as an alias for Array#unshift and Array#append as an
+alias for Array#<< <em>DHH</em></p>
+</li><li>
+<p>The definition of blank string for Ruby 1.9 has been extended to Unicode
+whitespace. Also, in 1.8 the ideographic space U+3000 is considered to be
+whitespace. <em>Akira Matsuda, Damien Mathieu</em></p>
+</li><li>
+<p>The inflector understands acronyms. <em>dlee</em></p>
+</li><li>
+<p>Deprecated <a
+href="../../classes/ActiveSupport/Memoizable.html">ActiveSupport::Memoizable</a>
+in favor of Ruby memoization pattern <em>José Valim</em></p>
+</li><li>
+<p>Added <a
+href="../../classes/Time.html#method-i-all_day">Time#all_day</a>/week/quarter/year
+as a way of generating ranges (example: Event.where(created_at:
+Time.now.all_week)) <em>DHH</em></p>
+</li><li>
+<p>Added instance_accessor: false as an option to <a
+href="../../classes/Class.html#method-i-cattr_accessor">Class#cattr_accessor</a>
+and friends <em>DHH</em></p>
+</li><li>
+<p>Removed ActiveSupport::SecureRandom in favor of SecureRandom from the
+standard library <em>Jon Leighton</em></p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/OrderedHash.html">ActiveSupport::OrderedHash</a>
+now has different behavior for each and each_pair when given a block
+accepting its parameters with a splat. <em>Andrew Radev</em></p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/BufferedLogger.html#method-i-silence">ActiveSupport::BufferedLogger#silence</a>
+is deprecated. If you want to squelch logs for a certain block, change the
+log level for that block.</p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/BufferedLogger.html#method-i-open_log">ActiveSupport::BufferedLogger#open_log</a>
+is deprecated. This method should not have been public in the first place.</p>
+</li><li>
+<p>ActiveSupport::BufferedLogger&#39;s behavior of automatically creating the
+directory for your log file is deprecated. Please make sure to create the
+directory for your log file before instantiating.</p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/BufferedLogger.html#attribute-i-auto_flushing">ActiveSupport::BufferedLogger#auto_flushing</a>
+is deprecated. Either set the sync level on the underlying file handle like
+this:</p>
+
+<pre><code>f = File.open(&#39;foo.log&#39;, &#39;w&#39;)
+f.sync = true
+ActiveSupport::BufferedLogger.new f</code></pre>
+
+<p>Or tune your filesystem. The FS cache is now what controls flushing.</p>
+</li><li>
+<p><a
+href="../../classes/ActiveSupport/BufferedLogger.html#method-i-flush">ActiveSupport::BufferedLogger#flush</a>
+is deprecated. Set sync on your filehandle, or tune your filesystem.</p>
+</li></ul>
+
+<p>Please check <a
+href="https://github.com/rails/rails/blob/3-1-stable/activesupport/CHANGELOG.md">3-1-stable</a>
+for previous changes.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

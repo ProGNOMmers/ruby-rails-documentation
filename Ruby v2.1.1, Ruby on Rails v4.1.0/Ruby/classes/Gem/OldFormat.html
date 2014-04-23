@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Gem::OldFormat</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            Gem::OldFormat 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/__/ruby/lib/rubygems/old_format_rb.html">/home/mdesantis/Sviluppo/ruby/lib/rubygems/old_format.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>The format class knows the guts of the RubyGem .gem file format and
+provides the capability to read gem files</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-from_file_by_path">from_file_by_path</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-from_io">from_io</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-read_files_from_gem">read_files_from_gem</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-read_spec">read_spec</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-read_until_dashes">read_until_dashes</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-skip_ruby">skip_ruby</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>file_entries</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>gem_path</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>spec</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-from_file_by_path">
+            
+              <b>from_file_by_path</b>(file_path)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-from_file_by_path" name="method-c-from_file_by_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the named gem file and returns a Format object, representing the data
+from the gem file</p>
+<dl class="rdoc-list note-list"><dt>file_path
+<dd><dl class="rdoc-list label-list"><dt>String
+<dd>
+<p>Path to the gem file</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-from_file_by_path_source')" id="l_method-c-from_file_by_path_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L37" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-from_file_by_path_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from_file_by_path</span>(<span class="ruby-identifier">file_path</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file_path</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-node">&quot;Cannot load gem file [#{file_path}]&quot;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_path</span>, <span class="ruby-string">&#39;rb&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">from_io</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">file_path</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-from_io">
+            
+              <b>from_io</b>(io, gem_path=&quot;(io)&quot;)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-from_io" name="method-c-from_io" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads a gem from an io stream and returns a Format object, representing the
+data from the gem file</p>
+<dl class="rdoc-list note-list"><dt>io
+<dd><dl class="rdoc-list label-list"><dt><a href="../IO.html">IO</a>
+<dd>
+<p>Stream from which to read the gem</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-from_io_source')" id="l_method-c-from_io_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-from_io_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">from_io</span>(<span class="ruby-identifier">io</span>, <span class="ruby-identifier">gem_path</span>=<span class="ruby-string">&quot;(io)&quot;</span>)
+  <span class="ruby-identifier">format</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">gem_path</span>)
+  <span class="ruby-identifier">skip_ruby</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-identifier">format</span>.<span class="ruby-identifier">spec</span> = <span class="ruby-identifier">read_spec</span>(<span class="ruby-identifier">io</span>)
+  <span class="ruby-identifier">format</span>.<span class="ruby-identifier">file_entries</span> = []
+  <span class="ruby-identifier">read_files_from_gem</span>(<span class="ruby-identifier">io</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span>, <span class="ruby-identifier">file_data</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">file_entries</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">entry</span>, <span class="ruby-identifier">file_data</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">format</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(gem_path)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Constructs an instance of a Format object, representing the gem&#39;s data
+structure.</p>
+<dl class="rdoc-list note-list"><dt>gem
+<dd><dl class="rdoc-list label-list"><dt>String
+<dd>
+<p>The file name of the gem</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L23" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 23</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">gem_path</span>)
+  <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;fileutils&#39;</span>
+  <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;zlib&#39;</span>
+  <span class="ruby-constant">Gem</span>.<span class="ruby-identifier">load_yaml</span>
+
+  <span class="ruby-ivar">@gem_path</span> = <span class="ruby-identifier">gem_path</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Class Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-read_files_from_gem">
+            
+              <b>read_files_from_gem</b>(gem_file)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-read_files_from_gem" name="method-c-read_files_from_gem" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the embedded file data from a gem file, yielding an entry containing
+metadata about the file and the file contents themselves for each file
+that&#39;s archived in the gem. NOTE: Many of these methods should be
+extracted into some kind of Gem file read/writer</p>
+<dl class="rdoc-list note-list"><dt>gem_file
+<dd><dl class="rdoc-list label-list"><dt><a href="../IO.html">IO</a>
+<dd>
+<p>The <a href="../IO.html">IO</a> to process</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-read_files_from_gem_source')" id="l_method-c-read_files_from_gem_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L130" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-read_files_from_gem_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">read_files_from_gem</span>(<span class="ruby-identifier">gem_file</span>)
+  <span class="ruby-identifier">errstr</span> = <span class="ruby-string">&quot;Error reading files from gem&quot;</span>
+  <span class="ruby-identifier">header_yaml</span> = <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">read_until_dashes</span>(<span class="ruby-identifier">gem_file</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">header_yaml</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">header</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">header_yaml</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-identifier">errstr</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">header</span>
+
+    <span class="ruby-identifier">header</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file_data</span> = <span class="ruby-string">&#39;&#39;</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">read_until_dashes</span>(<span class="ruby-identifier">gem_file</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">file_data</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">yield</span> [<span class="ruby-identifier">entry</span>, <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflate</span>.<span class="ruby-identifier">inflate</span>(<span class="ruby-identifier">file_data</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">&quot;m&quot;</span>)[<span class="ruby-number">0</span>])]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Zlib</span><span class="ruby-operator">::</span><span class="ruby-constant">DataError</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-identifier">errstr</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-read_spec">
+            
+              <b>read_spec</b>(file)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-read_spec" name="method-c-read_spec" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads the specification YAML from the supplied <a href="../IO.html">IO</a>
+and constructs a <a href="Specification.html">Gem::Specification</a> from
+it.  After calling this method, the <a href="../IO.html">IO</a> index will
+be set after the specification header.</p>
+<dl class="rdoc-list note-list"><dt>file
+<dd><dl class="rdoc-list label-list"><dt><a href="../IO.html">IO</a>
+<dd>
+<p>The <a href="../IO.html">IO</a> to process</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-read_spec_source')" id="l_method-c-read_spec_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L94" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-read_spec_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">read_spec</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">yaml</span> = <span class="ruby-string">&#39;&#39;</span>
+
+  <span class="ruby-identifier">read_until_dashes</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">yaml</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Specification</span>.<span class="ruby-identifier">from_yaml</span> <span class="ruby-identifier">yaml</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-string">&quot;Failed to parse gem specification out of gem file&quot;</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>, <span class="ruby-string">&quot;Failed to parse gem specification out of gem file&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-read_until_dashes">
+            
+              <b>read_until_dashes</b>(file)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-read_until_dashes" name="method-c-read_until_dashes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Reads lines from the supplied <a href="../IO.html">IO</a> until a
+end-of-yaml (—) is reached</p>
+<dl class="rdoc-list note-list"><dt>file
+<dd><dl class="rdoc-list label-list"><dt><a href="../IO.html">IO</a>
+<dd>
+<p>The <a href="../IO.html">IO</a> to process</p>
+</dd></dl>
+</dd><dt>block
+<dd><dl class="rdoc-list label-list"><dt>String
+<dd>
+<p>The read line</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-read_until_dashes_source')" id="l_method-c-read_until_dashes_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L115" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-read_until_dashes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">read_until_dashes</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-keyword">while</span>((<span class="ruby-identifier">line</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">gets</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">strip</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;---&quot;</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">line</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-skip_ruby">
+            
+              <b>skip_ruby</b>(file)
+            
+            <a href="../../classes/Gem/OldFormat.html#method-c-skip_ruby" name="method-c-skip_ruby" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Skips the Ruby self-install header.  After calling this method, the <a
+href="../IO.html">IO</a> index will be set after the Ruby code.</p>
+<dl class="rdoc-list note-list"><dt>file
+<dd><dl class="rdoc-list label-list"><dt><a href="../IO.html">IO</a>
+<dd>
+<p>The <a href="../IO.html">IO</a> to process (skip the Ruby code)</p>
+</dd></dl>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-skip_ruby_source')" id="l_method-c-skip_ruby_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/284144838c798d87ee2d5b30da6c17f764753091/lib/rubygems/old_format.rb#L72" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-skip_ruby_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/rubygems/old_format.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">skip_ruby</span>(<span class="ruby-identifier">file</span>)
+  <span class="ruby-identifier">end_seen</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">loop</span> {
+    <span class="ruby-identifier">line</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">gets</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">line</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;__END__&quot;</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">end_seen</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  }
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">end_seen</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Gem</span><span class="ruby-operator">::</span><span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Failed to find end of ruby script while reading gem&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                        </div>
+
+    </div>
+  </body>
+</html>    

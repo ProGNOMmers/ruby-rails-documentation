@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::ConnectionAdapters::AbstractAdapter::SchemaCreation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 4.0.2</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActiveRecord::ConnectionAdapters::AbstractAdapter::SchemaCreation 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/activerecord/lib/active_record/connection_adapters/abstract_adapter_rb.html">activerecord/lib/active_record/connection_adapters/abstract_adapter.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-accept">accept</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-add_column_options-21">add_column_options!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-column_options">column_options</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Q</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-quote_column_name">quote_column_name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-quote_table_name">quote_table_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-type_to_sql">type_to_sql</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-visit_AddColumn">visit_AddColumn</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-visit_AlterTable">visit_AlterTable</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-visit_ColumnDefinition">visit_ColumnDefinition</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-visit_TableDefinition">visit_TableDefinition</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(conn)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L110" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 110</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">conn</span>)
+  <span class="ruby-ivar">@conn</span>  = <span class="ruby-identifier">conn</span>
+  <span class="ruby-ivar">@cache</span> = {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-accept">
+            
+              <b>accept</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-accept" name="method-i-accept" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-accept_source')" id="l_method-i-accept_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L115" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-accept_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 115</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">accept</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">m</span> = <span class="ruby-ivar">@cache</span>[<span class="ruby-identifier">o</span>.<span class="ruby-identifier">class</span>] <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;visit_#{o.class.name.split(&#39;::&#39;).last}&quot;</span>
+  <span class="ruby-identifier">send</span> <span class="ruby-identifier">m</span>, <span class="ruby-identifier">o</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-add_column_options-21">
+            
+              <b>add_column_options!</b>(column_sql, column_options)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-add_column_options-21" name="method-i-add_column_options-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-add_column_options-21_source')" id="l_method-i-add_column_options-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L168" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-add_column_options-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 168</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">add_column_options!</span>(<span class="ruby-identifier">column_sql</span>, <span class="ruby-identifier">column_options</span>)
+  <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">add_column_options!</span> <span class="ruby-identifier">column_sql</span>, <span class="ruby-identifier">column_options</span>
+  <span class="ruby-identifier">column_sql</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-column_options">
+            
+              <b>column_options</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-column_options" name="method-i-column_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-column_options_source')" id="l_method-i-column_options_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L148" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-column_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">column_options</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">column_options</span> = {}
+  <span class="ruby-identifier">column_options</span>[<span class="ruby-value">:null</span>] = <span class="ruby-identifier">o</span>.<span class="ruby-identifier">null</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">null</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">column_options</span>[<span class="ruby-value">:default</span>] = <span class="ruby-identifier">o</span>.<span class="ruby-identifier">default</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-identifier">column_options</span>[<span class="ruby-value">:column</span>] = <span class="ruby-identifier">o</span>
+  <span class="ruby-identifier">column_options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-quote_column_name">
+            
+              <b>quote_column_name</b>(name)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-quote_column_name" name="method-i-quote_column_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-quote_column_name_source')" id="l_method-i-quote_column_name_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L156" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-quote_column_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">quote_column_name</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">quote_column_name</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-quote_table_name">
+            
+              <b>quote_table_name</b>(name)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-quote_table_name" name="method-i-quote_table_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-quote_table_name_source')" id="l_method-i-quote_table_name_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L160" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-quote_table_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 160</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">quote_table_name</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">quote_table_name</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type_to_sql">
+            
+              <b>type_to_sql</b>(type, limit, precision, scale)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-type_to_sql" name="method-i-type_to_sql" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type_to_sql_source')" id="l_method-i-type_to_sql_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L164" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-type_to_sql_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type_to_sql</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">limit</span>, <span class="ruby-identifier">precision</span>, <span class="ruby-identifier">scale</span>)
+  <span class="ruby-ivar">@conn</span>.<span class="ruby-identifier">type_to_sql</span> <span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">limit</span>, <span class="ruby-identifier">precision</span>, <span class="ruby-identifier">scale</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-visit_AddColumn">
+            
+              <b>visit_AddColumn</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-visit_AddColumn" name="method-i-visit_AddColumn" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-visit_AddColumn_source')" id="l_method-i-visit_AddColumn_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L127" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-visit_AddColumn_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">visit_AddColumn</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">sql_type</span> = <span class="ruby-identifier">type_to_sql</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">limit</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">precision</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">scale</span>)
+  <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;ADD #{quote_column_name(o.name)} #{sql_type}&quot;</span>
+  <span class="ruby-identifier">add_column_options!</span>(<span class="ruby-identifier">sql</span>, <span class="ruby-identifier">column_options</span>(<span class="ruby-identifier">o</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-visit_AlterTable">
+            
+              <b>visit_AlterTable</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-visit_AlterTable" name="method-i-visit_AlterTable" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-visit_AlterTable_source')" id="l_method-i-visit_AlterTable_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L122" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-visit_AlterTable_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">visit_AlterTable</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">sql</span> = <span class="ruby-node">&quot;ALTER TABLE #{quote_table_name(o.name)} &quot;</span>
+  <span class="ruby-identifier">sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">adds</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">col</span><span class="ruby-operator">|</span> <span class="ruby-identifier">visit_AddColumn</span> <span class="ruby-identifier">col</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39; &#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-visit_ColumnDefinition">
+            
+              <b>visit_ColumnDefinition</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-visit_ColumnDefinition" name="method-i-visit_ColumnDefinition" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-visit_ColumnDefinition_source')" id="l_method-i-visit_ColumnDefinition_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L133" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-visit_ColumnDefinition_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">visit_ColumnDefinition</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">sql_type</span> = <span class="ruby-identifier">type_to_sql</span>(<span class="ruby-identifier">o</span>.<span class="ruby-identifier">type</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">limit</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">precision</span>, <span class="ruby-identifier">o</span>.<span class="ruby-identifier">scale</span>)
+  <span class="ruby-identifier">column_sql</span> = <span class="ruby-node">&quot;#{quote_column_name(o.name)} #{sql_type}&quot;</span>
+  <span class="ruby-identifier">add_column_options!</span>(<span class="ruby-identifier">column_sql</span>, <span class="ruby-identifier">column_options</span>(<span class="ruby-identifier">o</span>)) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">primary_key?</span>
+  <span class="ruby-identifier">column_sql</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-visit_TableDefinition">
+            
+              <b>visit_TableDefinition</b>(o)
+            
+            <a href="../../../../classes/ActiveRecord/ConnectionAdapters/AbstractAdapter/SchemaCreation.html#method-i-visit_TableDefinition" name="method-i-visit_TableDefinition" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-visit_TableDefinition_source')" id="l_method-i-visit_TableDefinition_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/dab6cfbe94e10634c0341ae4b12735a7d277c2ca/activerecord/lib/active_record/connection_adapters/abstract_adapter.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-visit_TableDefinition_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract_adapter.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">visit_TableDefinition</span>(<span class="ruby-identifier">o</span>)
+  <span class="ruby-identifier">create_sql</span> = <span class="ruby-node">&quot;CREATE#{&#39; TEMPORARY&#39; if o.temporary} TABLE &quot;</span>
+  <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{quote_table_name(o.name)} (&quot;</span>
+  <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">accept</span> <span class="ruby-identifier">c</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;, &#39;</span>)
+  <span class="ruby-identifier">create_sql</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;) #{o.options}&quot;</span>
+  <span class="ruby-identifier">create_sql</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

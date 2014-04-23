@@ -1,0 +1,1596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::ConnectionAdapters::Column</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActiveRecord::ConnectionAdapters::Column 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions_rb.html">activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>An abstract definition of a column in a table.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Column/Format.html">ActiveRecord::ConnectionAdapters::Column::Format</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-binary_to_string">binary_to_string</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-extract_default">extract_default</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_limit">extract_limit</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_precision">extract_precision</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_scale">extract_scale</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-fallback_string_to_date">fallback_string_to_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-fallback_string_to_time">fallback_string_to_time</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-fast_string_to_date">fast_string_to_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-fast_string_to_time">fast_string_to_time</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-has_default-3F">has_default?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-human_name">human_name</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>K</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-klass">klass</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-microseconds">microseconds</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-new_date">new_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-new_time">new_time</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-number-3F">number?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-simplified_type">simplified_type</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-string_to_binary">string_to_binary</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-string_to_date">string_to_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-string_to_dummy_time">string_to_dummy_time</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-string_to_time">string_to_time</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-text-3F">text?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-type_cast">type_cast</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-type_cast_code">type_cast_code</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>V</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-value_to_boolean">value_to_boolean</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-value_to_decimal">value_to_decimal</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">TRUE_VALUES</td>
+            <td>=</td>
+            <td class="attr-value">[true, 1, &#39;1&#39;, &#39;t&#39;, &#39;T&#39;, &#39;true&#39;, &#39;TRUE&#39;].to_set</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FALSE_VALUES</td>
+            <td>=</td>
+            <td class="attr-value">[false, 0, &#39;0&#39;, &#39;f&#39;, &#39;F&#39;, &#39;false&#39;, &#39;FALSE&#39;].to_set</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>default</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>limit</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>name</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>null</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>precision</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>primary</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>scale</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>sql_type</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>type</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(name, default, sql_type = nil, null = true)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Instantiates a new column in the table.</p>
+
+<p><code>name</code> is the column&#39;s name, such as
+<code>supplier_id</code> in <code>supplier_id int(11)</code>.
+<code>default</code> is the type-casted default value, such as
+<code>new</code> in <code>sales_stage varchar(20) default
+&#39;new&#39;</code>. <code>sql_type</code> is used to extract the
+column&#39;s length, if necessary. For example <code>60</code> in
+<code>company_name varchar(60)</code>. It will be mapped to one of the
+standard Rails SQL types in the <code>type</code> attribute.
+<code>null</code> determines if this column allows <code>NULL</code>
+values.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>, <span class="ruby-identifier">sql_type</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">null</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@name</span>, <span class="ruby-ivar">@sql_type</span>, <span class="ruby-ivar">@null</span> = <span class="ruby-identifier">name</span>, <span class="ruby-identifier">sql_type</span>, <span class="ruby-identifier">null</span>
+  <span class="ruby-ivar">@limit</span>, <span class="ruby-ivar">@precision</span>, <span class="ruby-ivar">@scale</span> = <span class="ruby-identifier">extract_limit</span>(<span class="ruby-identifier">sql_type</span>), <span class="ruby-identifier">extract_precision</span>(<span class="ruby-identifier">sql_type</span>), <span class="ruby-identifier">extract_scale</span>(<span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-ivar">@type</span> = <span class="ruby-identifier">simplified_type</span>(<span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-ivar">@default</span> = <span class="ruby-identifier">extract_default</span>(<span class="ruby-identifier">default</span>)
+
+  <span class="ruby-ivar">@primary</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-binary_to_string">
+            
+              <b>binary_to_string</b>(value)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-binary_to_string" name="method-i-binary_to_string" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Used to convert from BLOBs to Strings</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-binary_to_string_source')" id="l_method-i-binary_to_string_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L124" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-binary_to_string_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 124</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">binary_to_string</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_default">
+            
+              <b>extract_default</b>(default)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-extract_default" name="method-i-extract_default" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_default_source')" id="l_method-i-extract_default_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L113" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_default_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_default</span>(<span class="ruby-identifier">default</span>)
+  <span class="ruby-identifier">type_cast</span>(<span class="ruby-identifier">default</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-has_default-3F">
+            
+              <b>has_default?</b>()
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-has_default-3F" name="method-i-has_default-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-has_default-3F_source')" id="l_method-i-has_default-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L49" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-has_default-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">has_default?</span>
+  <span class="ruby-operator">!</span><span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-human_name">
+            
+              <b>human_name</b>()
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-human_name" name="method-i-human_name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the human name of the column name.</p>
+
+<h5 id="method-i-human_name-label-Examples">Examples</h5>
+
+<pre><code>Column.new(&#39;sales_stage&#39;, ...).human_name # =&gt; &#39;Sales stage&#39;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-human_name_source')" id="l_method-i-human_name_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L109" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-human_name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 109</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">human_name</span>
+  <span class="ruby-constant">Base</span>.<span class="ruby-identifier">human_attribute_name</span>(<span class="ruby-ivar">@name</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-klass">
+            
+              <b>klass</b>()
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-klass" name="method-i-klass" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the Ruby class that corresponds to the abstract data type.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-klass_source')" id="l_method-i-klass_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L54" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-klass_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">klass</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:integer</span>       <span class="ruby-keyword">then</span> <span class="ruby-constant">Fixnum</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:float</span>         <span class="ruby-keyword">then</span> <span class="ruby-constant">Float</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:decimal</span>       <span class="ruby-keyword">then</span> <span class="ruby-constant">BigDecimal</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:datetime</span>      <span class="ruby-keyword">then</span> <span class="ruby-constant">Time</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:date</span>          <span class="ruby-keyword">then</span> <span class="ruby-constant">Date</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:timestamp</span>     <span class="ruby-keyword">then</span> <span class="ruby-constant">Time</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:time</span>          <span class="ruby-keyword">then</span> <span class="ruby-constant">Time</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>, <span class="ruby-value">:string</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">String</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:binary</span>        <span class="ruby-keyword">then</span> <span class="ruby-constant">String</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:boolean</span>       <span class="ruby-keyword">then</span> <span class="ruby-constant">Object</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-number-3F">
+            
+              <b>number?</b>()
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-number-3F" name="method-i-number-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the column is either of type integer, float or
+decimal.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-number-3F_source')" id="l_method-i-number-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L45" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-number-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">number?</span>
+  <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:integer</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:float</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:decimal</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-string_to_binary">
+            
+              <b>string_to_binary</b>(value)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-string_to_binary" name="method-i-string_to_binary" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Used to convert from Strings to BLOBs</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-string_to_binary_source')" id="l_method-i-string_to_binary_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L119" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-string_to_binary_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">string_to_binary</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-string_to_date">
+            
+              <b>string_to_date</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-string_to_date" name="method-i-string_to_date" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-string_to_date_source')" id="l_method-i-string_to_date_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L128" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-string_to_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">string_to_date</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">fast_string_to_date</span>(<span class="ruby-identifier">string</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">fallback_string_to_date</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-string_to_dummy_time">
+            
+              <b>string_to_dummy_time</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-string_to_dummy_time" name="method-i-string_to_dummy_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-string_to_dummy_time_source')" id="l_method-i-string_to_dummy_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L142" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-string_to_dummy_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">string_to_dummy_time</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">string_to_time</span> <span class="ruby-node">&quot;2000-01-01 #{string}&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-string_to_time">
+            
+              <b>string_to_time</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-string_to_time" name="method-i-string_to_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-string_to_time_source')" id="l_method-i-string_to_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L135" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-string_to_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 135</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">string_to_time</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">string</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">fast_string_to_time</span>(<span class="ruby-identifier">string</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">fallback_string_to_time</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-text-3F">
+            
+              <b>text?</b>()
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-text-3F" name="method-i-text-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns <code>true</code> if the column is either of type string or text.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-text-3F_source')" id="l_method-i-text-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L40" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-text-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">text?</span>
+  <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:string</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:text</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type_cast">
+            
+              <b>type_cast</b>(value)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-type_cast" name="method-i-type_cast" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Casts value (which is a String) to an appropriate instance.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type_cast_source')" id="l_method-i-type_cast_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L70" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-type_cast_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type_cast</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:string</span>    <span class="ruby-keyword">then</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>      <span class="ruby-keyword">then</span> <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:integer</span>   <span class="ruby-keyword">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">rescue</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">?</span> <span class="ruby-number">1</span> <span class="ruby-operator">:</span> <span class="ruby-number">0</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:float</span>     <span class="ruby-keyword">then</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:decimal</span>   <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">value_to_decimal</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:datetime</span>  <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">string_to_time</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:timestamp</span> <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">string_to_time</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:time</span>      <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">string_to_dummy_time</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:date</span>      <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">string_to_date</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:binary</span>    <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">binary_to_string</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:boolean</span>   <span class="ruby-keyword">then</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">value_to_boolean</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">else</span> <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type_cast_code">
+            
+              <b>type_cast_code</b>(var_name)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-type_cast_code" name="method-i-type_cast_code" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type_cast_code_source')" id="l_method-i-type_cast_code_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L88" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-type_cast_code_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type_cast_code</span>(<span class="ruby-identifier">var_name</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:string</span>    <span class="ruby-keyword">then</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:text</span>      <span class="ruby-keyword">then</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:integer</span>   <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;(#{var_name}.to_i rescue #{var_name} ? 1 : 0)&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:float</span>     <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{var_name}.to_f&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:decimal</span>   <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.value_to_decimal(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:datetime</span>  <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.string_to_time(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:timestamp</span> <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.string_to_time(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:time</span>      <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.string_to_dummy_time(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:date</span>      <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.string_to_date(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:binary</span>    <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.binary_to_string(#{var_name})&quot;</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:boolean</span>   <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;#{self.class.name}.value_to_boolean(#{var_name})&quot;</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-value_to_boolean">
+            
+              <b>value_to_boolean</b>(value)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-value_to_boolean" name="method-i-value_to_boolean" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>convert something to a boolean</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-value_to_boolean_source')" id="l_method-i-value_to_boolean_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L150" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-value_to_boolean_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value_to_boolean</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">TRUE_VALUES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-value_to_decimal">
+            
+              <b>value_to_decimal</b>(value)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-value_to_decimal" name="method-i-value_to_decimal" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>convert something to a <a href="../../BigDecimal.html">BigDecimal</a></p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-value_to_decimal_source')" id="l_method-i-value_to_decimal_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L159" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-value_to_decimal_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">value_to_decimal</span>(<span class="ruby-identifier">value</span>)
+  <span class="ruby-comment"># Using .class is faster than .is_a? and</span>
+  <span class="ruby-comment"># subclasses of BigDecimal will be handled</span>
+  <span class="ruby-comment"># in the else clause</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">BigDecimal</span>
+    <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:to_d</span>)
+    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_d</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">to_d</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Protected methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-fallback_string_to_date">
+            
+              <b>fallback_string_to_date</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-fallback_string_to_date" name="method-i-fallback_string_to_date" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fallback_string_to_date_source')" id="l_method-i-fallback_string_to_date_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L206" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fallback_string_to_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 206</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fallback_string_to_date</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">new_date</span>(<span class="ruby-operator">*</span><span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">_parse</span>(<span class="ruby-identifier">string</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:year</span>, <span class="ruby-value">:mon</span>, <span class="ruby-value">:mday</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fallback_string_to_time">
+            
+              <b>fallback_string_to_time</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-fallback_string_to_time" name="method-i-fallback_string_to_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fallback_string_to_time_source')" id="l_method-i-fallback_string_to_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L210" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fallback_string_to_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fallback_string_to_time</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">time_hash</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">_parse</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">time_hash</span>[<span class="ruby-value">:sec_fraction</span>] = <span class="ruby-identifier">microseconds</span>(<span class="ruby-identifier">time_hash</span>)
+
+  <span class="ruby-identifier">new_time</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">time_hash</span>.<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:year</span>, <span class="ruby-value">:mon</span>, <span class="ruby-value">:mday</span>, <span class="ruby-value">:hour</span>, <span class="ruby-value">:min</span>, <span class="ruby-value">:sec</span>, <span class="ruby-value">:sec_fraction</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fast_string_to_date">
+            
+              <b>fast_string_to_date</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-fast_string_to_date" name="method-i-fast_string_to_date" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fast_string_to_date_source')" id="l_method-i-fast_string_to_date_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L192" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fast_string_to_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fast_string_to_date</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Format</span><span class="ruby-operator">::</span><span class="ruby-constant">ISO_DATE</span>
+    <span class="ruby-identifier">new_date</span> <span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$2</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$3</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-fast_string_to_time">
+            
+              <b>fast_string_to_time</b>(string)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-fast_string_to_time" name="method-i-fast_string_to_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Doesn&#39;t handle time zones.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-fast_string_to_time_source')" id="l_method-i-fast_string_to_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L199" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-fast_string_to_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">fast_string_to_time</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Format</span><span class="ruby-operator">::</span><span class="ruby-constant">ISO_DATETIME</span>
+    <span class="ruby-identifier">microsec</span> = (<span class="ruby-node">$7</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">*</span> <span class="ruby-number">1_000_000</span>).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">new_time</span> <span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$2</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$3</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$4</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$5</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-node">$6</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">microsec</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-microseconds">
+            
+              <b>microseconds</b>(time)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-microseconds" name="method-i-microseconds" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>&#39;0.123456&#39; -&gt; 123456 &#39;1.123456&#39; -&gt; 123456</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-microseconds_source')" id="l_method-i-microseconds_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L175" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-microseconds_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 175</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">microseconds</span>(<span class="ruby-identifier">time</span>)
+  ((<span class="ruby-identifier">time</span>[<span class="ruby-value">:sec_fraction</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">%</span> <span class="ruby-number">1</span>) <span class="ruby-operator">*</span> <span class="ruby-number">1_000_000</span>).<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-new_date">
+            
+              <b>new_date</b>(year, mon, mday)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-new_date" name="method-i-new_date" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-new_date_source')" id="l_method-i-new_date_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L179" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-new_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 179</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new_date</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">year</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">year</span> <span class="ruby-operator">!=</span> <span class="ruby-number">0</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-new_time">
+            
+              <b>new_time</b>(year, mon, mday, hour, min, sec, microsec)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-new_time" name="method-i-new_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-new_time_source')" id="l_method-i-new_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L185" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-new_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">new_time</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span>, <span class="ruby-identifier">microsec</span>)
+  <span class="ruby-comment"># Treat 0000-00-00 00:00:00 as nil.</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">year</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">year</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>
+
+  <span class="ruby-constant">Time</span>.<span class="ruby-identifier">time_with_datetime_fallback</span>(<span class="ruby-constant">Base</span>.<span class="ruby-identifier">default_timezone</span>, <span class="ruby-identifier">year</span>, <span class="ruby-identifier">mon</span>, <span class="ruby-identifier">mday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>, <span class="ruby-identifier">sec</span>, <span class="ruby-identifier">microsec</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_limit">
+            
+              <b>extract_limit</b>(sql_type)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-extract_limit" name="method-i-extract_limit" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_limit_source')" id="l_method-i-extract_limit_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L219" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_limit_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_limit</span>(<span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sql_type</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\((.*)\)/</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_precision">
+            
+              <b>extract_precision</b>(sql_type)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-extract_precision" name="method-i-extract_precision" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_precision_source')" id="l_method-i-extract_precision_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L223" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_precision_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 223</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_precision</span>(<span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-node">$2</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sql_type</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^(numeric|decimal|number)\((\d+)(,\d+)?\)/i</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_scale">
+            
+              <b>extract_scale</b>(sql_type)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-extract_scale" name="method-i-extract_scale" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_scale_source')" id="l_method-i-extract_scale_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L227" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_scale_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_scale</span>(<span class="ruby-identifier">sql_type</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">sql_type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^(numeric|decimal|number)\((\d+)\)/i</span> <span class="ruby-keyword">then</span> <span class="ruby-number">0</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^(numeric|decimal|number)\((\d+)(,(\d+))\)/i</span> <span class="ruby-keyword">then</span> <span class="ruby-node">$4</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-simplified_type">
+            
+              <b>simplified_type</b>(field_type)
+            
+            <a href="../../../classes/ActiveRecord/ConnectionAdapters/Column.html#method-i-simplified_type" name="method-i-simplified_type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-simplified_type_source')" id="l_method-i-simplified_type_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb#L234" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-simplified_type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/connection_adapters/abstract/schema_definitions.rb, line 234</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">simplified_type</span>(<span class="ruby-identifier">field_type</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">field_type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/int/i</span>
+      <span class="ruby-value">:integer</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/float|double/i</span>
+      <span class="ruby-value">:float</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/decimal|numeric|number/i</span>
+      <span class="ruby-identifier">extract_scale</span>(<span class="ruby-identifier">field_type</span>) <span class="ruby-operator">==</span> <span class="ruby-number">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">:integer</span> <span class="ruby-operator">:</span> <span class="ruby-value">:decimal</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/datetime/i</span>
+      <span class="ruby-value">:datetime</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/timestamp/i</span>
+      <span class="ruby-value">:timestamp</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/time/i</span>
+      <span class="ruby-value">:time</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/date/i</span>
+      <span class="ruby-value">:date</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/clob/i</span>, <span class="ruby-regexp">/text/i</span>
+      <span class="ruby-value">:text</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/blob/i</span>, <span class="ruby-regexp">/binary/i</span>
+      <span class="ruby-value">:binary</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/char/i</span>, <span class="ruby-regexp">/string/i</span>
+      <span class="ruby-value">:string</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/boolean/i</span>
+      <span class="ruby-value">:boolean</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::AttributeAssignment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActiveRecord::AttributeAssignment 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activerecord/lib/active_record/attribute_assignment_rb.html">activerecord/lib/active_record/attribute_assignment.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="AttributeAssignment/ClassMethods.html">ActiveRecord::AttributeAssignment::ClassMethods</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-assign_attributes">assign_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-assign_multiparameter_attributes">assign_multiparameter_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-attributes-3D">attributes=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-execute_callstack_for_multiparameter_attributes">execute_callstack_for_multiparameter_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_callstack_for_multiparameter_attributes">extract_callstack_for_multiparameter_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_max_param_for_multiparameter_attributes">extract_max_param_for_multiparameter_attributes</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-find_parameter_position">find_parameter_position</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-instantiate_time_object">instantiate_time_object</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mass_assignment_options">mass_assignment_options</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-mass_assignment_role">mass_assignment_role</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-read_date_parameter_value">read_date_parameter_value</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-read_other_parameter_value">read_other_parameter_value</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-read_time_parameter_value">read_time_parameter_value</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-read_value_from_parameter">read_value_from_parameter</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-type_cast_attribute_value">type_cast_attribute_value</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+    <!-- Includes -->
+    <div class="sectiontitle">Included Modules</div>
+    <ul>
+      
+        <li>
+          
+            <a href="../ActiveModel/MassAssignmentSecurity.html">
+              ActiveModel::MassAssignmentSecurity
+            </a>
+          
+        </li>
+      
+    </ul>
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-assign_attributes">
+            
+              <b>assign_attributes</b>(new_attributes, options = {})
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-assign_attributes" name="method-i-assign_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allows you to set all the attributes for a particular mass-assignment
+security role by passing in a hash of attributes with keys matching the
+attribute names (which again matches the column names) and the role name
+using the :as option.</p>
+
+<p>To bypass mass-assignment security you can use the :without_protection
+=&gt; true option.</p>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  attr_accessible :name
+  attr_accessible :name, :is_admin, :as =&gt; :admin
+end
+
+user = User.new
+user.assign_attributes({ :name =&gt; &#39;Josh&#39;, :is_admin =&gt; true })
+user.name       # =&gt; &quot;Josh&quot;
+user.is_admin?  # =&gt; false
+
+user = User.new
+user.assign_attributes({ :name =&gt; &#39;Josh&#39;, :is_admin =&gt; true }, :as =&gt; :admin)
+user.name       # =&gt; &quot;Josh&quot;
+user.is_admin?  # =&gt; true
+
+user = User.new
+user.assign_attributes({ :name =&gt; &#39;Josh&#39;, :is_admin =&gt; true }, :without_protection =&gt; true)
+user.name       # =&gt; &quot;Josh&quot;
+user.is_admin?  # =&gt; true
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-assign_attributes_source')" id="l_method-i-assign_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L66" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-assign_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">assign_attributes</span>(<span class="ruby-identifier">new_attributes</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_attributes</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">new_attributes</span>.<span class="ruby-identifier">stringify_keys</span>
+  <span class="ruby-identifier">multi_parameter_attributes</span> = []
+  <span class="ruby-identifier">nested_parameter_attributes</span> = []
+  <span class="ruby-ivar">@mass_assignment_options</span> = <span class="ruby-identifier">options</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:without_protection</span>]
+    <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">sanitize_for_mass_assignment</span>(<span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">mass_assignment_role</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;(&quot;</span>)
+      <span class="ruby-identifier">multi_parameter_attributes</span> <span class="ruby-operator">&lt;&lt;</span> [ <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> ]
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>)
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-identifier">nested_parameter_attributes</span> <span class="ruby-operator">&lt;&lt;</span> [ <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> ]
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">UnknownAttributeError</span>, <span class="ruby-node">&quot;unknown attribute: #{k}&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># assign any deferred nested attributes after the base attributes have been set</span>
+  <span class="ruby-identifier">nested_parameter_attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>, <span class="ruby-identifier">v</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@mass_assignment_options</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">assign_multiparameter_attributes</span>(<span class="ruby-identifier">multi_parameter_attributes</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-attributes-3D">
+            
+              <b>attributes=</b>(new_attributes)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-attributes-3D" name="method-i-attributes-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allows you to set all the attributes at once by passing in a hash with keys
+matching the attribute names (which again matches the column names).</p>
+
+<p>If any attributes are protected by either <code>attr_protected</code> or
+<code>attr_accessible</code> then only settable attributes will be
+assigned.</p>
+
+<pre><code>class User &lt; ActiveRecord::Base
+  attr_protected :is_admin
+end
+
+user = User.new
+user.attributes = { :username =&gt; &#39;Phusion&#39;, :is_admin =&gt; true }
+user.username   # =&gt; &quot;Phusion&quot;
+user.is_admin?  # =&gt; false
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-attributes-3D_source')" id="l_method-i-attributes-3D_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L33" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-attributes-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">attributes=</span>(<span class="ruby-identifier">new_attributes</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">new_attributes</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+
+  <span class="ruby-identifier">assign_attributes</span>(<span class="ruby-identifier">new_attributes</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Protected methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-mass_assignment_options">
+            
+              <b>mass_assignment_options</b>()
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-mass_assignment_options" name="method-i-mass_assignment_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mass_assignment_options_source')" id="l_method-i-mass_assignment_options_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L103" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-mass_assignment_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 103</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mass_assignment_options</span>
+  <span class="ruby-ivar">@mass_assignment_options</span> <span class="ruby-operator">||=</span> {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mass_assignment_role">
+            
+              <b>mass_assignment_role</b>()
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-mass_assignment_role" name="method-i-mass_assignment_role" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mass_assignment_role_source')" id="l_method-i-mass_assignment_role_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L107" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-mass_assignment_role_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mass_assignment_role</span>
+  <span class="ruby-identifier">mass_assignment_options</span>[<span class="ruby-value">:as</span>] <span class="ruby-operator">||</span> <span class="ruby-value">:default</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-assign_multiparameter_attributes">
+            
+              <b>assign_multiparameter_attributes</b>(pairs)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-assign_multiparameter_attributes" name="method-i-assign_multiparameter_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Instantiates objects for all attribute classes that needs more than one
+constructor parameter. This is done by calling new on the column type or
+aggregation type (through composed_of) object with these parameters. So
+having the pairs written_on(1) = “2004”, written_on(2) = “6”, written_on(3)
+= “24”, will instantiate written_on (a date type) with Date.new(“2004”,
+“6”, “24”). You can also specify a typecast character in the parentheses to
+have the parameters typecasted before they&#39;re used in the constructor.
+Use i for Fixnum, f for <a href="../Float.html">Float</a>, s for String,
+and a for <a href="../Array.html">Array</a>. If all the values for a given
+attribute are empty, the attribute will be set to nil.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-assign_multiparameter_attributes_source')" id="l_method-i-assign_multiparameter_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L120" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-assign_multiparameter_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">assign_multiparameter_attributes</span>(<span class="ruby-identifier">pairs</span>)
+  <span class="ruby-identifier">execute_callstack_for_multiparameter_attributes</span>(
+    <span class="ruby-identifier">extract_callstack_for_multiparameter_attributes</span>(<span class="ruby-identifier">pairs</span>)
+  )
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-execute_callstack_for_multiparameter_attributes">
+            
+              <b>execute_callstack_for_multiparameter_attributes</b>(callstack)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-execute_callstack_for_multiparameter_attributes" name="method-i-execute_callstack_for_multiparameter_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-execute_callstack_for_multiparameter_attributes_source')" id="l_method-i-execute_callstack_for_multiparameter_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L134" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-execute_callstack_for_multiparameter_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">execute_callstack_for_multiparameter_attributes</span>(<span class="ruby-identifier">callstack</span>)
+  <span class="ruby-identifier">errors</span> = []
+  <span class="ruby-identifier">callstack</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_with_empty_parameters</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;=&quot;</span>, <span class="ruby-identifier">read_value_from_parameter</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_with_empty_parameters</span>))
+    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
+      <span class="ruby-identifier">errors</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">AttributeAssignmentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;error on assignment #{values_with_empty_parameters.values.inspect} to #{name}&quot;</span>, <span class="ruby-identifier">ex</span>, <span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">MultiparameterAssignmentErrors</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">errors</span>), <span class="ruby-node">&quot;#{errors.size} error(s) on assignment of multiparameter attributes&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_callstack_for_multiparameter_attributes">
+            
+              <b>extract_callstack_for_multiparameter_attributes</b>(pairs)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-extract_callstack_for_multiparameter_attributes" name="method-i-extract_callstack_for_multiparameter_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_callstack_for_multiparameter_attributes_source')" id="l_method-i-extract_callstack_for_multiparameter_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L197" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_callstack_for_multiparameter_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_callstack_for_multiparameter_attributes</span>(<span class="ruby-identifier">pairs</span>)
+  <span class="ruby-identifier">attributes</span> = { }
+
+  <span class="ruby-identifier">pairs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">multiparameter_name</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">pair</span>
+    <span class="ruby-identifier">attribute_name</span> = <span class="ruby-identifier">multiparameter_name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;(&quot;</span>).<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attribute_name</span>] = {} <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">attribute_name</span>)
+
+    <span class="ruby-identifier">parameter_value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">type_cast_attribute_value</span>(<span class="ruby-identifier">multiparameter_name</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">attribute_name</span>][<span class="ruby-identifier">find_parameter_position</span>(<span class="ruby-identifier">multiparameter_name</span>)] <span class="ruby-operator">||=</span> <span class="ruby-identifier">parameter_value</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">attributes</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_max_param_for_multiparameter_attributes">
+            
+              <b>extract_max_param_for_multiparameter_attributes</b>(values_hash_from_param, upper_cap = 100)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-extract_max_param_for_multiparameter_attributes" name="method-i-extract_max_param_for_multiparameter_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_max_param_for_multiparameter_attributes_source')" id="l_method-i-extract_max_param_for_multiparameter_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L193" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_max_param_for_multiparameter_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 193</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_max_param_for_multiparameter_attributes</span>(<span class="ruby-identifier">values_hash_from_param</span>, <span class="ruby-identifier">upper_cap</span> = <span class="ruby-number">100</span>)
+  [<span class="ruby-identifier">values_hash_from_param</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">max</span>,<span class="ruby-identifier">upper_cap</span>].<span class="ruby-identifier">min</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-find_parameter_position">
+            
+              <b>find_parameter_position</b>(multiparameter_name)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-find_parameter_position" name="method-i-find_parameter_position" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-find_parameter_position_source')" id="l_method-i-find_parameter_position_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L216" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-find_parameter_position_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 216</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">find_parameter_position</span>(<span class="ruby-identifier">multiparameter_name</span>)
+  <span class="ruby-identifier">multiparameter_name</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/\(([0-9]*).*\)/</span>).<span class="ruby-identifier">first</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">to_i</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-instantiate_time_object">
+            
+              <b>instantiate_time_object</b>(name, values)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-instantiate_time_object" name="method-i-instantiate_time_object" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-instantiate_time_object_source')" id="l_method-i-instantiate_time_object_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L126" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-instantiate_time_object_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">instantiate_time_object</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:create_time_zone_conversion_attribute?</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">column_for_attribute</span>(<span class="ruby-identifier">name</span>))
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">zone</span>.<span class="ruby-identifier">local</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-constant">Time</span>.<span class="ruby-identifier">time_with_datetime_fallback</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">default_timezone</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">values</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read_date_parameter_value">
+            
+              <b>read_date_parameter_value</b>(name, values_hash_from_param)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-read_date_parameter_value" name="method-i-read_date_parameter_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_date_parameter_value_source')" id="l_method-i-read_date_parameter_value_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L174" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-read_date_parameter_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 174</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">read_date_parameter_value</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> (<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-number">3</span>).<span class="ruby-identifier">any?</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-identifier">position</span>].<span class="ruby-identifier">blank?</span>}
+  <span class="ruby-identifier">set_values</span> = [<span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-number">1</span>], <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-number">2</span>], <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-number">3</span>]]
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">set_values</span>)
+  <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> <span class="ruby-comment"># if Date.new raises an exception on an invalid date</span>
+    <span class="ruby-identifier">instantiate_time_object</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">set_values</span>).<span class="ruby-identifier">to_date</span> <span class="ruby-comment"># we instantiate Time object and convert it back to a date thus using Time&#39;s logic in handling invalid dates</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read_other_parameter_value">
+            
+              <b>read_other_parameter_value</b>(klass, name, values_hash_from_param)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-read_other_parameter_value" name="method-i-read_other_parameter_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_other_parameter_value_source')" id="l_method-i-read_other_parameter_value_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L184" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-read_other_parameter_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">read_other_parameter_value</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-identifier">max_position</span> = <span class="ruby-identifier">extract_max_param_for_multiparameter_attributes</span>(<span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-identifier">values</span> = (<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">max_position</span>).<span class="ruby-identifier">collect</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Missing Parameter&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">values_hash_from_param</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">position</span>)
+    <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-identifier">position</span>]
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">values</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read_time_parameter_value">
+            
+              <b>read_time_parameter_value</b>(name, values_hash_from_param)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-read_time_parameter_value" name="method-i-read_time_parameter_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_time_parameter_value_source')" id="l_method-i-read_time_parameter_value_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L161" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-read_time_parameter_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">read_time_parameter_value</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-comment"># If Date bits were not provided, error</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Missing Parameter&quot;</span> <span class="ruby-keyword">if</span> [<span class="ruby-number">1</span>,<span class="ruby-number">2</span>,<span class="ruby-number">3</span>].<span class="ruby-identifier">any?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-identifier">values_hash_from_param</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">position</span>)}
+  <span class="ruby-identifier">max_position</span> = <span class="ruby-identifier">extract_max_param_for_multiparameter_attributes</span>(<span class="ruby-identifier">values_hash_from_param</span>, <span class="ruby-number">6</span>)
+  <span class="ruby-comment"># If Date bits were provided but blank, then return nil</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> (<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-number">3</span>).<span class="ruby-identifier">any?</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-identifier">position</span>].<span class="ruby-identifier">blank?</span>}
+
+  <span class="ruby-identifier">set_values</span> = (<span class="ruby-number">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">max_position</span>).<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">position</span><span class="ruby-operator">|</span> <span class="ruby-identifier">values_hash_from_param</span>[<span class="ruby-identifier">position</span>] }
+  <span class="ruby-comment"># If Time bits are not there, then default to 0</span>
+  (<span class="ruby-number">3</span><span class="ruby-operator">..</span><span class="ruby-number">5</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">set_values</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">set_values</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">blank?</span> <span class="ruby-operator">?</span> <span class="ruby-number">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">set_values</span>[<span class="ruby-identifier">i</span>]}
+  <span class="ruby-identifier">instantiate_time_object</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">set_values</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read_value_from_parameter">
+            
+              <b>read_value_from_parameter</b>(name, values_hash_from_param)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-read_value_from_parameter" name="method-i-read_value_from_parameter" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_value_from_parameter_source')" id="l_method-i-read_value_from_parameter_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L148" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-read_value_from_parameter_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">read_value_from_parameter</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-identifier">klass</span> = (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">reflect_on_aggregation</span>(<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_sym</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">column_for_attribute</span>(<span class="ruby-identifier">name</span>)).<span class="ruby-identifier">klass</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">values_hash_from_param</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">all?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span><span class="ruby-identifier">v</span>.<span class="ruby-identifier">nil?</span>}
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Time</span>
+    <span class="ruby-identifier">read_time_parameter_value</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">klass</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Date</span>
+    <span class="ruby-identifier">read_date_parameter_value</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">read_other_parameter_value</span>(<span class="ruby-identifier">klass</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">values_hash_from_param</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-type_cast_attribute_value">
+            
+              <b>type_cast_attribute_value</b>(multiparameter_name, value)
+            
+            <a href="../../classes/ActiveRecord/AttributeAssignment.html#method-i-type_cast_attribute_value" name="method-i-type_cast_attribute_value" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-type_cast_attribute_value_source')" id="l_method-i-type_cast_attribute_value_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/32709ea41ed1ec2a89590e9bc6656c1ecd462d30/activerecord/lib/active_record/attribute_assignment.rb#L212" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-type_cast_attribute_value_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/attribute_assignment.rb, line 212</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">type_cast_attribute_value</span>(<span class="ruby-identifier">multiparameter_name</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-identifier">multiparameter_name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\([0-9]*([if])\)/</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">send</span>(<span class="ruby-string">&quot;to_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-node">$1</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">value</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

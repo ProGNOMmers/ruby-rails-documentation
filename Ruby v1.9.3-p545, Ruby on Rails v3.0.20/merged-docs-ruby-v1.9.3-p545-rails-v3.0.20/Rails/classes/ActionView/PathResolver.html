@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionView::PathResolver</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActionView::PathResolver 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Resolver.html">ActionView::Resolver</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/actionpack/lib/action_view/template/resolver_rb.html">actionpack/lib/action_view/template/resolver.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-build_path">build_path</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-escape_entry">escape_entry</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_handler_and_format">extract_handler_and_format</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-find_templates">find_templates</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>Q</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-query">query</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-to_path">to_path</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_s">to_s</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">EXTENSION_ORDER</td>
+            <td>=</td>
+            <td class="attr-value">[:locale, :formats, :handlers]</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-to_path">
+            
+              <b>to_path</b>()
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-to_path" name="method-i-to_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="PathResolver.html#method-i-to_s">to_s</a>
+            </div>
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_s">
+            
+              <b>to_s</b>()
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-to_s" name="method-i-to_s" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="PathResolver.html#method-i-to_path">to_path</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_s_source')" id="l_method-i-to_s_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-to_s_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_s</span>
+  <span class="ruby-ivar">@path</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-build_path">
+            
+              <b>build_path</b>(name, prefix, partial, details)
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-build_path" name="method-i-build_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-build_path_source')" id="l_method-i-build_path_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L58" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-build_path_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_path</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">partial</span>, <span class="ruby-identifier">details</span>)
+  <span class="ruby-identifier">path</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{prefix}/&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">prefix</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">path</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">partial</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;_#{name}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">path</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-escape_entry">
+            
+              <b>escape_entry</b>(entry)
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-escape_entry" name="method-i-escape_entry" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-escape_entry_source')" id="l_method-i-escape_entry_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L91" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-escape_entry_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">escape_entry</span>(<span class="ruby-identifier">entry</span>)
+  <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/(\*|\[|\]|\{|\}|\?)/</span>, <span class="ruby-string">&quot;\\\\\\1&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_handler_and_format">
+            
+              <b>extract_handler_and_format</b>(path, default_formats)
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-extract_handler_and_format" name="method-i-extract_handler_and_format" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Extract handler and formats from path. If a format cannot be a found
+neither from the path, or the handler, we should return the array of
+formats given to the resolver.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_handler_and_format_source')" id="l_method-i-extract_handler_and_format_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L98" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_handler_and_format_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_handler_and_format</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">default_formats</span>)
+  <span class="ruby-identifier">pieces</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;.&quot;</span>)
+  <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">shift</span>
+
+  <span class="ruby-identifier">handler</span>  = <span class="ruby-constant">Template</span>.<span class="ruby-identifier">handler_class_for_extension</span>(<span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">pop</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;html&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pieces</span>[<span class="ruby-number">-2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;text&quot;</span>
+    <span class="ruby-identifier">correct_path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\.text\.html/</span>, <span class="ruby-string">&quot;.html&quot;</span>)
+    <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;The file `#{path}` uses the deprecated format `text.html`. Please rename it to #{correct_path}&quot;</span>, <span class="ruby-identifier">caller</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;plain&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pieces</span>[<span class="ruby-number">-2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&quot;text&quot;</span>
+    <span class="ruby-identifier">correct_path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\.text\.plain/</span>, <span class="ruby-string">&quot;.text&quot;</span>)
+    <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">pop</span>
+    <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;The file `#{path}` uses the deprecated format `text.plain`. Please rename it to #{correct_path}&quot;</span>, <span class="ruby-identifier">caller</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">format</span>   = <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Mime</span>[<span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">last</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pieces</span>.<span class="ruby-identifier">pop</span>.<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">handler</span>.<span class="ruby-identifier">default_format</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">handler</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:default_format</span>)
+  <span class="ruby-identifier">format</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">default_formats</span>
+
+  [<span class="ruby-identifier">handler</span>, <span class="ruby-identifier">format</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-find_templates">
+            
+              <b>find_templates</b>(name, prefix, partial, details)
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-find_templates" name="method-i-find_templates" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-find_templates_source')" id="l_method-i-find_templates_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-find_templates_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">find_templates</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">partial</span>, <span class="ruby-identifier">details</span>)
+  <span class="ruby-identifier">path</span> = <span class="ruby-identifier">build_path</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">prefix</span>, <span class="ruby-identifier">partial</span>, <span class="ruby-identifier">details</span>)
+  <span class="ruby-identifier">query</span>(<span class="ruby-identifier">path</span>, <span class="ruby-constant">EXTENSION_ORDER</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span> <span class="ruby-identifier">details</span>[<span class="ruby-identifier">ext</span>] }, <span class="ruby-identifier">details</span>[<span class="ruby-value">:formats</span>])
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-query">
+            
+              <b>query</b>(path, exts, formats)
+            
+            <a href="../../classes/ActionView/PathResolver.html#method-i-query" name="method-i-query" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-query_source')" id="l_method-i-query_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0c03f8a2e727619c1eb1822d100d8c920d8bf12/actionpack/lib/action_view/template/resolver.rb#L65" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-query_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_view/template/resolver.rb, line 65</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">query</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">exts</span>, <span class="ruby-identifier">formats</span>)
+  <span class="ruby-identifier">query</span> = <span class="ruby-identifier">escape_entry</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-ivar">@path</span>, <span class="ruby-identifier">path</span>)
+
+  <span class="ruby-identifier">exts</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ext</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">query</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;{&#39;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">ext</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-node">&quot;.#{e}&quot;</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;,&#39;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;,}&#39;</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">query</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\{\.html,/</span>, <span class="ruby-string">&quot;{.html,.text.html,&quot;</span>)
+  <span class="ruby-identifier">query</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\{\.text,/</span>, <span class="ruby-string">&quot;{.text,.text.plain,&quot;</span>)
+
+  <span class="ruby-identifier">templates</span> = []
+  <span class="ruby-identifier">sanitizer</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>,<span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-constant">Dir</span>[<span class="ruby-node">&quot;#{File.dirname(k)}/*&quot;</span>] }
+
+  <span class="ruby-constant">Dir</span>[<span class="ruby-identifier">query</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">p</span>) <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">sanitizer</span>[<span class="ruby-identifier">p</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">p</span>)
+
+    <span class="ruby-identifier">handler</span>, <span class="ruby-identifier">format</span> = <span class="ruby-identifier">extract_handler_and_format</span>(<span class="ruby-identifier">p</span>, <span class="ruby-identifier">formats</span>)
+    <span class="ruby-identifier">contents</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">p</span>, <span class="ruby-string">&quot;rb&quot;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">io</span><span class="ruby-operator">|</span> <span class="ruby-identifier">io</span>.<span class="ruby-identifier">read</span> }
+
+    <span class="ruby-identifier">templates</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Template</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">contents</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">p</span>), <span class="ruby-identifier">handler</span>,
+      <span class="ruby-value">:virtual_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-value">:format</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">format</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">templates</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

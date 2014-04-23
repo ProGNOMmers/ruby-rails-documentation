@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::Inheritance</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActiveRecord::Inheritance 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/activerecord/lib/active_record/inheritance_rb.html">activerecord/lib/active_record/inheritance.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">MODULE</span>
+          <a href="Inheritance/ClassMethods.html">ActiveRecord::Inheritance::ClassMethods</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ensure_proper_type">ensure_proper_type</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-ensure_proper_type">
+            
+              <b>ensure_proper_type</b>()
+            
+            <a href="../../classes/ActiveRecord/Inheritance.html#method-i-ensure_proper_type" name="method-i-ensure_proper_type" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets the attribute used for single table inheritance to this class name if
+this is not the <a href="Base.html">ActiveRecord::Base</a> descendant.
+Considering the hierarchy Reply &lt; Message &lt; <a
+href="Base.html">ActiveRecord::Base</a>, this makes it possible to do
+Reply.new without having to set <code>Reply[Reply.inheritance_column] =
+&quot;Reply&quot;</code> yourself. No such attribute would be set for
+objects of the Message class in that example.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ensure_proper_type_source')" id="l_method-i-ensure_proper_type_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6896cd451545679a6413939fc4eae68f3cc3ba8b/activerecord/lib/active_record/inheritance.rb#L167" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-ensure_proper_type_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/inheritance.rb, line 167</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ensure_proper_type</span>
+  <span class="ruby-identifier">klass</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">finder_needs_type_condition?</span>
+    <span class="ruby-identifier">write_attribute</span>(<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">inheritance_column</span>, <span class="ruby-identifier">klass</span>.<span class="ruby-identifier">sti_name</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

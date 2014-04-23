@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveRecord::Associations::ThroughAssociationScope</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActiveRecord::Associations::ThroughAssociationScope 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/activerecord/lib/active_record/associations/through_association_scope_rb.html">activerecord/lib/active_record/associations/through_association_scope.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>B</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-build_conditions">build_conditions</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-build_sti_condition">build_sti_condition</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-build_through_conditions">build_through_conditions</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-conditions">conditions</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_conditions">construct_conditions</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_from">construct_from</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_join_attributes">construct_join_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_joins">construct_joins</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_owner_attributes">construct_owner_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_quoted_owner_attributes">construct_quoted_owner_attributes</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_scope">construct_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-construct_select">construct_select</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-sql_conditions">sql_conditions</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Protected methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-build_conditions">
+            
+              <b>build_conditions</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-build_conditions" name="method-i-build_conditions" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-build_conditions_source')" id="l_method-i-build_conditions_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L122" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-build_conditions_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_conditions</span>
+  <span class="ruby-identifier">association_conditions</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>]
+  <span class="ruby-identifier">through_conditions</span> = <span class="ruby-identifier">build_through_conditions</span>
+  <span class="ruby-identifier">source_conditions</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>]
+  <span class="ruby-identifier">uses_sti</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">descends_from_active_record?</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">association_conditions</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">through_conditions</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">source_conditions</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">uses_sti</span>
+    <span class="ruby-identifier">all</span> = []
+
+    [<span class="ruby-identifier">association_conditions</span>, <span class="ruby-identifier">source_conditions</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">conditions</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">all</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">interpolate_and_sanitize_sql</span>(<span class="ruby-identifier">conditions</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">conditions</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">all</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">through_conditions</span>  <span class="ruby-keyword">if</span> <span class="ruby-identifier">through_conditions</span>
+    <span class="ruby-identifier">all</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">build_sti_condition</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uses_sti</span>
+
+    <span class="ruby-identifier">all</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sql</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;(#{sql})&quot;</span> } <span class="ruby-operator">*</span> <span class="ruby-string">&#39; AND &#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-build_sti_condition">
+            
+              <b>build_sti_condition</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-build_sti_condition" name="method-i-build_sti_condition" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-build_sti_condition_source')" id="l_method-i-build_sti_condition_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-build_sti_condition_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_sti_condition</span>
+  <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:type_condition</span>).<span class="ruby-identifier">to_sql</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-build_through_conditions">
+            
+              <b>build_through_conditions</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-build_through_conditions" name="method-i-build_through_conditions" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-build_through_conditions_source')" id="l_method-i-build_through_conditions_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L142" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-build_through_conditions_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">build_through_conditions</span>
+  <span class="ruby-identifier">conditions</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">interpolate_and_sanitize_sql</span>(<span class="ruby-identifier">conditions</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">klass</span>).<span class="ruby-identifier">gsub</span>(
+      <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">quoted_table_name</span>,
+      <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">quoted_table_name</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">conditions</span>
+    <span class="ruby-identifier">interpolate_and_sanitize_sql</span>(<span class="ruby-identifier">conditions</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-conditions">
+            
+              <b>conditions</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-conditions" name="method-i-conditions" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="ThroughAssociationScope.html#method-i-sql_conditions">sql_conditions</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-conditions_source')" id="l_method-i-conditions_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L117" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-conditions_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">conditions</span>
+  <span class="ruby-ivar">@conditions</span> = <span class="ruby-identifier">build_conditions</span> <span class="ruby-keyword">unless</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@conditions</span>)
+  <span class="ruby-ivar">@conditions</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_conditions">
+            
+              <b>construct_conditions</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_conditions" name="method-i-construct_conditions" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Build SQL conditions from attributes, qualified by table name.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_conditions_source')" id="l_method-i-construct_conditions_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_conditions_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_conditions</span>
+  <span class="ruby-identifier">table_name</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">quoted_table_name</span>
+  <span class="ruby-identifier">conditions</span> = <span class="ruby-identifier">construct_quoted_owner_attributes</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>).<span class="ruby-identifier">map</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+    <span class="ruby-node">&quot;#{table_name}.#{attr} = #{value}&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">conditions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sql_conditions</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sql_conditions</span>
+  <span class="ruby-string">&quot;(&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">conditions</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&#39;) AND (&#39;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot;)&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_from">
+            
+              <b>construct_from</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_from" name="method-i-construct_from" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_from_source')" id="l_method-i-construct_from_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L48" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_from_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 48</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_from</span>
+  <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">table_name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_join_attributes">
+            
+              <b>construct_join_attributes</b>(associate)
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_join_attributes" name="method-i-construct_join_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Construct attributes for :through pointing to owner and associate.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_join_attributes_source')" id="l_method-i-construct_join_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L100" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_join_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_join_attributes</span>(<span class="ruby-identifier">associate</span>)
+  <span class="ruby-comment"># TODO: revisit this to allow it for deletion, supposing dependent option is supported</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">HasManyThroughCantAssociateThroughHasOneOrManyReflection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@owner</span>, <span class="ruby-ivar">@reflection</span>) <span class="ruby-keyword">if</span> [<span class="ruby-value">:has_one</span>, <span class="ruby-value">:has_many</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">macro</span>)
+
+  <span class="ruby-identifier">join_attributes</span> = <span class="ruby-identifier">construct_owner_attributes</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>).<span class="ruby-identifier">merge</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">primary_key_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">associate</span>.<span class="ruby-identifier">id</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:source_type</span>]
+    <span class="ruby-identifier">join_attributes</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:foreign_type</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">associate</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">base_class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">join_attributes</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:conditions</span>])
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">join_attributes</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_joins">
+            
+              <b>construct_joins</b>(custom_joins = nil)
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_joins" name="method-i-construct_joins" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_joins_source')" id="l_method-i-construct_joins_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_joins_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_joins</span>(<span class="ruby-identifier">custom_joins</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">polymorphic_join</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">macro</span> <span class="ruby-operator">==</span> <span class="ruby-value">:belongs_to</span>
+    <span class="ruby-identifier">reflection_primary_key</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:primary_key</span>] <span class="ruby-operator">||</span>
+                             <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">primary_key</span>
+    <span class="ruby-identifier">source_primary_key</span>     = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">primary_key_name</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:source_type</span>]
+      <span class="ruby-identifier">polymorphic_join</span> = <span class="ruby-string">&quot;AND %s.%s = %s&quot;</span> <span class="ruby-operator">%</span> [
+        <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">quoted_table_name</span>, <span class="ruby-node">&quot;#{@reflection.source_reflection.options[:foreign_type]}&quot;</span>,
+        <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">quote_value</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:source_type</span>])
+      ]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">reflection_primary_key</span> = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">primary_key_name</span>
+    <span class="ruby-identifier">source_primary_key</span>     = <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:primary_key</span>] <span class="ruby-operator">||</span>
+                             <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">primary_key</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:as</span>]
+      <span class="ruby-identifier">polymorphic_join</span> = <span class="ruby-string">&quot;AND %s.%s = %s&quot;</span> <span class="ruby-operator">%</span> [
+        <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">quoted_table_name</span>, <span class="ruby-node">&quot;#{@reflection.source_reflection.options[:as]}_type&quot;</span>,
+        <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">quote_value</span>(<span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">name</span>)
+      ]
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-node">&quot;INNER JOIN %s ON %s.%s = %s.%s %s #{@reflection.options[:joins]} #{custom_joins}&quot;</span> <span class="ruby-operator">%</span> [
+    <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">quoted_table_name</span>,
+    <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">quoted_table_name</span>, <span class="ruby-identifier">reflection_primary_key</span>,
+    <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">through_reflection</span>.<span class="ruby-identifier">quoted_table_name</span>, <span class="ruby-identifier">source_primary_key</span>,
+    <span class="ruby-identifier">polymorphic_join</span>
+  ]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_owner_attributes">
+            
+              <b>construct_owner_attributes</b>(reflection)
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_owner_attributes" name="method-i-construct_owner_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Construct attributes for associate pointing to owner.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_owner_attributes_source')" id="l_method-i-construct_owner_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L90" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_owner_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_owner_attributes</span>(<span class="ruby-identifier">reflection</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">as</span> = <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:as</span>]
+    { <span class="ruby-node">&quot;#{as}_id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">id</span>,
+      <span class="ruby-node">&quot;#{as}_type&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">base_class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> }
+  <span class="ruby-keyword">else</span>
+    { <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">primary_key_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">id</span> }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_quoted_owner_attributes">
+            
+              <b>construct_quoted_owner_attributes</b>(reflection)
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_quoted_owner_attributes" name="method-i-construct_quoted_owner_attributes" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Associate attributes pointing to owner, quoted.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_quoted_owner_attributes_source')" id="l_method-i-construct_quoted_owner_attributes_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_quoted_owner_attributes_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_quoted_owner_attributes</span>(<span class="ruby-identifier">reflection</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">as</span> = <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:as</span>]
+    { <span class="ruby-node">&quot;#{as}_id&quot;</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">quote_value</span>(
+        <span class="ruby-ivar">@owner</span>[<span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">active_record_primary_key</span>],
+        <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">columns_hash</span>[<span class="ruby-node">&quot;#{as}_id&quot;</span>]),
+      <span class="ruby-node">&quot;#{as}_type&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">quote_value</span>(
+        <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">base_class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>,
+        <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">columns_hash</span>[<span class="ruby-node">&quot;#{as}_type&quot;</span>]) }
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">macro</span> <span class="ruby-operator">==</span> <span class="ruby-value">:belongs_to</span>
+    { <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">klass</span>.<span class="ruby-identifier">primary_key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">quote_value</span>(<span class="ruby-ivar">@owner</span>[<span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">primary_key_name</span>]) }
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">column</span> = <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">columns_hash</span>[<span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">active_record_primary_key</span>]
+
+    { <span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">primary_key_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@owner</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">quote_value</span>(<span class="ruby-ivar">@owner</span>[<span class="ruby-identifier">reflection</span>.<span class="ruby-identifier">active_record_primary_key</span>], <span class="ruby-identifier">column</span>) }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_scope">
+            
+              <b>construct_scope</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_scope" name="method-i-construct_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_scope_source')" id="l_method-i-construct_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L8" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_scope</span>
+  { <span class="ruby-value">:create</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">construct_owner_attributes</span>(<span class="ruby-ivar">@reflection</span>),
+    <span class="ruby-value">:find</span>   =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:conditions</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">construct_conditions</span>,
+                 <span class="ruby-value">:joins</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">construct_joins</span>,
+                 <span class="ruby-value">:include</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:include</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">source_reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:include</span>],
+                 <span class="ruby-value">:select</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">construct_select</span>,
+                 <span class="ruby-value">:order</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:order</span>],
+                 <span class="ruby-value">:limit</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:limit</span>],
+                 <span class="ruby-value">:readonly</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:readonly</span>],
+     } }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-construct_select">
+            
+              <b>construct_select</b>(custom_select = nil)
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-construct_select" name="method-i-construct_select" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-construct_select_source')" id="l_method-i-construct_select_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d3cfb939e18f98e7b54015dd4d71160f9069e240/activerecord/lib/active_record/associations/through_association_scope.rb#L52" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-construct_select_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activerecord/lib/active_record/associations/through_association_scope.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">construct_select</span>(<span class="ruby-identifier">custom_select</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">distinct</span> = <span class="ruby-string">&quot;DISTINCT &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:uniq</span>]
+  <span class="ruby-identifier">selected</span> = <span class="ruby-identifier">custom_select</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@reflection</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:select</span>] <span class="ruby-operator">||</span> <span class="ruby-node">&quot;#{distinct}#{@reflection.quoted_table_name}.*&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-sql_conditions">
+            
+              <b>sql_conditions</b>()
+            
+            <a href="../../../classes/ActiveRecord/Associations/ThroughAssociationScope.html#method-i-sql_conditions" name="method-i-sql_conditions" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="ThroughAssociationScope.html#method-i-conditions">conditions</a>
+            </div>
+          
+          
+          
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::Callbacks::Callback</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActiveSupport::Callbacks::Callback 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/activesupport/lib/active_support/callbacks_rb.html">activesupport/lib/active_support/callbacks.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-_compile_filter">_compile_filter</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_compile_options">_compile_options</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_compile_per_key_options">_compile_per_key_options</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_normalize_legacy_filter">_normalize_legacy_filter</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_update_filter">_update_filter</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-clone">clone</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-end">end</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-matches-3F">matches?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-name">name</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-next_id">next_id</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-normalize_options-21">normalize_options!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-recompile-21">recompile!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-start">start</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>chain</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>filter</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>kind</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>klass</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>options</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>per_key</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>raw_filter</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(chain, filter, kind, options, klass)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L107" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">chain</span>, <span class="ruby-identifier">filter</span>, <span class="ruby-identifier">kind</span>, <span class="ruby-identifier">options</span>, <span class="ruby-identifier">klass</span>)
+  <span class="ruby-ivar">@chain</span>, <span class="ruby-ivar">@kind</span>, <span class="ruby-ivar">@klass</span> = <span class="ruby-identifier">chain</span>, <span class="ruby-identifier">kind</span>, <span class="ruby-identifier">klass</span>
+  <span class="ruby-identifier">normalize_options!</span>(<span class="ruby-identifier">options</span>)
+
+  <span class="ruby-ivar">@per_key</span>              = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:per_key</span>)
+  <span class="ruby-ivar">@raw_filter</span>, <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">filter</span>, <span class="ruby-identifier">options</span>
+  <span class="ruby-ivar">@filter</span>               = <span class="ruby-identifier">_compile_filter</span>(<span class="ruby-identifier">filter</span>)
+  <span class="ruby-ivar">@compiled_options</span>     = <span class="ruby-identifier">_compile_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-ivar">@callback_id</span>          = <span class="ruby-identifier">next_id</span>
+
+  <span class="ruby-identifier">_compile_per_key_options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-_compile_per_key_options">
+            
+              <b>_compile_per_key_options</b>()
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-_compile_per_key_options" name="method-i-_compile_per_key_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_compile_per_key_options_source')" id="l_method-i-_compile_per_key_options_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L169" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_compile_per_key_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 169</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_compile_per_key_options</span>
+        <span class="ruby-identifier">key_options</span>  = <span class="ruby-identifier">_compile_options</span>(<span class="ruby-ivar">@per_key</span>)
+
+        <span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;          def _one_time_conditions_valid_#{@callback_id}?
+            true #{key_options[0]}
+          end
+&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+      <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_update_filter">
+            
+              <b>_update_filter</b>(filter_options, new_options)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-_update_filter" name="method-i-_update_filter" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_update_filter_source')" id="l_method-i-_update_filter_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L154" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_update_filter_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_update_filter</span>(<span class="ruby-identifier">filter_options</span>, <span class="ruby-identifier">new_options</span>)
+  <span class="ruby-identifier">filter_options</span>[<span class="ruby-value">:if</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">new_options</span>[<span class="ruby-value">:unless</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:unless</span>)
+  <span class="ruby-identifier">filter_options</span>[<span class="ruby-value">:unless</span>].<span class="ruby-identifier">push</span>(<span class="ruby-identifier">new_options</span>[<span class="ruby-value">:if</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">new_options</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:if</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clone">
+            
+              <b>clone</b>(chain, klass)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-clone" name="method-i-clone" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clone_source')" id="l_method-i-clone_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L120" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-clone_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 120</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clone</span>(<span class="ruby-identifier">chain</span>, <span class="ruby-identifier">klass</span>)
+  <span class="ruby-identifier">obj</span>                  = <span class="ruby-keyword">super</span>()
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">chain</span>            = <span class="ruby-identifier">chain</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">klass</span>            = <span class="ruby-identifier">klass</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">per_key</span>          = <span class="ruby-ivar">@per_key</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">options</span>          = <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">per_key</span>[<span class="ruby-value">:if</span>]     = <span class="ruby-ivar">@per_key</span>[<span class="ruby-value">:if</span>].<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">per_key</span>[<span class="ruby-value">:unless</span>] = <span class="ruby-ivar">@per_key</span>[<span class="ruby-value">:unless</span>].<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>]     = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:if</span>].<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>] = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:unless</span>].<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">obj</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-end">
+            
+              <b>end</b>(key=nil, object=nil)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-end" name="method-i-end" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>This will supply contents for around and after filters, but not before
+filters (for the backward pass).</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-end_source')" id="l_method-i-end_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L235" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-end_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">end</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">object</span>=<span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;_one_time_conditions_valid_#{@callback_id}?&quot;</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:around</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:after</span>
+    <span class="ruby-comment"># if condition    # after_save :filter_name, :if =&gt; :condition</span>
+    <span class="ruby-comment">#   filter_name</span>
+    <span class="ruby-comment"># end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:after</span>
+      [<span class="ruby-ivar">@compiled_options</span>[<span class="ruby-number">0</span>], <span class="ruby-ivar">@filter</span>, <span class="ruby-ivar">@compiled_options</span>[<span class="ruby-number">1</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-string">&quot;end&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-matches-3F">
+            
+              <b>matches?</b>(_kind, _filter)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-matches-3F" name="method-i-matches-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-matches-3F_source')" id="l_method-i-matches-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L150" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-matches-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 150</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">matches?</span>(<span class="ruby-identifier">_kind</span>, <span class="ruby-identifier">_filter</span>)
+  <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">_kind</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@filter</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">_filter</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-name">
+            
+              <b>name</b>()
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-name" name="method-i-name" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-name_source')" id="l_method-i-name_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L142" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-name_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">name</span>
+  <span class="ruby-identifier">chain</span>.<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-next_id">
+            
+              <b>next_id</b>()
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-next_id" name="method-i-next_id" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-next_id_source')" id="l_method-i-next_id_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L146" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-next_id_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">next_id</span>
+  <span class="ruby-identifier">@@_callback_sequence</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-normalize_options-21">
+            
+              <b>normalize_options!</b>(options)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-normalize_options-21" name="method-i-normalize_options-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-normalize_options-21_source')" id="l_method-i-normalize_options-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L133" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-normalize_options-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">normalize_options!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>])
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>])
+
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:per_key</span>] <span class="ruby-operator">||=</span> {}
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:per_key</span>][<span class="ruby-value">:if</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:per_key</span>][<span class="ruby-value">:if</span>])
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:per_key</span>][<span class="ruby-value">:unless</span>] = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:per_key</span>][<span class="ruby-value">:unless</span>])
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-recompile-21">
+            
+              <b>recompile!</b>(_options, _per_key)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-recompile-21" name="method-i-recompile-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-recompile-21_source')" id="l_method-i-recompile-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L159" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-recompile-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">recompile!</span>(<span class="ruby-identifier">_options</span>, <span class="ruby-identifier">_per_key</span>)
+  <span class="ruby-identifier">_update_filter</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">options</span>, <span class="ruby-identifier">_options</span>)
+  <span class="ruby-identifier">_update_filter</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">per_key</span>, <span class="ruby-identifier">_per_key</span>)
+
+  <span class="ruby-ivar">@callback_id</span>      = <span class="ruby-identifier">next_id</span>
+  <span class="ruby-ivar">@filter</span>           = <span class="ruby-identifier">_compile_filter</span>(<span class="ruby-ivar">@raw_filter</span>)
+  <span class="ruby-ivar">@compiled_options</span> = <span class="ruby-identifier">_compile_options</span>(<span class="ruby-ivar">@options</span>)
+                      <span class="ruby-identifier">_compile_per_key_options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-start">
+            
+              <b>start</b>(key=nil, object=nil)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-start" name="method-i-start" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>This will supply contents for before and around filters, and no contents
+for after filters (for the forward pass).</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-start_source')" id="l_method-i-start_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L181" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-start_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 181</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">start</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">object</span>=<span class="ruby-keyword">nil</span>)
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">object</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;_one_time_conditions_valid_#{@callback_id}?&quot;</span>)
+
+        <span class="ruby-comment"># options[0] is the compiled form of supplied conditions</span>
+        <span class="ruby-comment"># options[1] is the &quot;end&quot; for the conditional</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:before</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:around</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-ivar">@kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:before</span>
+            <span class="ruby-comment"># if condition    # before_save :filter_name, :if =&gt; :condition</span>
+            <span class="ruby-comment">#   filter_name</span>
+            <span class="ruby-comment"># end</span>
+            <span class="ruby-identifier">filter</span> = <span class="ruby-value">&lt;&lt;-RUBY_EVAL
+              unless halted
+                result = #{@filter}
+                halted = (#{chain.config[:terminator]})
+              end
+            RUBY_EVAL</span>
+
+            [<span class="ruby-ivar">@compiled_options</span>[<span class="ruby-number">0</span>], <span class="ruby-identifier">filter</span>, <span class="ruby-ivar">@compiled_options</span>[<span class="ruby-number">1</span>]].<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>)
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-comment"># Compile around filters with conditions into proxy methods</span>
+            <span class="ruby-comment"># that contain the conditions.</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-comment"># For `around_save :filter_name, :if =&gt; :condition&#39;:</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-comment"># def _conditional_callback_save_17</span>
+            <span class="ruby-comment">#   if condition</span>
+            <span class="ruby-comment">#     filter_name do</span>
+            <span class="ruby-comment">#       yield self</span>
+            <span class="ruby-comment">#     end</span>
+            <span class="ruby-comment">#   else</span>
+            <span class="ruby-comment">#     yield self</span>
+            <span class="ruby-comment">#   end</span>
+            <span class="ruby-comment"># end</span>
+            <span class="ruby-comment">#</span>
+            <span class="ruby-identifier">name</span> = <span class="ruby-node">&quot;_conditional_callback_#{@kind}_#{next_id}&quot;</span>
+            <span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;               def #{name}(halted)
+                #{@compiled_options[0] || &quot;if true&quot;} &amp;&amp; !halted
+                  #{@filter} do
+                    yield self
+                  end
+                else
+                  yield self
+                end
+              end
+&quot;</span>,  <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+            <span class="ruby-node">&quot;#{name}(halted) do&quot;</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-_compile_filter">
+            
+              <b>_compile_filter</b>(filter)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-_compile_filter" name="method-i-_compile_filter" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Filters support:</p>
+
+<pre><code>Arrays::  Used in conditions. This is used to specify
+          multiple conditions. Used internally to
+          merge conditions from skip_* filters
+Symbols:: A method to call
+Strings:: Some content to evaluate
+Procs::   A proc to call with the object
+Objects:: An object with a before_foo method on it to call</code></pre>
+
+<p>All of these objects are compiled into methods and handled the same after
+this point:</p>
+
+<pre><code>Arrays::  Merged together into a single filter
+Symbols:: Already methods
+Strings:: class_eval&#39;ed into methods
+Procs::   define_method&#39;ed into methods
+Objects::
+  a method is created that calls the before_foo method
+  on the object.</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_compile_filter_source')" id="l_method-i-_compile_filter_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L292" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_compile_filter_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 292</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_compile_filter</span>(<span class="ruby-identifier">filter</span>)
+        <span class="ruby-identifier">method_name</span> = <span class="ruby-node">&quot;_callback_#{@kind}_#{next_id}&quot;</span>
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">filter</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">Array</span>
+          <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_compile_filter</span>(<span class="ruby-identifier">f</span>)}
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">Symbol</span>
+          <span class="ruby-identifier">filter</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">String</span>
+          <span class="ruby-node">&quot;(#{filter})&quot;</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-constant">Proc</span>
+          <span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:define_method</span>, <span class="ruby-identifier">method_name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">filter</span>)
+          <span class="ruby-keyword">return</span> <span class="ruby-identifier">method_name</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-number">0</span>
+
+          <span class="ruby-identifier">method_name</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">filter</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">==</span> <span class="ruby-number">1</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;(self)&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot; self, Proc.new &quot;</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:define_method</span>, <span class="ruby-node">&quot;#{method_name}_object&quot;</span>) { <span class="ruby-identifier">filter</span> }
+
+          <span class="ruby-identifier">_normalize_legacy_filter</span>(<span class="ruby-identifier">kind</span>, <span class="ruby-identifier">filter</span>)
+          <span class="ruby-identifier">scopes</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">chain</span>.<span class="ruby-identifier">config</span>[<span class="ruby-value">:scope</span>])
+          <span class="ruby-identifier">method_to_call</span> = <span class="ruby-identifier">scopes</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">s</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">s</span> }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;_&quot;</span>)
+
+          <span class="ruby-ivar">@klass</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;            def #{method_name}(&amp;blk)
+              #{method_name}_object.send(:#{method_to_call}, self, &amp;blk)
+            end
+&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+
+          <span class="ruby-identifier">method_name</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_compile_options">
+            
+              <b>_compile_options</b>(options)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-_compile_options" name="method-i-_compile_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Options support the same options as filters themselves (and support
+symbols, string, procs, and objects), so compile a conditional expression
+based on the options</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_compile_options_source')" id="l_method-i-_compile_options_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L255" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_compile_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 255</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_compile_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>].<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>].<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">conditions</span> = []
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>].<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">conditions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">_compile_filter</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:if</span>]))
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>].<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">conditions</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Array</span>.<span class="ruby-identifier">wrap</span>(<span class="ruby-identifier">_compile_filter</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:unless</span>])).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;!#{f}&quot;</span>}
+  <span class="ruby-keyword">end</span>
+
+  [<span class="ruby-node">&quot;if #{conditions.flatten.join(&quot; &amp;&amp; &quot;)}&quot;</span>, <span class="ruby-string">&quot;end&quot;</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_normalize_legacy_filter">
+            
+              <b>_normalize_legacy_filter</b>(kind, filter)
+            
+            <a href="../../../classes/ActiveSupport/Callbacks/Callback.html#method-i-_normalize_legacy_filter" name="method-i-_normalize_legacy_filter" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_normalize_legacy_filter_source')" id="l_method-i-_normalize_legacy_filter_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/30dd1236b1e34e4272ce1048a6eeeacf03230f60/activesupport/lib/active_support/callbacks.rb#L323" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_normalize_legacy_filter_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/callbacks.rb, line 323</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_normalize_legacy_filter</span>(<span class="ruby-identifier">kind</span>, <span class="ruby-identifier">filter</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">filter</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">kind</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:filter</span>)
+          <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">singleton_class</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-string">&quot;            def #{kind}(context, &amp;block) filter(context, &amp;block) end
+&quot;</span>, <span class="ruby-keyword">__FILE__</span>, <span class="ruby-keyword">__LINE__</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:before</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">filter</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:after</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">kind</span> <span class="ruby-operator">==</span> <span class="ruby-value">:around</span>
+          <span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">filter</span>.<span class="ruby-identifier">around</span>(<span class="ruby-identifier">context</span>)
+            <span class="ruby-identifier">should_continue</span> = <span class="ruby-identifier">before</span>(<span class="ruby-identifier">context</span>)
+            <span class="ruby-keyword">yield</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">should_continue</span>
+            <span class="ruby-identifier">after</span>(<span class="ruby-identifier">context</span>)
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

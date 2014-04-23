@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActiveSupport::Cache::FileStore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 4.0.2</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActiveSupport::Cache::FileStore 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Store.html">ActiveSupport::Cache::Store</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/activesupport/lib/active_support/cache/file_store_rb.html">activesupport/lib/active_support/cache/file_store.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>A cache store implementation which stores everything on the filesystem.</p>
+
+<p><a href="FileStore.html">FileStore</a> implements the <a
+href="Strategy/LocalCache.html">Strategy::LocalCache</a> strategy which
+implements an in-memory cache inside of a block.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-cleanup">cleanup</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-clear">clear</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-decrement">decrement</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-delete_empty_directories">delete_empty_directories</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-delete_entry">delete_entry</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-delete_matched">delete_matched</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ensure_cache_path">ensure_cache_path</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-file_path_key">file_path_key</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-increment">increment</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>K</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-key_file_path">key_file_path</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-read_entry">read_entry</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-search_dir">search_dir</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>W</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-write_entry">write_entry</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">DIR_FORMATTER</td>
+            <td>=</td>
+            <td class="attr-value">&quot;%03X&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">FILENAME_MAX_SIZE</td>
+            <td>=</td>
+            <td class="attr-value">228</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">EXCLUDED_DIRS</td>
+            <td>=</td>
+            <td class="attr-value">[&#39;.&#39;, &#39;..&#39;].freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [R]
+            </td>
+            <td class='attr-name'>cache_path</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(cache_path, options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-ivar">@cache_path</span> = <span class="ruby-identifier">cache_path</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">extend</span> <span class="ruby-constant">Strategy</span><span class="ruby-operator">::</span><span class="ruby-constant">LocalCache</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-cleanup">
+            
+              <b>cleanup</b>(options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-cleanup" name="method-i-cleanup" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-cleanup_source')" id="l_method-i-cleanup_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L30" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-cleanup_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">cleanup</span>(<span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">merged_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">search_dir</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">fname</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">file_path_key</span>(<span class="ruby-identifier">fname</span>)
+    <span class="ruby-identifier">entry</span> = <span class="ruby-identifier">read_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>)
+    <span class="ruby-identifier">delete_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">entry</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">expired?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-clear">
+            
+              <b>clear</b>(options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-clear" name="method-i-clear" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-clear_source')" id="l_method-i-clear_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L25" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-clear_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">clear</span>(<span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">root_dirs</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">entries</span>(<span class="ruby-identifier">cache_path</span>).<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> (<span class="ruby-constant">EXCLUDED_DIRS</span> <span class="ruby-operator">+</span> [<span class="ruby-string">&quot;.gitkeep&quot;</span>]).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">f</span>)}
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">rm_r</span>(<span class="ruby-identifier">root_dirs</span>.<span class="ruby-identifier">collect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-identifier">f</span>)})
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-decrement">
+            
+              <b>decrement</b>(name, amount = 1, options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-decrement" name="method-i-decrement" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-decrement_source')" id="l_method-i-decrement_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L53" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-decrement_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">decrement</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-number">1</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">key_file_path</span>(<span class="ruby-identifier">namespaced_key</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>))
+  <span class="ruby-identifier">lock_file</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">options</span> = <span class="ruby-identifier">merged_options</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span> = <span class="ruby-identifier">read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">num</span> = <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">amount</span>
+      <span class="ruby-identifier">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">num</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">num</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-delete_matched">
+            
+              <b>delete_matched</b>(matcher, options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-delete_matched" name="method-i-delete_matched" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_matched_source')" id="l_method-i-delete_matched_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L67" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-delete_matched_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete_matched</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">merged_options</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">instrument</span>(<span class="ruby-value">:delete_matched</span>, <span class="ruby-identifier">matcher</span>.<span class="ruby-identifier">inspect</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">key_matcher</span>(<span class="ruby-identifier">matcher</span>, <span class="ruby-identifier">options</span>)
+    <span class="ruby-identifier">search_dir</span>(<span class="ruby-identifier">cache_path</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">key</span> = <span class="ruby-identifier">file_path_key</span>(<span class="ruby-identifier">path</span>)
+      <span class="ruby-identifier">delete_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">matcher</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-increment">
+            
+              <b>increment</b>(name, amount = 1, options = nil)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-increment" name="method-i-increment" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-increment_source')" id="l_method-i-increment_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L39" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-increment_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">increment</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">amount</span> = <span class="ruby-number">1</span>, <span class="ruby-identifier">options</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">key_file_path</span>(<span class="ruby-identifier">namespaced_key</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>))
+  <span class="ruby-identifier">lock_file</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">options</span> = <span class="ruby-identifier">merged_options</span>(<span class="ruby-identifier">options</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">num</span> = <span class="ruby-identifier">read</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">num</span> = <span class="ruby-identifier">num</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">amount</span>
+      <span class="ruby-identifier">write</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">num</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">num</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Protected methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-delete_entry">
+            
+              <b>delete_entry</b>(key, options)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-delete_entry" name="method-i-delete_entry" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_entry_source')" id="l_method-i-delete_entry_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-delete_entry_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">key_file_path</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file_name</span>)
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file_name</span>)
+      <span class="ruby-identifier">delete_empty_directories</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file_name</span>))
+      <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-comment"># Just in case the error was caused by another process deleting the file first.</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file_name</span>)
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-read_entry">
+            
+              <b>read_entry</b>(key, options)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-read_entry" name="method-i-read_entry" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-read_entry_source')" id="l_method-i-read_entry_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L80" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-read_entry_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">read_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">key_file_path</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">file_name</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_name</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">f</span>) }
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span>(<span class="ruby-node">&quot;FileStoreError (#{e}): #{e.message}&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">logger</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-write_entry">
+            
+              <b>write_entry</b>(key, entry, options)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-write_entry" name="method-i-write_entry" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-write_entry_source')" id="l_method-i-write_entry_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L90" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-write_entry_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">write_entry</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">entry</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">key_file_path</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">ensure_cache_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file_name</span>))
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">atomic_write</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-identifier">cache_path</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-identifier">entry</span>, <span class="ruby-identifier">f</span>)}
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-delete_empty_directories">
+            
+              <b>delete_empty_directories</b>(dir)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-delete_empty_directories" name="method-i-delete_empty_directories" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Delete empty directories in the cache.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-delete_empty_directories_source')" id="l_method-i-delete_empty_directories_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L153" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-delete_empty_directories_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">delete_empty_directories</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">realpath</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-operator">==</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">realpath</span>(<span class="ruby-identifier">cache_path</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">entries</span>(<span class="ruby-identifier">dir</span>).<span class="ruby-identifier">reject</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">EXCLUDED_DIRS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">f</span>)}.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword">rescue</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">delete_empty_directories</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">dir</span>))
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ensure_cache_path">
+            
+              <b>ensure_cache_path</b>(path)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-ensure_cache_path" name="method-i-ensure_cache_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Make sure a file path&#39;s directories exist.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ensure_cache_path_source')" id="l_method-i-ensure_cache_path_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L162" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-ensure_cache_path_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 162</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ensure_cache_path</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">makedirs</span>(<span class="ruby-identifier">path</span>) <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-file_path_key">
+            
+              <b>file_path_key</b>(path)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-file_path_key" name="method-i-file_path_key" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Translate a file path into a key.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-file_path_key_source')" id="l_method-i-file_path_key_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-file_path_key_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">file_path_key</span>(<span class="ruby-identifier">path</span>)
+  <span class="ruby-identifier">fname</span> = <span class="ruby-identifier">path</span>[<span class="ruby-identifier">cache_path</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">SEPARATOR</span>, <span class="ruby-number">4</span>).<span class="ruby-identifier">last</span>
+  <span class="ruby-constant">URI</span>.<span class="ruby-identifier">decode_www_form_component</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-key_file_path">
+            
+              <b>key_file_path</b>(key)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-key_file_path" name="method-i-key_file_path" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Translate a key into a file path.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-key_file_path_source')" id="l_method-i-key_file_path_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L130" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-key_file_path_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 130</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">key_file_path</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">fname</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">encode_www_form_component</span>(<span class="ruby-identifier">key</span>)
+  <span class="ruby-identifier">hash</span> = <span class="ruby-constant">Zlib</span>.<span class="ruby-identifier">adler32</span>(<span class="ruby-identifier">fname</span>)
+  <span class="ruby-identifier">hash</span>, <span class="ruby-identifier">dir_1</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">divmod</span>(<span class="ruby-number">0x1000</span>)
+  <span class="ruby-identifier">dir_2</span> = <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">modulo</span>(<span class="ruby-number">0x1000</span>)
+  <span class="ruby-identifier">fname_paths</span> = []
+
+  <span class="ruby-comment"># Make sure file name doesn&#39;t exceed file system limits.</span>
+  <span class="ruby-keyword">begin</span>
+    <span class="ruby-identifier">fname_paths</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">fname</span>[<span class="ruby-number">0</span>, <span class="ruby-constant">FILENAME_MAX_SIZE</span>]
+    <span class="ruby-identifier">fname</span> = <span class="ruby-identifier">fname</span>[<span class="ruby-constant">FILENAME_MAX_SIZE</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>]
+  <span class="ruby-keyword">end</span> <span class="ruby-keyword">until</span> <span class="ruby-identifier">fname</span>.<span class="ruby-identifier">blank?</span>
+
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">cache_path</span>, <span class="ruby-constant">DIR_FORMATTER</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">dir_1</span>, <span class="ruby-constant">DIR_FORMATTER</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">dir_2</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">fname_paths</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-search_dir">
+            
+              <b>search_dir</b>(dir, &amp;callback)
+            
+            <a href="../../../classes/ActiveSupport/Cache/FileStore.html#method-i-search_dir" name="method-i-search_dir" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-search_dir_source')" id="l_method-i-search_dir_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/d107a842dd3ce28c278175fac7344549dabb5c38/activesupport/lib/active_support/cache/file_store.rb#L166" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-search_dir_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/cache/file_store.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">search_dir</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">dir</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">EXCLUDED_DIRS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">d</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">dir</span>, <span class="ruby-identifier">d</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">search_dir</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">callback</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">callback</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

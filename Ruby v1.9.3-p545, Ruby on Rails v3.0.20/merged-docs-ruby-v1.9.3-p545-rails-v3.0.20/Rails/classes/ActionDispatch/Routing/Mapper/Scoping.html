@@ -1,0 +1,1276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Routing::Mapper::Scoping</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Module</span> 
+            ActionDispatch::Routing::Mapper::Scoping 
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../../files/actionpack/lib/action_dispatch/routing/mapper_rb.html">actionpack/lib/action_dispatch/routing/mapper.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>You may wish to organize groups of controllers under a namespace. Most
+commonly, you might group a number of administrative controllers under an
+<code>admin</code> namespace. You would place these controllers under the
+app/controllers/admin directory, and you can group them together in your
+router:</p>
+
+<pre><code>namespace &quot;admin&quot; do
+  resources :posts, :comments
+end</code></pre>
+
+<p>This will create a number of routes for each of the posts and comments
+controller. For Admin::PostsController, Rails will create:</p>
+
+<pre><code>GET       /admin/photos
+GET       /admin/photos/new
+POST    /admin/photos
+GET       /admin/photos/1
+GET       /admin/photos/1/edit
+PUT       /admin/photos/1
+DELETE  /admin/photos/1</code></pre>
+
+<p>If you want to route /photos (without the prefix /admin) to
+Admin::PostsController, you could use</p>
+
+<pre><code>scope :module =&gt; &quot;admin&quot; do
+  resources :posts, :comments
+end
+</code></pre>
+
+<p>or, for a single case</p>
+
+<pre><code>resources :posts, :module =&gt; &quot;admin&quot;
+</code></pre>
+
+<p>If you want to route /admin/photos to PostsController</p>
+<dl class="rdoc-list note-list"><dt>(without the Admin
+<dd>
+<p>module prefix), you could use</p>
+</dd></dl>
+
+<pre><code>scope &quot;/admin&quot; do
+  resources :posts, :comments
+end</code></pre>
+
+<p>or, for a single case</p>
+
+<pre><code>resources :posts, :path =&gt; &quot;/admin/posts&quot;
+</code></pre>
+
+<p>In each of these cases, the named routes remain the same as if you did not
+use scope. In the last case, the following paths map to PostsController:</p>
+
+<pre><code>GET       /admin/photos
+GET       /admin/photos/new
+POST    /admin/photos
+GET       /admin/photos/1
+GET       /admin/photos/1/edit
+PUT       /admin/photos/1
+DELETE  /admin/photos/1</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-constraints">constraints</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-controller">controller</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-defaults">defaults</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-merge_as_scope">merge_as_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_blocks_scope">merge_blocks_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_constraints_scope">merge_constraints_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_controller_scope">merge_controller_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_defaults_scope">merge_defaults_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_module_scope">merge_module_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_options_scope">merge_options_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_path_names_scope">merge_path_names_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_path_scope">merge_path_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_shallow_path_scope">merge_shallow_path_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_shallow_prefix_scope">merge_shallow_prefix_scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-merge_shallow_scope">merge_shallow_scope</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-namespace">namespace</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-override_keys">override_keys</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-scope">scope</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-scope_options">scope_options</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-constraints">
+            
+              <b>constraints</b>(constraints = {})
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-constraints" name="method-i-constraints" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <h3 id="method-i-constraints-label-Parameter+Restriction">Parameter Restriction</h3>
+
+<p>Allows you to constrain the nested routes based on a set of rules. For
+instance, in order to change the routes to allow for a dot character in the
+<code>id</code> parameter:</p>
+
+<pre><code>constraints(:id =&gt; /\d+\.\d+) do
+  resources :posts
+end
+</code></pre>
+
+<p>Now routes such as <code>/posts/1</code> will no longer be valid, but
+<code>/posts/1.1</code> will be. The <code>id</code> parameter must match
+the constraint passed in for this example.</p>
+
+<p>You may use this to also resrict other parameters:</p>
+
+<pre><code>resources :posts do
+  constraints(:post_id =&gt; /\d+\.\d+) do
+    resources :comments
+  end
+</code></pre>
+
+<h3 id="method-i-constraints-label-Restricting+based+on+IP">Restricting based on IP</h3>
+
+<p>Routes can also be constrained to an IP or a certain range of IP addresses:</p>
+
+<pre><code>constraints(:ip =&gt; /192.168.\d+.\d+/) do
+  resources :posts
+end
+</code></pre>
+
+<p>Any user connecting from the 192.168.* range will be able to see this
+resource, where as any user connecting outside of this range will be told
+there is no such route.</p>
+
+<h3 id="method-i-constraints-label-Dynamic+request+matching">Dynamic request matching</h3>
+
+<p>Requests to routes can be constrained based on specific critera:</p>
+
+<pre><code>constraints(lambda { |req| req.env[&quot;HTTP_USER_AGENT&quot;] =~ /iPhone/ }) do
+  resources :iphones
+end
+</code></pre>
+
+<p>You are able to move this logic out into a class if it is too complex for
+routes. This class must have a <code>matches?</code> method defined on it
+which either returns <code>true</code> if the user should be given access
+to that route, or <code>false</code> if the user should not.</p>
+
+<pre><code>class Iphone
+  def self.matches(request)
+    request.env[&quot;HTTP_USER_AGENT&quot;] =~ /iPhone/
+  end
+end
+</code></pre>
+
+<p>An expected place for this code would be <code>lib/constraints</code>.</p>
+
+<p>This class is then used like this:</p>
+
+<pre><code>constraints(Iphone) do
+  resources :iphones
+end</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-constraints_source')" id="l_method-i-constraints_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L681" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-constraints_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 681</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">constraints</span>(<span class="ruby-identifier">constraints</span> = {})
+  <span class="ruby-identifier">scope</span>(<span class="ruby-value">:constraints</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">constraints</span>) { <span class="ruby-keyword">yield</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-controller">
+            
+              <b>controller</b>(controller, options={})
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-controller" name="method-i-controller" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Scopes routes to a specific controller</p>
+
+<p>Example:</p>
+
+<pre><code>controller &quot;food&quot; do
+  match &quot;bacon&quot;, :action =&gt; &quot;bacon&quot;
+end
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-controller_source')" id="l_method-i-controller_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L563" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-controller_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 563</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">controller</span>(<span class="ruby-identifier">controller</span>, <span class="ruby-identifier">options</span>={})
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:controller</span>] = <span class="ruby-identifier">controller</span>
+  <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">options</span>) { <span class="ruby-keyword">yield</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-defaults">
+            
+              <b>defaults</b>(defaults = {})
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-defaults" name="method-i-defaults" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Allows you to set default parameters for a route, such as this: defaults
+:id =&gt; &#39;home&#39; do</p>
+
+<pre><code>match &#39;scoped_pages/(:id)&#39;, :to =&gt; &#39;pages#show&#39;
+</code></pre>
+
+<p>end Using this, the <code>:id</code> parameter here will default to
+&#39;home&#39;.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-defaults_source')" id="l_method-i-defaults_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L690" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-defaults_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 690</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">defaults</span>(<span class="ruby-identifier">defaults</span> = {})
+  <span class="ruby-identifier">scope</span>(<span class="ruby-value">:defaults</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">defaults</span>) { <span class="ruby-keyword">yield</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-namespace">
+            
+              <b>namespace</b>(path, options = {})
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-namespace" name="method-i-namespace" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Scopes routes to a specific namespace. For example:</p>
+
+<pre><code>namespace :admin do
+  resources :posts
+end</code></pre>
+
+<p>This generates the following routes:</p>
+
+<pre><code>    admin_posts GET    /admin/posts(.:format)          {:action=&gt;&quot;index&quot;, :controller=&gt;&quot;admin/posts&quot;}
+    admin_posts POST   /admin/posts(.:format)          {:action=&gt;&quot;create&quot;, :controller=&gt;&quot;admin/posts&quot;}
+ new_admin_post GET    /admin/posts/new(.:format)      {:action=&gt;&quot;new&quot;, :controller=&gt;&quot;admin/posts&quot;}
+edit_admin_post GET    /admin/posts/:id/edit(.:format) {:action=&gt;&quot;edit&quot;, :controller=&gt;&quot;admin/posts&quot;}
+     admin_post GET    /admin/posts/:id(.:format)      {:action=&gt;&quot;show&quot;, :controller=&gt;&quot;admin/posts&quot;}
+     admin_post PUT    /admin/posts/:id(.:format)      {:action=&gt;&quot;update&quot;, :controller=&gt;&quot;admin/posts&quot;}
+     admin_post DELETE /admin/posts/:id(.:format)      {:action=&gt;&quot;destroy&quot;, :controller=&gt;&quot;admin/posts&quot;}
+</code></pre>
+
+<h3 id="method-i-namespace-label-Supported+options">Supported options</h3>
+
+<p>The <code>:path</code>, <code>:as</code>, <code>:module</code>,
+<code>:shallow_path</code> and <code>:shallow_prefix</code> options all
+default to the name of the namespace.</p>
+<dl class="rdoc-list label-list"><dt>:path
+<dd>
+<p>The path prefix for the routes.</p>
+
+<pre><code>namespace :admin, :path =&gt; &quot;sekret&quot; do
+  resources :posts
+end
+</code></pre>
+
+<p>All routes for the above <code>resources</code> will be accessible through
+<code>/sekret/posts</code>, rather than <code>/admin/posts</code></p>
+</dd><dt>:module
+<dd>
+<p>The namespace for the controllers.</p>
+
+<pre><code>namespace :admin, :module =&gt; &quot;sekret&quot; do
+  resources :posts
+end
+</code></pre>
+
+<p>The <code>PostsController</code> here should go in the <code>Sekret</code>
+namespace and so it should be defined like this:</p>
+
+<pre><code>class Sekret::PostsController &lt; ApplicationController
+  # code go here
+end
+</code></pre>
+</dd><dt>:as
+<dd>
+<p>Changes the name used in routing helpers for this namespace.</p>
+
+<pre><code>namespace :admin, :as =&gt; &quot;sekret&quot; do
+  resources :posts
+end
+</code></pre>
+</dd></dl>
+
+<p><a href="../../Routing.html">Routing</a> helpers such as
+<code>admin_posts_path</code> will now be <code>sekret_posts_path</code>.</p>
+<dl class="rdoc-list label-list"><dt>:shallow_path
+<dd>
+<p>See the <code>scope</code> method.</p>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-namespace_source')" id="l_method-i-namespace_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L620" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-namespace_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 620</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">namespace</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-identifier">options</span> = { <span class="ruby-value">:path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-value">:as</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-value">:module</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>,
+              <span class="ruby-value">:shallow_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span>, <span class="ruby-value">:shallow_prefix</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">path</span> }.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">scope</span>(<span class="ruby-identifier">options</span>) { <span class="ruby-keyword">yield</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-scope">
+            
+              <b>scope</b>(*args)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-scope" name="method-i-scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Used to scope a set of routes to particular constraints.</p>
+
+<p>Take the following route definition as an example:</p>
+
+<pre><code>scope :path =&gt; &quot;:account_id&quot;, :as =&gt; &quot;account&quot; do
+  resources :projects
+end
+</code></pre>
+
+<p>This generates helpers such as <code>account_projects_path</code>, just
+like <code>resources</code> does. The difference here being that the routes
+generated are like /rails/projects/2, rather than
+/accounts/rails/projects/2.</p>
+
+<h3 id="method-i-scope-label-Supported+options">Supported options</h3>
+<dl class="rdoc-list label-list"><dt>:module
+<dd>
+<p>If you want to route /posts (without the prefix /admin) to
+Admin::PostsController, you could use</p>
+
+<pre><code>scope :module =&gt; &quot;admin&quot; do
+  resources :posts
+end
+</code></pre>
+</dd><dt>:path
+<dd>
+<p>If you want to prefix the route, you could use</p>
+
+<pre><code>scope :path =&gt; &quot;/admin&quot; do
+  resources :posts
+end
+</code></pre>
+
+<p>This will prefix all of the <code>posts</code> resource&#39;s requests with
+&#39;/admin&#39;</p>
+</dd><dt>:as
+<dd>
+<p>Prefixes the routing helpers in this scope with the specified label.</p>
+
+<pre><code>scope :as =&gt; &quot;sekret&quot; do
+  resources :posts
+end
+</code></pre>
+</dd></dl>
+
+<p>Helpers such as <code>posts_path</code> will now be
+<code>sekret_posts_path</code></p>
+<dl class="rdoc-list label-list"><dt>:shallow_path
+<dd>
+<p>Prefixes nested shallow routes with the specified path.</p>
+
+<p>scope :shallow_path =&gt; “sekret” do</p>
+
+<pre><code>resources :posts do
+  resources :comments, :shallow =&gt; true
+end
+</code></pre>
+
+<p>The <code>comments</code> resource here will have the following routes
+generated for it:</p>
+
+<pre><code>post_comments    GET    /sekret/posts/:post_id/comments(.:format)
+post_comments    POST   /sekret/posts/:post_id/comments(.:format)
+new_post_comment GET    /sekret/posts/:post_id/comments/new(.:format)
+edit_comment     GET    /sekret/comments/:id/edit(.:format)
+comment          GET    /sekret/comments/:id(.:format)
+comment          PUT    /sekret/comments/:id(.:format)
+comment          DELETE /sekret/comments/:id(.:format)</code></pre>
+</dd></dl>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-scope_source')" id="l_method-i-scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L516" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 516</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">scope</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">extract_options!</span>
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_prefix</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:name_prefix</span>)
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:as</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">name_prefix</span>
+    <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Deprecation</span>.<span class="ruby-identifier">warn</span> <span class="ruby-string">&quot;:name_prefix was deprecated in the new router syntax. Use :as instead.&quot;</span>, <span class="ruby-identifier">caller</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:path</span>] = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>)
+  <span class="ruby-identifier">recover</span> = {}
+
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:constraints</span>] <span class="ruby-operator">||=</span> {}
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:constraints</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+    <span class="ruby-identifier">block</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:constraints</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:constraints</span>], {}
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">scope_options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">option</span>)
+      <span class="ruby-identifier">recover</span>[<span class="ruby-identifier">option</span>] = <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">option</span>]
+      <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">option</span>]  = <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;merge_#{option}_scope&quot;</span>, <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">option</span>], <span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">recover</span>[<span class="ruby-value">:block</span>] = <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:blocks</span>]
+  <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:blocks</span>] = <span class="ruby-identifier">merge_blocks_scope</span>(<span class="ruby-ivar">@scope</span>[<span class="ruby-value">:blocks</span>], <span class="ruby-identifier">block</span>)
+
+  <span class="ruby-identifier">recover</span>[<span class="ruby-value">:options</span>] = <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:options</span>]
+  <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:options</span>]  = <span class="ruby-identifier">merge_options_scope</span>(<span class="ruby-ivar">@scope</span>[<span class="ruby-value">:options</span>], <span class="ruby-identifier">options</span>)
+
+  <span class="ruby-keyword">yield</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">ensure</span>
+  <span class="ruby-identifier">scope_options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span>
+    <span class="ruby-ivar">@scope</span>[<span class="ruby-identifier">option</span>] = <span class="ruby-identifier">recover</span>[<span class="ruby-identifier">option</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">recover</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">option</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:options</span>] = <span class="ruby-identifier">recover</span>[<span class="ruby-value">:options</span>]
+  <span class="ruby-ivar">@scope</span>[<span class="ruby-value">:blocks</span>]  = <span class="ruby-identifier">recover</span>[<span class="ruby-value">:block</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_as_scope">
+            
+              <b>merge_as_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_as_scope" name="method-i-merge_as_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_as_scope_source')" id="l_method-i-merge_as_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L707" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_as_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 707</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_as_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">parent</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{parent}_#{child}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">child</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_blocks_scope">
+            
+              <b>merge_blocks_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_blocks_scope" name="method-i-merge_blocks_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_blocks_scope_source')" id="l_method-i-merge_blocks_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L735" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_blocks_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 735</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_blocks_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">merged</span> = <span class="ruby-identifier">parent</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">dup</span> <span class="ruby-operator">:</span> []
+  <span class="ruby-identifier">merged</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">child</span>
+  <span class="ruby-identifier">merged</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_constraints_scope">
+            
+              <b>merge_constraints_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_constraints_scope" name="method-i-merge_constraints_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_constraints_scope_source')" id="l_method-i-merge_constraints_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L727" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_constraints_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 727</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_constraints_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">merge_options_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_controller_scope">
+            
+              <b>merge_controller_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_controller_scope" name="method-i-merge_controller_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_controller_scope_source')" id="l_method-i-merge_controller_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L719" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_controller_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 719</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_controller_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">child</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_defaults_scope">
+            
+              <b>merge_defaults_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_defaults_scope" name="method-i-merge_defaults_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_defaults_scope_source')" id="l_method-i-merge_defaults_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L731" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_defaults_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 731</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_defaults_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">merge_options_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_module_scope">
+            
+              <b>merge_module_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_module_scope" name="method-i-merge_module_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_module_scope_source')" id="l_method-i-merge_module_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L715" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_module_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 715</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_module_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">parent</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{parent}/#{child}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">child</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_options_scope">
+            
+              <b>merge_options_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_options_scope" name="method-i-merge_options_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_options_scope_source')" id="l_method-i-merge_options_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L741" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_options_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 741</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_options_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  (<span class="ruby-identifier">parent</span> <span class="ruby-operator">||</span> {}).<span class="ruby-identifier">except</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">override_keys</span>(<span class="ruby-identifier">child</span>)).<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">child</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_path_names_scope">
+            
+              <b>merge_path_names_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_path_names_scope" name="method-i-merge_path_names_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_path_names_scope_source')" id="l_method-i-merge_path_names_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L723" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_path_names_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 723</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_path_names_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">merge_options_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_path_scope">
+            
+              <b>merge_path_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_path_scope" name="method-i-merge_path_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_path_scope_source')" id="l_method-i-merge_path_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L699" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_path_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 699</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_path_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-constant">Mapper</span>.<span class="ruby-identifier">normalize_path</span>(<span class="ruby-node">&quot;#{parent}/#{child}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_shallow_path_scope">
+            
+              <b>merge_shallow_path_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_shallow_path_scope" name="method-i-merge_shallow_path_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_shallow_path_scope_source')" id="l_method-i-merge_shallow_path_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L703" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_shallow_path_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 703</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_shallow_path_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-constant">Mapper</span>.<span class="ruby-identifier">normalize_path</span>(<span class="ruby-node">&quot;#{parent}/#{child}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_shallow_prefix_scope">
+            
+              <b>merge_shallow_prefix_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_shallow_prefix_scope" name="method-i-merge_shallow_prefix_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_shallow_prefix_scope_source')" id="l_method-i-merge_shallow_prefix_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L711" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_shallow_prefix_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 711</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_shallow_prefix_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">parent</span> <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{parent}_#{child}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">child</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-merge_shallow_scope">
+            
+              <b>merge_shallow_scope</b>(parent, child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-merge_shallow_scope" name="method-i-merge_shallow_scope" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-merge_shallow_scope_source')" id="l_method-i-merge_shallow_scope_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L745" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-merge_shallow_scope_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 745</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">merge_shallow_scope</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">child</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-override_keys">
+            
+              <b>override_keys</b>(child)
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-override_keys" name="method-i-override_keys" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-override_keys_source')" id="l_method-i-override_keys_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L749" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-override_keys_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 749</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">override_keys</span>(<span class="ruby-identifier">child</span>)
+  <span class="ruby-identifier">child</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:only</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">child</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-value">:except</span>) <span class="ruby-operator">?</span> [<span class="ruby-value">:only</span>, <span class="ruby-value">:except</span>] <span class="ruby-operator">:</span> []
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-scope_options">
+            
+              <b>scope_options</b>()
+            
+            <a href="../../../../classes/ActionDispatch/Routing/Mapper/Scoping.html#method-i-scope_options" name="method-i-scope_options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-scope_options_source')" id="l_method-i-scope_options_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/e0b0da22f6213de54008ef7720e1b2e9ccea1f92/actionpack/lib/action_dispatch/routing/mapper.rb#L695" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-scope_options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/routing/mapper.rb, line 695</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">scope_options</span>
+  <span class="ruby-ivar">@scope_options</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">private_methods</span>.<span class="ruby-identifier">grep</span>(<span class="ruby-regexp">/^merge_(.+)_scope$/</span>) { <span class="ruby-node">$1</span>.<span class="ruby-identifier">to_sym</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

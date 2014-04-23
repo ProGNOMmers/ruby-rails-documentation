@@ -1,0 +1,1003 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CHANGELOG.md</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            CHANGELOG.md
+        </h1>
+        <ul class="files">
+            <li>actionpack/CHANGELOG.md</li>
+            <li>Last modified: 2014-04-18 17:39:47 +0200</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      <ul><li>
+<p>Use the reference for the mime type to get the format</p>
+
+<p>Fixes: CVE-2014-0082</p>
+</li><li>
+<p>Escape format, negative_format and units options of number helpers</p>
+
+<p>Fixes: CVE-2014-0081</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.16+%28Dec+12%2C+2013%29">Rails 3.2.16 (Dec 12, 2013)</h2>
+<ul><li>
+<p>Deep Munge the parameters for GET and POST Fixes CVE-2013-6417</p>
+</li><li>
+<p>Stop using i18n&#39;s built in <a href="../../classes/HTML.html">HTML</a>
+error handling. Fixes: CVE-2013-4491</p>
+</li><li>
+<p>Escape the unit value provided to number_to_currency Fixes CVE-2013-6415</p>
+</li><li>
+<p>Only use valid mime type symbols as cache keys CVE-2013-6414</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.15+%28Oct+16%2C+2013%29">Rails 3.2.15 (Oct 16, 2013)</h2>
+<ul><li>
+<p>Fix <code>ActionDispatch::RemoteIp::GetIp#calculate_ip</code> to only check
+for spoofing attacks if both <code>HTTP_CLIENT_IP</code> and
+<code>HTTP_X_FORWARDED_FOR</code> are set.</p>
+
+<p>Fixes #12410 Backports #10844</p>
+
+<p><em>Tamir Duberstein</em></p>
+</li><li>
+<p>Fix the assert_recognizes test method so that it works when there are
+constraints on the querystring.</p>
+
+<p>Issue/Pull Request #9368 Backport #5219</p>
+
+<p><em>Brian Hahn</em></p>
+</li><li>
+<p>Fix to render partial by context(#11605).</p>
+
+<p><em>Kassio Borges</em></p>
+</li><li>
+<p>Fix
+<code>ActionDispatch::Assertions::ResponseAssertions#assert_redirected_to</code>
+does not show user-supplied message.</p>
+
+<p>Issue: when <code>assert_redirected_to</code> fails due to the response
+redirect not matching the expected redirect the user-supplied message
+(second parameter) is not shown. This message is only shown if the response
+is not a redirect.</p>
+
+<p><em>Alexey Chernenkov</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.14+%28Jul+22%2C+2013%29">Rails 3.2.14 (Jul 22, 2013)</h2>
+<ul><li>
+<p>Merge <code>:action</code> from routing scope and assign endpoint if both
+<code>:controller</code> and <code>:action</code> are present. The endpoint
+assignment only occurs if there is no <code>:to</code> present in the
+options hash so should only affect routes using the shorthand syntax (i.e.
+endpoint is inferred from the the path).</p>
+
+<p>Fixes #9856</p>
+
+<p><em>Yves Senn</em>, <em>Andrew White</em></p>
+</li><li>
+<p>Always escape the result of <code>link_to_unless</code> method.</p>
+
+<p>Before:</p>
+
+<pre><code>link_to_unless(true, &#39;&lt;b&gt;Showing&lt;/b&gt;&#39;, &#39;github.com&#39;)
+# =&gt; &quot;&lt;b&gt;Showing&lt;/b&gt;&quot;
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>link_to_unless(true, &#39;&lt;b&gt;Showing&lt;/b&gt;&#39;, &#39;github.com&#39;)
+# =&gt; &quot;&amp;lt;b&amp;gt;Showing&amp;lt;/b&amp;gt;&quot;
+</code></pre>
+
+<p><em>dtaniwaki</em></p>
+</li><li>
+<p>Use a case insensitive URI Regexp for asset_path.</p>
+
+<p>This fix a problem where the same asset path using different case are
+generating different URIs.</p>
+
+<p>Before:</p>
+
+<pre><code>image_tag(&quot;HTTP://google.com&quot;)
+# =&gt; &quot;&lt;img alt=\&quot;Google\&quot; src=\&quot;/assets/HTTP://google.com\&quot; /&gt;&quot;
+image_tag(&quot;http://google.com&quot;)
+# =&gt; &quot;&lt;img alt=\&quot;Google\&quot; src=\&quot;http://google.com\&quot; /&gt;&quot;
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>image_tag(&quot;HTTP://google.com&quot;)
+# =&gt; &quot;&lt;img alt=\&quot;Google\&quot; src=\&quot;HTTP://google.com\&quot; /&gt;&quot;
+image_tag(&quot;http://google.com&quot;)
+# =&gt; &quot;&lt;img alt=\&quot;Google\&quot; src=\&quot;http://google.com\&quot; /&gt;&quot;
+</code></pre>
+
+<p><em>David Celis + Rafael Mendonça França</em></p>
+</li><li>
+<p>Fix explicit names on multiple file fields. If a file field tag has the
+multiple option, it is turned into an array field (appending
+<code>[]</code>), but if an explicit name is passed to
+<code>file_field</code> the <code>[]</code> is not appended. Fixes #9830.</p>
+
+<p><em>Ryan McGeary</em></p>
+</li><li>
+<p>Fix assets loading performance in 3.2.13.</p>
+
+<p>Issue #8756 uses Sprockets for resolving files that already exist on disk,
+for those files their extensions don&#39;t need to be rewritten.</p>
+
+<p>Fixes #9803.</p>
+
+<p><em>Fred Wu</em></p>
+</li><li>
+<p>Fix <code>ActionController#action_missing</code> not being called. Fixes
+#9799.</p>
+
+<p><em>Janko Luin</em></p>
+</li><li>
+<p><code>ActionView::Helpers::NumberHelper#number_to_human</code> returns the
+number unaltered when the units hash does not contain the needed key, e.g.
+when the number provided is less than the largest key provided.</p>
+
+<p>Examples:</p>
+
+<pre><code>number_to_human(123, units: {})                # =&gt; 123
+number_to_human(123, units: { thousand: &#39;k&#39; }) # =&gt; 123
+</code></pre>
+
+<p>Fixes #9269. Backport #9347.</p>
+
+<p><em>Michael Hoffman</em></p>
+</li><li>
+<p>Include I18n locale fallbacks in view lookup. Fixes GH#3512.</p>
+
+<p><em>Juan Barreneche</em></p>
+</li><li>
+<p>Fix <code>ActionDispatch::Request#formats</code> when the Accept
+request-header is an empty string. Fix #7774 [Backport #8977, #9541]</p>
+
+<p><em>Soylent + Maxime Réty</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.13+%28Mar+18%2C+2013%29">Rails 3.2.13 (Mar 18, 2013)</h2>
+<ul><li>
+<p>Fix incorrectly appended square brackets to a multiple select box if an
+explicit name has been given and it already ends with "[]".</p>
+
+<p>Before:</p>
+
+<pre><code>select(:category, [], {}, multiple: true, name: &quot;post[category][]&quot;)
+# =&gt; &lt;select name=&quot;post[category][][]&quot; ...&gt;
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>select(:category, [], {}, multiple: true, name: &quot;post[category][]&quot;)
+# =&gt; &lt;select name=&quot;post[category][]&quot; ...&gt;
+</code></pre>
+
+<p>Backport #9616.</p>
+
+<p><em>Olek Janiszewski</em></p>
+</li><li>
+<p>Determine the controller#action from only the matched path when using the
+shorthand syntax. Previously the complete path was used, which led to
+problems with nesting (scopes and namespaces). Fixes #7554. Backport #9361.</p>
+
+<p>Example:</p>
+
+<pre><code># this will route to questions#new
+scope &#39;:locale&#39; do
+  get &#39;questions/new&#39;
+end</code></pre>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Fix <code>assert_template</code> with <code>render :stream =&gt;
+true</code>. Fix #1743. Backport #5288.</p>
+
+<p><em>Sergey Nartimov</em></p>
+</li><li>
+<p>Eagerly populate the http method lookup cache so local project inflections
+do not interfere with use of underscore method ( and we don&#39;t need
+locks )</p>
+
+<p><em>Aditya Sanghi</em></p>
+</li><li>
+<p><code>BestStandardsSupport</code> no longer duplicates
+<code>X-UA-Compatible</code> values on each request to prevent header size
+from blowing up.</p>
+
+<p><em>Edward Anderson</em></p>
+</li><li>
+<p>Fixed JSON params parsing regression for non-object JSON content.</p>
+
+<p><em>Dylan Smith</em></p>
+</li><li>
+<p>Prevent unnecessary asset compilation when using
+<code>javascript_include_tag</code> on files with non-standard extensions.</p>
+
+<p><em>Noah Silas</em></p>
+</li><li>
+<p>Fixes issue where duplicate assets can be required with sprockets.</p>
+
+<p><em>Jeremy Jackson</em></p>
+</li><li>
+<p>Bump <code>rack</code> dependency to 1.4.3, eliminate
+<code>Rack::File</code> headers deprecation warning.</p>
+
+<p><em>Sam Ruby + Carlos Antonio da Silva</em></p>
+</li><li>
+<p>Do not append second slash to <code>root_url</code> when using
+<code>trailing_slash: true</code></p>
+
+<p>Fix #8700. Backport #8701.</p>
+
+<p>Example:  # before  root_url # =&gt; <a
+href="http://test.host">test.host</a>//</p>
+
+<pre><code># after
+root_url # =&gt; http://test.host/
+</code></pre>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Fix a bug in <code>content_tag_for</code> that prevents it for work without
+a block.</p>
+
+<p><em>Jasl</em></p>
+</li><li>
+<p>Clear url helper methods when routes are reloaded by removing the methods
+explicitly rather than just clearing the module because it didn&#39;t work
+properly and could be the source of a memory leak.</p>
+
+<p><em>Andrew White</em></p>
+</li><li>
+<p>Fix a bug in <code>ActionDispatch::Request#raw_post</code> that caused
+<code>env['rack.input']</code> to be read but not rewound.</p>
+
+<p><em>Matt Venables</em></p>
+</li><li>
+<p>More descriptive error messages when calling <code>render :partial</code>
+with an invalid <code>:layout</code> argument.</p>
+
+<p>Fixes #8376.</p>
+
+<pre><code>render :partial =&gt; &#39;partial&#39;, :layout =&gt; true
+# results in ActionView::MissingTemplate: Missing partial /true
+</code></pre>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Accept symbols as <code>#send_data</code> :disposition value. [Backport
+#8329] <em>Elia Schito</em></p>
+</li><li>
+<p>Add i18n scope to <code>distance_of_time_in_words</code>. [Backport #7997]
+<em>Steve Klabnik</em></p>
+</li><li>
+<p>Fix side effect of <code>url_for</code> changing the
+<code>:controller</code> string option. [Backport #6003] Before:</p>
+
+<pre><code>controller = &#39;/projects&#39;
+url_for :controller =&gt; controller, :action =&gt; &#39;status&#39;
+
+puts controller #=&gt; &#39;projects&#39;
+</code></pre>
+
+<p>After</p>
+
+<pre><code>puts controller #=&gt; &#39;/projects&#39;
+</code></pre>
+
+<p><em>Nikita Beloglazov + Andrew White</em></p>
+</li><li>
+<p>Introduce
+<code>ActionView::Template::Handlers::ERB.escape_whitelist</code>. This is
+a list of mime types where template text is not html escaped by default. It
+prevents <code>Jack &amp; Joe</code> from rendering as <code>Jack &amp;amp;
+Joe</code> for the whitelisted mime types. The default whitelist contains
+text/plain. Fix #7976 [Backport #8235]</p>
+
+<p><em>Joost Baaij</em></p>
+</li><li>
+<p><code>BestStandardsSupport</code> middleware now appends it&#39;s
+<code>X-UA-Compatible</code> value to app&#39;s returned value if any. Fix
+#8086 [Backport #8093]</p>
+
+<p><em>Nikita Afanasenko</em></p>
+</li><li>
+<p>prevent double slashes in engine urls when
+<code>Rails.application.default_url_options[:trailing_slash] = true</code>
+is set Fix #7842</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Fix input name when <code>:multiple =&gt; true</code> and
+<code>:index</code> are set.</p>
+
+<p>Before:</p>
+
+<pre><code>check_box(&quot;post&quot;, &quot;comment_ids&quot;, { :multiple =&gt; true, :index =&gt; &quot;foo&quot; }, 1)
+#=&gt; &lt;input name=\&quot;post[foo][comment_ids]\&quot; type=\&quot;hidden\&quot; value=\&quot;0\&quot; /&gt;&lt;input id=\&quot;post_foo_comment_ids_1\&quot; name=\&quot;post[foo][comment_ids]\&quot; type=\&quot;checkbox\&quot; value=\&quot;1\&quot; /&gt;
+</code></pre>
+
+<p>After:</p>
+
+<pre><code>check_box(&quot;post&quot;, &quot;comment_ids&quot;, { :multiple =&gt; true, :index =&gt; &quot;foo&quot; }, 1)
+#=&gt; &lt;input name=\&quot;post[foo][comment_ids][]\&quot; type=\&quot;hidden\&quot; value=\&quot;0\&quot; /&gt;&lt;input id=\&quot;post_foo_comment_ids_1\&quot; name=\&quot;post[foo][comment_ids][]\&quot; type=\&quot;checkbox\&quot; value=\&quot;1\&quot; /&gt;
+</code></pre>
+
+<p>Fix #8108</p>
+
+<p><em>Daniel Fox, Grant Hutchins &amp; Trace Wax</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.12+%28Feb+11%2C+2013%29">Rails 3.2.12 (Feb 11, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.11+%28Jan+8%2C+2013%29">Rails 3.2.11 (Jan 8, 2013)</h2>
+<ul><li>
+<p>Strip nils from collections on JSON and XML posts. [CVE-2013-0155]</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.10+%28Jan+2%2C+2013%29">Rails 3.2.10 (Jan 2, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.9+%28Nov+12%2C+2012%29">Rails 3.2.9 (Nov 12, 2012)</h2>
+<ul><li>
+<p>Clear url helpers when reloading routes.</p>
+
+<p><em>Santiago Pastorino</em></p>
+</li><li>
+<p>Revert the shorthand routes scoped with <code>:module</code> option fix
+This added a regression since it is changing the URL mapping. This makes
+the stable release backward compatible.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Revert the <code>assert_template</code> fix to not pass with ever string
+that matches the template name. This added a regression since people were
+relying on this buggy behavior. This will introduce back #3849 but this
+stable release will be backward compatible. Fixes #8068.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Revert the rename of internal variable on <a
+href="../../classes/ActionController/TemplateAssertions.html">ActionController::TemplateAssertions</a>
+to prevent naming collisions. This added a regression related with
+shoulda-matchers, since it is expecting the <a
+href="https://github.com/thoughtbot/shoulda-matchers/blob/9e1188eea68c47d9a56ce6280e45027da6187ab1/lib/shoulda/matchers/action_controller/render_with_layout_matcher.rb#L74">instance
+variable @layouts</a>. This will introduce back #7459 but this stable
+release will be backward compatible. Fixes #8068.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Accept :remote as symbolic option for <code>link_to</code> helper.
+<em>Riley Lynch</em></p>
+</li><li>
+<p>Warn when the <code>:locals</code> option is passed to
+<code>assert_template</code> outside of a view test case Fix #3415</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Rename internal variables on <a
+href="../../classes/ActionController/TemplateAssertions.html">ActionController::TemplateAssertions</a>
+to prevent naming collisions. @partials, @templates and @layouts are now
+prefixed with an underscore. Fix #7459</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p><code>resource</code> and <code>resources</code> don&#39;t modify the
+passed options hash Fix #7777</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Precompiled assets include aliases from foo.js to foo/index.js and vice
+versa.</p>
+
+<pre><code># Precompiles phone-&lt;digest&gt;.css and aliases phone/index.css to phone.css.
+config.assets.precompile = [ &#39;phone.css&#39; ]
+
+# Precompiles phone/index-&lt;digest&gt;.css and aliases phone.css to phone/index.css.
+config.assets.precompile = [ &#39;phone/index.css&#39; ]
+
+# Both of these work with either precompile thanks to their aliases.
+&lt;%= stylesheet_link_tag &#39;phone&#39;, media: &#39;all&#39; %&gt;
+&lt;%= stylesheet_link_tag &#39;phone/index&#39;, media: &#39;all&#39; %&gt;</code></pre>
+
+<p><em>Jeremy Kemper</em></p>
+</li><li>
+<p><code>assert_template</code> is no more passing with what ever string that
+matches with the template name.</p>
+
+<p>Before when we have a template <code>/layout/hello.html.erb</code>,
+<code>assert_template</code> was passing with any string that matches. This
+behavior allowed false positive like:</p>
+
+<pre><code>assert_template &quot;layout&quot;
+assert_template &quot;out/hello&quot;</code></pre>
+
+<p>Now it only passes with:</p>
+
+<pre><code>assert_template &quot;layout/hello&quot;
+assert_template &quot;hello&quot;</code></pre>
+
+<p>Fixes #3849.</p>
+
+<p><em>Hugolnx</em></p>
+</li><li>
+<p>Handle <code>ActionDispatch::Http::UploadedFile</code> like
+<code>Rack::Test::UploadedFile</code>, don&#39;t call to_param on it. Since
+<code>Rack::Test::UploadedFile</code> isn&#39;t API compatible this is
+needed to test file uploads that rely on <code>tempfile</code> being
+available.</p>
+
+<p><em>Tim Vandecasteele</em></p>
+</li><li>
+<p>Respect <code>config.digest = false</code> for <code>asset_path</code></p>
+
+<p>Previously, the <code>asset_path</code> internals only respected the
+<code>:digest</code> option, but ignored the global config setting. This
+meant that <code>config.digest = false</code> could not be used in
+conjunction with <code>config.compile = false</code> this corrects the
+behavior.</p>
+
+<p><em>Peter Wagenet</em></p>
+</li><li>
+<p>Fix #7646, the log now displays the correct status code when an exception
+is raised.</p>
+
+<p><em>Yves Senn</em></p>
+</li><li>
+<p>Fix handling of date selects when using both disabled and discard options.
+Fixes #7431.</p>
+
+<p><em>Vasiliy Ermolovich</em></p>
+</li><li>
+<p>Fix select_tag when option_tags is nil. Fixes #7404.</p>
+
+<p><em>Sandeep Ravichandran</em></p>
+</li><li>
+<p><code>javascript_include_tag :all</code> will now not include
+<code>application.js</code> if the file does not exists. <em>Prem
+Sichanugrist</em></p>
+</li><li>
+<p>Support cookie jar options (e.g., domain :all) for all session stores.
+Fixes GH#3047, GH#2483.</p>
+
+<p><em>Ravil Bayramgalin</em></p>
+</li><li>
+<p>Performance Improvement to send_file: Avoid having to pass an open file
+handle as the response body. Rack::Sendfile will usually intercept the
+response and just uses the path directly, so no reason to open the file.
+This performance improvement also resolves an issue with jRuby encodings,
+and is the reason for the backport, see issue #6844.</p>
+
+<p><em>Jeremy Kemper &amp; Erich Menge</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.8+%28Aug+9%2C+2012%29">Rails 3.2.8 (Aug 9, 2012)</h2>
+<ul><li>
+<p>There is an XSS vulnerability in the strip_tags helper in Ruby on Rails,
+the helper doesn&#39;t correctly handle malformed html. As a result an
+attacker can execute arbitrary javascript through the use of specially
+crafted malformed html.</p>
+
+<p><em>Marek from Nethemba (<a href="www.nethemba.com">www.nethemba.com</a>)
+&amp; Santiago Pastorino</em></p>
+</li><li>
+<p>When a "prompt" value is supplied to the <code>select_tag</code> helper,
+the "prompt" value is not escaped. If untrusted data is not escaped, and is
+supplied as the prompt value, there is a potential for XSS attacks.
+Vulnerable code will look something like this: select_tag("name", options,
+:prompt =&gt; UNTRUSTED_INPUT)</p>
+
+<p><em>Santiago Pastorino</em></p>
+</li><li>
+<p>Reverted the deprecation of <code>:confirm</code>. <em>Rafael Mendonça
+França</em></p>
+</li><li>
+<p>Reverted the deprecation of <code>:disable_with</code>. <em>Rafael Mendonça
+França</em></p>
+</li><li>
+<p>Reverted the deprecation of <code>:mouseover</code> option to
+<code>image_tag</code>. <em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Reverted the deprecation of <code>button_to_function</code> and
+<code>link_to_function</code> helpers.</p>
+
+<p><em>Rafael Mendonça França</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.7+%28Jul+26%2C+2012%29">Rails 3.2.7 (Jul 26, 2012)</h2>
+<ul><li>
+<p>Do not convert digest auth strings to symbols. CVE-2012-3424</p>
+</li><li>
+<p>Bump Journey requirements to 1.0.4</p>
+</li><li>
+<p>Add support for optional root segments containing slashes</p>
+</li><li>
+<p>Fixed bug creating invalid <a href="../../classes/HTML.html">HTML</a> in
+select options</p>
+</li><li>
+<p>Show in log correct wrapped keys</p>
+</li><li>
+<p>Fix NumberHelper options wrapping to prevent verbatim blocks being rendered
+instead of line continuations.</p>
+</li><li>
+<p><a
+href="../../classes/ActionController/Metal.html">ActionController::Metal</a>
+doesn&#39;t have logger method, check it and then delegate</p>
+</li><li>
+<p><a
+href="../../classes/ActionController/Caching.html">ActionController::Caching</a>
+depends on RackDelegation and <a
+href="../../classes/AbstractController/Callbacks.html">AbstractController::Callbacks</a></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.6+%28Jun+12%2C+2012%29">Rails 3.2.6 (Jun 12, 2012)</h2>
+<ul><li>
+<p>nil is removed from array parameter values</p>
+
+<p>CVE-2012-2694</p>
+</li><li>
+<p>Deprecate <code>:confirm</code> in favor of <code>&#39;:data =&gt; {
+:confirm =&gt; &quot;Text&quot; }&#39;</code> option for
+<code>button_to</code>, <code>button_tag</code>,
+<code>image_submit_tag</code>, <code>link_to</code> and
+<code>submit_tag</code> helpers.</p>
+
+<p><em>Carlos Galdino</em></p>
+</li><li>
+<p>Allow to use mounted_helpers (helpers for accessing mounted engines) in <a
+href="../../classes/ActionView/TestCase.html">ActionView::TestCase</a>.
+<em>Piotr Sarnacki</em></p>
+</li><li>
+<p>Include mounted_helpers (helpers for accessing mounted engines) in <a
+href="../../classes/ActionDispatch/IntegrationTest.html">ActionDispatch::IntegrationTest</a>
+by default. <em>Piotr Sarnacki</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.5+%28Jun+1%2C+2012%29">Rails 3.2.5 (Jun 1, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.4+%28May+31%2C+2012%29">Rails 3.2.4 (May 31, 2012)</h2>
+<ul><li>
+<p>Deprecate old APIs for highlight, excerpt and word_wrap <em>Jeremy
+Walker</em></p>
+</li><li>
+<p>Deprecate <code>:disable_with</code> in favor of
+<code>&#39;data-disable-with&#39;</code> option for <code>button_to</code>,
+<code>button_tag</code> and <code>submit_tag</code> helpers.</p>
+
+<p><em>Carlos Galdino + Rafael Mendonça França</em></p>
+</li><li>
+<p>Deprecate <code>:mouseover</code> option for <code>image_tag</code> helper.
+<em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Deprecate <code>button_to_function</code> and <code>link_to_function</code>
+helpers. <em>Rafael Mendonça França</em></p>
+</li><li>
+<p>Don&#39;t break Haml with textarea newline fix. GH #393, #4000, #5190,
+#5191</p>
+</li><li>
+<p>Fix options handling on labels. GH #2492, #5614</p>
+</li><li>
+<p>Added config.action_view.embed_authenticity_token_in_remote_forms to deal
+with regression from 16ee611fa</p>
+</li><li>
+<p>Set rendered_format when doing render :inline. GH #5632</p>
+</li><li>
+<p>Fix the redirect when it receive blocks with arity of 1. Closes #5677</p>
+</li><li>
+<p>Strip [nil] from parameters hash. Thanks to Ben Murphy for reporting this!
+CVE-2012-2660</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.3+%28March+30%2C+2012%29">Rails 3.2.3 (March 30, 2012)</h2>
+<ul><li>
+<p>Allow to lazy load <code>default_form_builder</code> by passing a
+<code>String</code> instead of a constant. <em>Piotr Sarnacki</em></p>
+</li><li>
+<p>Fix #5632, render :inline set the proper rendered format. <em>Santiago
+Pastorino</em></p>
+</li><li>
+<p>Fix textarea rendering when using plugins like HAML. Such plugins encode
+the first newline character in the content. This issue was introduced in <a
+href="https://github.com/rails/rails/pull/5191">github.com/rails/rails/pull/5191</a>
+<em>James Coleman</em></p>
+</li><li>
+<p>Remove the leading n added by textarea on assert_select. <em>Santiago
+Pastorino</em></p>
+</li><li>
+<p>Add
+<code>config.action_view.embed_authenticity_token_in_remote_forms</code>
+(defaults to true) which allows to set if authenticity token will be
+included by default in remote forms. If you change it to false, you can
+still force authenticity token by passing <code>:authenticity_token =&gt;
+true</code> in form options <em>Piotr Sarnacki</em></p>
+</li><li>
+<p>Do not include the authenticity token in forms where remote: true as ajax
+forms use the meta-tag value <em>DHH</em></p>
+</li><li>
+<p>Turn off verbose mode of rack-cache, we still have X-Rack-Cache to check
+that info. Closes #5245. <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Fix #5238, rendered_format is not set when template is not rendered.
+<em>Piotr Sarnacki</em></p>
+</li><li>
+<p>Upgrade rack-cache to 1.2. <em>José Valim</em></p>
+</li><li>
+<p><a
+href="../../classes/ActionController/SessionManagement.html">ActionController::SessionManagement</a>
+is deprecated. <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Since the router holds references to many parts of the system like engines,
+controllers and the application itself, inspecting the route set can
+actually be really slow, therefore we default alias inspect to to_s.
+<em>José Valim</em></p>
+</li><li>
+<p>Add a new line after the textarea opening tag. Closes #393 <em>Rafael
+Mendonça França</em></p>
+</li><li>
+<p>Always pass a respond block from to responder. We should let the responder
+to decide what to do with the given overridden response block, and not
+short circuit it. <em>sikachu</em></p>
+</li><li>
+<p>Fixes layout rendering regression from 3.2.2. <em>José Valim</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.2+%28March+1%2C+2012%29">Rails 3.2.2 (March 1, 2012)</h2>
+<ul><li>
+<p>Format lookup for partials is derived from the format in which the template
+is being rendered. Closes #5025 part 2 <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Use the right format when a partial is missing. Closes #5025. <em>Santiago
+Pastorino</em></p>
+</li><li>
+<p>Default responder will now always use your overridden block in
+<code>respond_with</code> to render your response. <em>Prem
+Sichanugrist</em></p>
+</li><li>
+<p>check_box helper with :disabled =&gt; true will generate a disabled hidden
+field to conform with the <a href="../../classes/HTML.html">HTML</a>
+convention where disabled fields are not submitted with the form. This is a
+behavior change, previously the hidden tag had a value of the disabled
+checkbox. <em>Tadas Tamosauskas</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.1+%28January+26%2C+2012%29">Rails 3.2.1 (January 26, 2012)</h2>
+<ul><li>
+<p>Documentation improvements.</p>
+</li><li>
+<p>Allow <code>form.select</code> to accept ranges (regression). <em>Jeremy
+Walker</em></p>
+</li><li>
+<p><code>datetime_select</code> works with -/+ infinity dates. <em>Joe Van
+Dyk</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.0+%28January+20%2C+2012%29">Rails 3.2.0 (January 20, 2012)</h2>
+<ul><li>
+<p>Setting config.assets.logger to false turn off Sprockets logger
+<em>Guillermo Iguaran</em></p>
+</li><li>
+<p>Add <code>config.action_dispatch.default_charset</code> to configure
+default charset for <a
+href="../../classes/ActionDispatch/Response.html">ActionDispatch::Response</a>.
+<em>Carlos Antonio da Silva</em></p>
+</li><li>
+<p>Deprecate setting default charset at controller level, use the new
+<code>config.action_dispatch.default_charset</code> instead. <em>Carlos
+Antonio da Silva</em></p>
+</li><li>
+<p>Deprecate ActionController::UnknownAction in favour of <a
+href="../../classes/AbstractController/ActionNotFound.html">AbstractController::ActionNotFound</a>.
+<em>Carlos Antonio da Silva</em></p>
+</li><li>
+<p>Deprecate ActionController::DoubleRenderError in favour of <a
+href="../../classes/AbstractController/DoubleRenderError.html">AbstractController::DoubleRenderError</a>.
+<em>Carlos Antonio da Silva</em></p>
+</li><li>
+<p>Deprecate method_missing handling for not found actions, use action_missing
+instead. <em>Carlos Antonio da Silva</em></p>
+</li><li>
+<p>Deprecate ActionController#rescue_action,
+ActionController#initialize_template_class, and
+ActionController#assign_shortcuts. These methods were not being used
+internally anymore and are going to be removed in Rails 4. <em>Carlos
+Antonio da Silva</em></p>
+</li><li>
+<p>Add config.assets.logger to configure Sprockets logger <em>Rafael
+França</em></p>
+</li><li>
+<p>Use a BodyProxy instead of including a <a
+href="../../classes/Module.html">Module</a> that responds to close. Closes
+#4441 if Active Record is disabled assets are delivered correctly
+<em>Santiago Pastorino</em></p>
+</li><li>
+<p>Rails initialization with initialize_on_precompile = false should set
+assets_dir <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Add font_path helper method <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Depends on rack ~&gt; 1.4.0 <em>Santiago Pastorino</em></p>
+</li><li>
+<p>Add :gzip option to <code>caches_page</code>. The default option can be
+configured globally using <code>page_cache_compression</code> <em>Andrey
+Sitnik</em></p>
+</li><li>
+<p>The ShowExceptions middleware now accepts a exceptions application that is
+responsible to render an exception when the application fails. The
+application is invoked with a copy of the exception in
+<code>env["action_dispatch.exception"]</code> and with the PATH_INFO
+rewritten to the status code. <em>José Valim</em></p>
+</li><li>
+<p>Add <code>button_tag</code> support to <a
+href="../../classes/ActionView/Helpers/FormBuilder.html">ActionView::Helpers::FormBuilder</a>.</p>
+
+<p>This support mimics the default behavior of <code>submit_tag</code>.</p>
+
+<p>Example:</p>
+
+<pre><code>&lt;%= form_for @post do |f| %&gt;
+  &lt;%= f.button %&gt;
+&lt;% end %&gt;</code></pre>
+</li><li>
+<p>Date helpers accept a new option, <code>:use_two_digit_numbers =
+true</code>, that renders select boxes for months and days with a leading
+zero without changing the respective values. For example, this is useful
+for displaying ISO8601-style dates such as &#39;2011-08-01&#39;.
+<em>Lennart Fridén and Kim Persson</em></p>
+</li><li>
+<p>Make <a
+href="../../classes/ActiveSupport/Benchmarkable.html">ActiveSupport::Benchmarkable</a>
+a default module for <a
+href="../../classes/ActionController/Base.html">ActionController::Base</a>,
+so the benchmark method is once again available in the controller context
+like it used to be <em>DHH</em></p>
+</li><li>
+<p>Deprecated implied layout lookup in controllers whose parent had a explicit
+layout set:</p>
+
+<pre><code>class ApplicationController
+  layout &quot;application&quot;
+end
+
+class PostsController &lt; ApplicationController
+end
+</code></pre>
+
+<p>In the example above, Posts controller will no longer automatically look up
+for a posts layout.</p>
+
+<p>If you need this functionality you could either remove <code>layout
+&quot;application&quot;</code> from ApplicationController or explicitly set
+it to nil in PostsController. <em>José Valim</em></p>
+</li><li>
+<p>Rails will now use your default layout (such as “layouts/application”) when
+you specify a layout with <code>:only</code> and <code>:except</code>
+condition, and those conditions fail. <em>Prem Sichanugrist</em></p>
+
+<p>For example, consider this snippet:</p>
+
+<pre><code>class CarsController
+  layout &#39;single_car&#39;, :only =&gt; :show
+end
+</code></pre>
+
+<p>Rails will use &#39;layouts/single_car&#39; when a request comes in
+<code>:show</code> action, and use &#39;layouts/application&#39; (or
+&#39;layouts/cars&#39;, if exists) when a request comes in for any other
+actions.</p>
+</li><li>
+<p>form_for with <code>:as</code> option uses "#{action}_#{as}" as css class
+and id:</p>
+
+<p>Before:</p>
+
+<pre><code>form_for(@user, :as =&gt; &#39;client&#39;) # =&gt; &quot;&lt;form class=&quot;client_new&quot;&gt;...&quot;
+</code></pre>
+
+<p>Now:</p>
+
+<pre><code>form_for(@user, :as =&gt; &#39;client&#39;) # =&gt; &quot;&lt;form class=&quot;new_client&quot;&gt;...&quot;
+</code></pre>
+
+<p><em>Vasiliy Ermolovich</em></p>
+</li><li>
+<p>Allow rescue responses to be configured through a railtie as in
+<code>config.action_dispatch.rescue_responses</code>. Please look at <a
+href="../../classes/ActiveRecord/Railtie.html">ActiveRecord::Railtie</a>
+for an example <em>José Valim</em></p>
+</li><li>
+<p>Allow fresh_when/stale? to take a record instead of an options hash
+<em>DHH</em></p>
+</li><li>
+<p>Assets should use the request protocol by default or default to relative if
+no request is available <em>Jonathan del Strother</em></p>
+</li><li>
+<p>Log “Filter chain halted as CALLBACKNAME rendered or redirected” every time
+a before callback halts <em>José Valim</em></p>
+</li><li>
+<p>You can provide a namespace for your form to ensure uniqueness of id
+attributes on form elements. The namespace attribute will be prefixed with
+underscore on the generate <a href="../../classes/HTML.html">HTML</a> id.
+<em>Vasiliy Ermolovich</em></p>
+
+<p>Example:</p>
+
+<pre><code>&lt;%= form_for(@offer, :namespace =&gt; &#39;namespace&#39;) do |f| %&gt;
+  &lt;%= f.label :version, &#39;Version&#39; %&gt;:
+  &lt;%= f.text_field :version %&gt;
+&lt;% end %&gt;</code></pre>
+</li><li>
+<p>Refactor <a
+href="../../classes/ActionDispatch/ShowExceptions.html">ActionDispatch::ShowExceptions</a>.
+The controller is responsible for choosing to show exceptions when
+<code>consider_all_requests_local</code> is false.</p>
+
+<p>It&#39;s possible to override <code>show_detailed_exceptions?</code> in
+controllers to specify which requests should provide debugging information
+on errors. The default value is now false, meaning local requests in
+production will no longer show the detailed exceptions page unless
+<code>show_detailed_exceptions?</code> is overridden and set to
+<code>request.local?</code>.</p>
+</li><li>
+<p>Responders now return 204 No Content for API requests without a response
+body (as in the new scaffold) <em>José Valim</em></p>
+</li><li>
+<p>Added <a
+href="../../classes/ActionDispatch/RequestId.html">ActionDispatch::RequestId</a>
+middleware that&#39;ll make a unique X-Request-Id header available to the
+response and enables the <a
+href="../../classes/ActionDispatch/Request.html#method-i-uuid">ActionDispatch::Request#uuid</a>
+method. This makes it easy to trace requests from end-to-end in the stack
+and to identify individual requests in mixed logs like Syslog <em>DHH</em></p>
+</li><li>
+<p>Limit the number of options for select_year to 1000.</p>
+
+<p>Pass the :max_years_allowed option to set your own limit.</p>
+
+<p><em>Libo Cannici</em></p>
+</li><li>
+<p>Passing formats or handlers to render :template and friends is deprecated.
+For example: <em>Nick Sutterer &amp; José Valim</em></p>
+
+<pre><code>render :template =&gt; &quot;foo.html.erb&quot;
+</code></pre>
+
+<p>Instead, you can provide :handlers and :formats directly as option:  render
+:template =&gt; “foo”, :formats =&gt; [:html, :js], :handlers =&gt; :erb</p>
+</li><li>
+<p>Changed log level of warning for missing CSRF token from :debug to :warn.
+<em>Mike Dillon</em></p>
+</li><li>
+<p>content_tag_for and div_for can now take the collection of records. It will
+also yield the record as the first argument if you set a receiving argument
+in your block <em>Prem Sichanugrist</em></p>
+
+<p>So instead of having to do this:</p>
+
+<pre><code>@items.each do |item|
+  content_tag_for(:li, item) do
+     Title: &lt;%= item.title %&gt;
+  end
+end</code></pre>
+
+<p>You can now do this:</p>
+
+<pre><code>content_tag_for(:li, @items) do |item|
+  Title: &lt;%= item.title %&gt;
+end</code></pre>
+</li><li>
+<p>send_file now guess the mime type <em>Esad Hajdarevic</em></p>
+</li><li>
+<p>Mime type entries for PDF, ZIP and other formats were added <em>Esad
+Hajdarevic</em></p>
+</li><li>
+<p>Generate hidden input before select with :multiple option set to true. This
+is useful when you rely on the fact that when no options is set, the state
+of select will be sent to rails application. Without hidden field nothing
+is sent according to <a href="../../classes/HTML.html">HTML</a> spec
+<em>Bogdan Gusiev</em></p>
+</li><li>
+<p>Refactor <a
+href="../../classes/ActionController/TestCase.html">ActionController::TestCase</a>
+cookies <em>Andrew White</em></p>
+
+<p>Assigning cookies for test cases should now use cookies[], e.g:</p>
+
+<pre><code>cookies[:email] = &#39;user@example.com&#39;
+get :index
+assert_equal &#39;user@example.com&#39;, cookies[:email]</code></pre>
+
+<p>To clear the cookies, use clear, e.g:</p>
+
+<pre><code>cookies.clear
+get :index
+assert_nil cookies[:email]</code></pre>
+
+<p>We now no longer write out HTTP_COOKIE and the cookie jar is persistent
+between requests so if you need to manipulate the environment for your test
+you need to do it before the cookie jar is created.</p>
+</li><li>
+<p><a
+href="../../classes/ActionController/ParamsWrapper.html">ActionController::ParamsWrapper</a>
+on ActiveRecord models now only wrap attr_accessible attributes if they
+were set, if not, only the attributes returned by the class method
+attribute_names will be wrapped. This fixes the wrapping of nested
+attributes by adding them to attr_accessible.</p>
+</li></ul>
+
+<p>Please check <a
+href="https://github.com/rails/rails/blob/3-1-stable/actionpack/CHANGELOG.md">3-1-stable</a>
+for previous changes.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

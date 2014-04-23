@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ActionDispatch::Session::AbstractStore</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../../css/github.css" type="text/css" media="screen" />
+<script src="../../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            ActionDispatch::Session::AbstractStore 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../../files/actionpack/lib/action_dispatch/middleware/session/abstract_store_rb.html">actionpack/lib/action_dispatch/middleware/session/abstract_store.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="AbstractStore/OptionsHash.html">ActionDispatch::Session::AbstractStore::OptionsHash</a>
+        </li>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="AbstractStore/SessionHash.html">ActionDispatch::Session::AbstractStore::SessionHash</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-call">call</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-current_session_id">current_session_id</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-destroy">destroy</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ensure_session_key-21">ensure_session_key!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exists-3F">exists?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-extract_session_id">extract_session_id</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>G</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-generate_sid">generate_sid</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-get_session">get_session</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-load_session">load_session</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>N</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-new">new</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-prepare-21">prepare!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-set_cookie">set_cookie</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-set_session">set_session</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-stale_session_check-21">stale_session_check!</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">ENV_SESSION_KEY</td>
+            <td>=</td>
+            <td class="attr-value">&#39;rack.session&#39;.freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">ENV_SESSION_OPTIONS_KEY</td>
+            <td>=</td>
+            <td class="attr-value">&#39;rack.session.options&#39;.freeze</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+          <tr valign='top'>
+            <td class="attr-name">DEFAULT_OPTIONS</td>
+            <td>=</td>
+            <td class="attr-value">{
+:key =&gt;           &#39;_session_id&#39;,
+:path =&gt;          &#39;/&#39;,
+:domain =&gt;        nil,
+:expire_after =&gt;  nil,
+:secure =&gt;        false,
+:httponly =&gt;      true,
+:cookie_only =&gt;   true
+}</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-new">
+            
+              <b>new</b>(app, options = {})
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-c-new" name="method-c-new" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-new_source')" id="l_method-c-new_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L139" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-new_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">initialize</span>(<span class="ruby-identifier">app</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-ivar">@app</span> = <span class="ruby-identifier">app</span>
+  <span class="ruby-ivar">@default_options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+  <span class="ruby-ivar">@key</span> = <span class="ruby-ivar">@default_options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:key</span>).<span class="ruby-identifier">freeze</span>
+  <span class="ruby-ivar">@cookie_only</span> = <span class="ruby-ivar">@default_options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:cookie_only</span>)
+  <span class="ruby-identifier">ensure_session_key!</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-call">
+            
+              <b>call</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-call" name="method-i-call" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-call_source')" id="l_method-i-call_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L147" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-call_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">call</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">prepare!</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">response</span> = <span class="ruby-ivar">@app</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+
+  <span class="ruby-identifier">session_data</span> = <span class="ruby-identifier">env</span>[<span class="ruby-constant">ENV_SESSION_KEY</span>]
+  <span class="ruby-identifier">options</span> = <span class="ruby-identifier">env</span>[<span class="ruby-constant">ENV_SESSION_OPTIONS_KEY</span>]
+
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">AbstractStore</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionHash</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">loaded?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:expire_after</span>]
+    <span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">send</span>(<span class="ruby-value">:load!</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">AbstractStore</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionHash</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">loaded?</span>
+
+    <span class="ruby-identifier">sid</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:id</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">generate_sid</span>
+    <span class="ruby-identifier">session_data</span> = <span class="ruby-identifier">session_data</span>.<span class="ruby-identifier">to_hash</span>
+
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">set_session</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">sid</span>, <span class="ruby-identifier">session_data</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">response</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">value</span>
+
+    <span class="ruby-identifier">cookie</span> = { <span class="ruby-value">:value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span> }
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:expire_after</span>].<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">cookie</span>[<span class="ruby-value">:expires</span>] = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:expire_after</span>)
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">request</span> = <span class="ruby-constant">ActionDispatch</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env</span>)
+    <span class="ruby-identifier">set_cookie</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">cookie</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">options</span>))
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">response</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+              
+      <div class="sectiontitle">Instance Private methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-current_session_id">
+            
+              <b>current_session_id</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-current_session_id" name="method-i-current_session_id" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-current_session_id_source')" id="l_method-i-current_session_id_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L209" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-current_session_id_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">current_session_id</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">env</span>[<span class="ruby-constant">ENV_SESSION_OPTIONS_KEY</span>][<span class="ruby-value">:id</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-destroy">
+            
+              <b>destroy</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-destroy" name="method-i-destroy" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-destroy_source')" id="l_method-i-destroy_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L251" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-destroy_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 251</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">destroy</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;#destroy needs to be implemented.&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ensure_session_key-21">
+            
+              <b>ensure_session_key!</b>()
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-ensure_session_key-21" name="method-i-ensure_session_key-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ensure_session_key-21_source')" id="l_method-i-ensure_session_key-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L213" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-ensure_session_key-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 213</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ensure_session_key!</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@key</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;A key is required to write a &#39;</span> <span class="ruby-operator">+</span>
+      <span class="ruby-string">&#39;cookie containing the session data. Use &#39;</span> <span class="ruby-operator">+</span>
+      <span class="ruby-string">&#39;config.session_store SESSION_STORE, { :key =&gt; &#39;</span> <span class="ruby-operator">+</span>
+      <span class="ruby-string">&#39;&quot;_myapp_session&quot; } in config/application.rb&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exists-3F">
+            
+              <b>exists?</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-exists-3F" name="method-i-exists-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exists-3F_source')" id="l_method-i-exists-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L238" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-exists-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 238</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">exists?</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">current_session_id</span>(<span class="ruby-identifier">env</span>).<span class="ruby-identifier">present?</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-extract_session_id">
+            
+              <b>extract_session_id</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-extract_session_id" name="method-i-extract_session_id" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-extract_session_id_source')" id="l_method-i-extract_session_id_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L200" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-extract_session_id_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 200</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">extract_session_id</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">stale_session_check!</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">request</span> = <span class="ruby-constant">ActionDispatch</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env</span>)
+    <span class="ruby-identifier">sid</span> = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">cookies</span>[<span class="ruby-ivar">@key</span>]
+    <span class="ruby-identifier">sid</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">params</span>[<span class="ruby-ivar">@key</span>] <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@cookie_only</span>
+    <span class="ruby-identifier">sid</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-generate_sid">
+            
+              <b>generate_sid</b>()
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-generate_sid" name="method-i-generate_sid" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-generate_sid_source')" id="l_method-i-generate_sid_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L182" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-generate_sid_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 182</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">generate_sid</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">SecureRandom</span>.<span class="ruby-identifier">hex</span>(<span class="ruby-number">16</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-get_session">
+            
+              <b>get_session</b>(env, sid)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-get_session" name="method-i-get_session" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-get_session_source')" id="l_method-i-get_session_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L242" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-get_session_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 242</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">get_session</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">sid</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;#get_session needs to be implemented.&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-load_session">
+            
+              <b>load_session</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-load_session" name="method-i-load_session" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-load_session_source')" id="l_method-i-load_session_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L192" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-load_session_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">load_session</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">stale_session_check!</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">sid</span> = <span class="ruby-identifier">current_session_id</span>(<span class="ruby-identifier">env</span>)
+    <span class="ruby-identifier">sid</span>, <span class="ruby-identifier">session</span> = <span class="ruby-identifier">get_session</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">sid</span>)
+    [<span class="ruby-identifier">sid</span>, <span class="ruby-identifier">session</span>]
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-prepare-21">
+            
+              <b>prepare!</b>(env)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-prepare-21" name="method-i-prepare-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-prepare-21_source')" id="l_method-i-prepare-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L177" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-prepare-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">prepare!</span>(<span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">env</span>[<span class="ruby-constant">ENV_SESSION_KEY</span>] = <span class="ruby-constant">SessionHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">env</span>)
+  <span class="ruby-identifier">env</span>[<span class="ruby-constant">ENV_SESSION_OPTIONS_KEY</span>] = <span class="ruby-constant">OptionsHash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">env</span>, <span class="ruby-ivar">@default_options</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-set_cookie">
+            
+              <b>set_cookie</b>(request, options)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-set_cookie" name="method-i-set_cookie" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-set_cookie_source')" id="l_method-i-set_cookie_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L186" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-set_cookie_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">set_cookie</span>(<span class="ruby-identifier">request</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">request</span>.<span class="ruby-identifier">cookie_jar</span>[<span class="ruby-ivar">@key</span>] <span class="ruby-operator">!=</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:value</span>] <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:expires</span>].<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">request</span>.<span class="ruby-identifier">cookie_jar</span>[<span class="ruby-ivar">@key</span>] = <span class="ruby-identifier">options</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-set_session">
+            
+              <b>set_session</b>(env, sid, session_data)
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-set_session" name="method-i-set_session" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-set_session_source')" id="l_method-i-set_session_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L246" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-set_session_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 246</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">set_session</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">sid</span>, <span class="ruby-identifier">session_data</span>)
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;#set_session needs to be implemented and should return &#39;</span> <span class="ruby-operator">&lt;&lt;</span>
+    <span class="ruby-string">&#39;the value to be stored in the cookie (usually the sid)&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-stale_session_check-21">
+            
+              <b>stale_session_check!</b>()
+            
+            <a href="../../../classes/ActionDispatch/Session/AbstractStore.html#method-i-stale_session_check-21" name="method-i-stale_session_check-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-stale_session_check-21_source')" id="l_method-i-stale_session_check-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/0f0bdaea7bf46c316ee63a9a66c8668354f142f2/actionpack/lib/action_dispatch/middleware/session/abstract_store.rb#L222" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-stale_session_check-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File actionpack/lib/action_dispatch/middleware/session/abstract_store.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">stale_session_check!</span>
+  <span class="ruby-keyword">yield</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">argument_error</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">argument_error</span>.<span class="ruby-identifier">message</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r{undefined class/module ([\w:]*\w)}</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-comment"># Note that the regexp does not allow $1 to end with a &#39;:&#39;</span>
+      <span class="ruby-node">$1</span>.<span class="ruby-identifier">constantize</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">const_error</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActionDispatch</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">SessionRestoreError</span>, <span class="ruby-node">&quot;Session contains objects whose class definition isn&#39;t available.\nRemember to require the classes for all objects kept in the session.\n(Original exception: #{const_error.message} [#{const_error.class}])\n&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">retry</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>CHANGELOG.md</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            CHANGELOG.md
+        </h1>
+        <ul class="files">
+            <li>activemodel/CHANGELOG.md</li>
+            <li>Last modified: 2014-04-18 18:03:28 +0200</li>
+        </ul>
+    </div>
+
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<h2 id="label-Rails+3.2.15+%28Oct+16%2C+2013%29">Rails 3.2.15 (Oct 16, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.14+%28Jul+22%2C+2013%29">Rails 3.2.14 (Jul 22, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.13+%28Mar+18%2C+2013%29">Rails 3.2.13 (Mar 18, 2013)</h2>
+<ul><li>
+<p>Specify type of singular association during serialization <em>Steve
+Klabnik</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.12+%28Feb+11%2C+2013%29">Rails 3.2.12 (Feb 11, 2013)</h2>
+<ul><li>
+<p>Fix issue with <code>attr_protected</code> where malformed input could
+circumvent protection. CVE-2013-0276</p>
+
+<p><em>joernchen</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.11+%28Jan+8%2C+2013%29">Rails 3.2.11 (Jan 8, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.10+%28Jan+2%2C+2013%29">Rails 3.2.10 (Jan 2, 2013)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.9+%28Nov+12%2C+2012%29">Rails 3.2.9 (Nov 12, 2012)</h2>
+<ul><li>
+<p>Due to a change in builder, nil values and empty strings now generates
+closed tags, so instead of this:</p>
+
+<pre><code>&lt;pseudonyms nil=\&quot;true\&quot;&gt;&lt;/pseudonyms&gt;</code></pre>
+
+<p>It generates this:</p>
+
+<pre><code>&lt;pseudonyms nil=\&quot;true\&quot;/&gt;</code></pre>
+
+<p><em>Carlos Antonio da Silva</em></p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.8+%28Aug+9%2C+2012%29">Rails 3.2.8 (Aug 9, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.7+%28Jul+26%2C+2012%29">Rails 3.2.7 (Jul 26, 2012)</h2>
+<ul><li>
+<p><code>validates_inclusion_of</code> and <code>validates_exclusion_of</code>
+now accept <code>:within</code> option as alias of <code>:in</code> as
+documented.</p>
+</li><li>
+<p>Fix the the backport of the object dup with the ruby 1.9.3p194.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.6+%28Jun+12%2C+2012%29">Rails 3.2.6 (Jun 12, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.4+%28May+31%2C+2012%29">Rails 3.2.4 (May 31, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.3+%28March+30%2C+2012%29">Rails 3.2.3 (March 30, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.2+%28March+1%2C+2012%29">Rails 3.2.2 (March 1, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.1+%28January+26%2C+2012%29">Rails 3.2.1 (January 26, 2012)</h2>
+<ul><li>
+<p>No changes.</p>
+</li></ul>
+
+<h2 id="label-Rails+3.2.0+%28January+20%2C+2012%29">Rails 3.2.0 (January 20, 2012)</h2>
+<ul><li>
+<p>Deprecated <code>define_attr_method</code> in
+<code>ActiveModel::AttributeMethods</code>, because this only existed to
+support methods like <code>set_table_name</code> in Active Record, which
+are themselves being deprecated. <em>Jon Leighton</em></p>
+</li><li>
+<p>Add <a
+href="../../classes/ActiveModel/Errors.html#method-i-added-3F">ActiveModel::Errors#added?</a>
+to check if a specific error has been added <em>Martin Svalin</em></p>
+</li><li>
+<p>Add ability to define strict validation(with :strict =&gt; true option)
+that always raises exception when fails <em>Bogdan Gusiev</em></p>
+</li><li>
+<p>Deprecate "Model.model_name.partial_path" in favor of
+"model.to_partial_path" <em>Grant Hutchins, Peter Jaros</em></p>
+</li><li>
+<p>Provide mass_assignment_sanitizer as an easy API to replace the sanitizer
+behavior. Also support both :logger (default) and :strict sanitizer
+behavior <em>Bogdan Gusiev</em></p>
+</li></ul>
+
+<p>Please check <a
+href="https://github.com/rails/rails/blob/3-1-stable/activemodel/CHANGELOG.md">3-1-stable</a>
+for previous changes.</p>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+              </div>
+
+    </div>
+  </body>
+</html>

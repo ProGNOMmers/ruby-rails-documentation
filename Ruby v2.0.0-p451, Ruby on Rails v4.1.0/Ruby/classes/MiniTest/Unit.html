@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>MiniTest::Unit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../../css/github.css" type="text/css" media="screen" />
+<script src="../../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+        <h1>
+            <span class="type">Class</span> 
+            MiniTest::Unit 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="../Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../../files/__/ruby/lib/minitest/benchmark_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/benchmark.rb</a></li>
+            
+            <li><a href="../../files/__/ruby/lib/minitest/unit_rb.html">/home/mdesantis/Sviluppo/ruby/lib/minitest/unit.rb</a></li>
+            
+            <li><a href="../../files/__/ruby/lib/test/unit_rb.html">/home/mdesantis/Sviluppo/ruby/lib/test/unit.rb</a></li>
+            
+            <li><a href="../../files/__/ruby/lib/test/unit/parallel_rb.html">/home/mdesantis/Sviluppo/ruby/lib/test/unit/parallel.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+
+
+  
+
+
+  
+  
+
+
+  
+    <!-- Namespace -->
+    <div class="sectiontitle">Namespace</div>
+    <ul>
+      
+        <li>
+          <span class="type">CLASS</span>
+          <a href="Unit/TestCase.html">MiniTest::Unit::TestCase</a>
+        </li>
+      
+    </ul>
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>#</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-_run">_run</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_run_anything">_run_anything</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_run_suite">_run_suite</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-_run_suites">_run_suites</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-after_tests">after_tests</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-autorun">autorun</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-options">options</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-out">out</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-output">output</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-output">output</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-output-3D">output=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-c-plugins">plugins</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-process_args">process_args</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-puke">puke</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>R</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-run">run</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-run_tests">run_tests</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-runner">runner</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-c-runner-3D">runner=</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-status">status</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+      <!-- Section constants -->
+      <div class="sectiontitle">Constants</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class="attr-name">VERSION</td>
+            <td>=</td>
+            <td class="attr-value">&quot;2.5.1&quot;</td>
+          </tr>
+          
+            <tr valign='top'>
+              <td>&nbsp;</td>
+              <td colspan="2" class="attr-desc"></td>
+            </tr>
+          
+        
+      </table>
+    
+
+
+    
+      <!-- Section attributes -->
+      <div class="sectiontitle">Attributes</div>
+      <table border='0' cellpadding='5'>
+        
+          <tr valign='top'>
+            <td class='attr-rw'>
+              [RW]
+            </td>
+            <td class='attr-name'>runner</td>
+            <td class='attr-desc'></td>
+          </tr>
+        
+      </table>
+    
+
+
+    <!-- Methods -->
+    
+      <div class="sectiontitle">Class Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-c-after_tests">
+            
+              <b>after_tests</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-after_tests" name="method-c-after_tests" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>A simple hook allowing you to run a block of code after the tests are done.
+Eg:</p>
+
+<pre><code>MiniTest::Unit.after_tests { p $debugging_info }</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-after_tests_source')" id="l_method-c-after_tests_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L645" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-after_tests_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 645</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">after_tests</span>
+  <span class="ruby-identifier">at_exit</span> { <span class="ruby-identifier">at_exit</span> { <span class="ruby-keyword">yield</span> } }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-autorun">
+            
+              <b>autorun</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-autorun" name="method-c-autorun" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Registers MiniTest::Unit to run tests at process exit</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-autorun_source')" id="l_method-c-autorun_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L652" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-autorun_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 652</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">autorun</span>
+  <span class="ruby-identifier">at_exit</span> {
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$!</span> <span class="ruby-comment"># don&#39;t run if there was an exception</span>
+
+    <span class="ruby-comment"># the order here is important. The at_exit handler must be</span>
+    <span class="ruby-comment"># installed before anyone else gets a chance to install their</span>
+    <span class="ruby-comment"># own, that way we can be assured that our exit will be last</span>
+    <span class="ruby-comment"># to run (at_exit stacks).</span>
+    <span class="ruby-identifier">exit_code</span> = <span class="ruby-keyword">nil</span>
+
+    <span class="ruby-identifier">at_exit</span> { <span class="ruby-identifier">exit</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">exit_code</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">exit_code</span> <span class="ruby-operator">!=</span> <span class="ruby-number">0</span> }
+
+    <span class="ruby-identifier">exit_code</span> = <span class="ruby-constant">MiniTest</span><span class="ruby-operator">::</span><span class="ruby-constant">Unit</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run</span> <span class="ruby-constant">ARGV</span>
+  } <span class="ruby-keyword">unless</span> <span class="ruby-identifier">@@installed_at_exit</span>
+  <span class="ruby-identifier">@@installed_at_exit</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-out">
+            
+              <b>out</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-out" name="method-c-out" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the stream to use for output.</p>
+
+<p>DEPRECATED: use <a href="Unit.html#method-c-output">::output</a> instead.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-out_source')" id="l_method-c-out_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L681" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-out_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 681</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">out</span>
+  <span class="ruby-identifier">warn</span> <span class="ruby-string">&quot;::out deprecated, use ::output instead.&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">$VERBOSE</span>
+  <span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-output">
+            
+              <b>output</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-output" name="method-c-output" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the stream to use for output.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-output_source')" id="l_method-c-output_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L672" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-output_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 672</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">output</span>
+  <span class="ruby-identifier">@@out</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-output-3D">
+            
+              <b>output=</b>(stream)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-output-3D" name="method-c-output-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Sets MiniTest::Unit to write output to <code>stream</code>.  $stdout is the
+default output</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-output-3D_source')" id="l_method-c-output-3D_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L690" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-output-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 690</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">output=</span> <span class="ruby-identifier">stream</span>
+  <span class="ruby-identifier">@@out</span> = <span class="ruby-identifier">stream</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-plugins">
+            
+              <b>plugins</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-plugins" name="method-c-plugins" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Return all plugins&#39; run methods (methods that start with “run_”).</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-plugins_source')" id="l_method-c-plugins_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L714" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-plugins_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 714</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">plugins</span>
+  <span class="ruby-identifier">@@plugins</span> <span class="ruby-operator">||=</span> ([<span class="ruby-string">&quot;run_tests&quot;</span>] <span class="ruby-operator">+</span>
+                 <span class="ruby-identifier">public_instance_methods</span>(<span class="ruby-keyword">false</span>).
+                 <span class="ruby-identifier">grep</span>(<span class="ruby-regexp">/^run_/</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">to_s</span> }).<span class="ruby-identifier">uniq</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-runner">
+            
+              <b>runner</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-runner" name="method-c-runner" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the MiniTest::Unit subclass instance that will be used to run the
+tests. A MiniTest::Unit instance is the default runner.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-runner_source')" id="l_method-c-runner_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L707" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-runner_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 707</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">runner</span>
+  <span class="ruby-identifier">@@runner</span> <span class="ruby-operator">||=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-c-runner-3D">
+            
+              <b>runner=</b>(runner)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-c-runner-3D" name="method-c-runner-3D" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Tells MiniTest::Unit to delegate to <code>runner</code>, an instance of a
+MiniTest::Unit subclass, when <a href="Unit.html#method-i-run">#run</a> is
+called.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-c-runner-3D_source')" id="l_method-c-runner-3D_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L698" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-c-runner-3D_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 698</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">self</span>.<span class="ruby-identifier">runner=</span> <span class="ruby-identifier">runner</span>
+  <span class="ruby-identifier">@@runner</span> = <span class="ruby-identifier">runner</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                  
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-_run">
+            
+              <b>_run</b>(args = [])
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-_run" name="method-i-_run" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Top level driver, controls all output and filtering.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_run_source')" id="l_method-i-_run_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L890" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_run_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 890</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_run</span> <span class="ruby-identifier">args</span> = []
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">options</span> = <span class="ruby-identifier">process_args</span> <span class="ruby-identifier">args</span>
+
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Run options: #{help}&quot;</span>
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">plugins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">plugin</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">send</span> <span class="ruby-identifier">plugin</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">report</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">failures</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">errors</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@test_count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-number">0</span> <span class="ruby-comment"># or return nil...</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">Interrupt</span>
+  <span class="ruby-identifier">abort</span> <span class="ruby-string">&#39;Interrupted&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_run_anything">
+            
+              <b>_run_anything</b>(type)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-_run_anything" name="method-i-_run_anything" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_run_anything_source')" id="l_method-i-_run_anything_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L732" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_run_anything_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 732</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_run_anything</span> <span class="ruby-identifier">type</span>
+  <span class="ruby-identifier">suites</span> = <span class="ruby-constant">TestCase</span>.<span class="ruby-identifier">send</span> <span class="ruby-node">&quot;#{type}_suites&quot;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">suites</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+
+  <span class="ruby-identifier">puts</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;# Running #{type}s:&quot;</span>
+  <span class="ruby-identifier">puts</span>
+
+  <span class="ruby-ivar">@test_count</span>, <span class="ruby-ivar">@assertion_count</span> = <span class="ruby-number">0</span>, <span class="ruby-number">0</span>
+  <span class="ruby-identifier">sync</span> = <span class="ruby-identifier">output</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:&quot;sync=&quot;</span> <span class="ruby-comment"># stupid emacs</span>
+  <span class="ruby-identifier">old_sync</span>, <span class="ruby-identifier">output</span>.<span class="ruby-identifier">sync</span> = <span class="ruby-identifier">output</span>.<span class="ruby-identifier">sync</span>, <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sync</span>
+
+  <span class="ruby-identifier">results</span> = <span class="ruby-identifier">_run_suites</span> <span class="ruby-identifier">suites</span>, <span class="ruby-identifier">type</span>
+
+  <span class="ruby-ivar">@test_count</span>      = <span class="ruby-identifier">results</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, (<span class="ruby-identifier">tc</span>, <span class="ruby-identifier">_</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">tc</span> }
+  <span class="ruby-ivar">@assertion_count</span> = <span class="ruby-identifier">results</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, (<span class="ruby-identifier">_</span>, <span class="ruby-identifier">ac</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ac</span> }
+
+  <span class="ruby-identifier">output</span>.<span class="ruby-identifier">sync</span> = <span class="ruby-identifier">old_sync</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">sync</span>
+
+  <span class="ruby-identifier">t</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+
+  <span class="ruby-identifier">puts</span>
+  <span class="ruby-identifier">puts</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Finished #{type}s in %.6fs, %.4f tests/s, %.4f assertions/s.&quot;</span> <span class="ruby-operator">%</span>
+    [<span class="ruby-identifier">t</span>, <span class="ruby-identifier">test_count</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">t</span>, <span class="ruby-identifier">assertion_count</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">t</span>]
+
+  <span class="ruby-identifier">report</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">msg</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;\n%3d) %s&quot;</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-number">1</span>, <span class="ruby-identifier">msg</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">puts</span>
+
+  <span class="ruby-identifier">status</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_run_suite">
+            
+              <b>_run_suite</b>(suite, type)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-_run_suite" name="method-i-_run_suite" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_run_suite_source')" id="l_method-i-_run_suite_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L773" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_run_suite_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 773</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_run_suite</span> <span class="ruby-identifier">suite</span>, <span class="ruby-identifier">type</span>
+  <span class="ruby-identifier">header</span> = <span class="ruby-node">&quot;#{type}_suite_header&quot;</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">send</span>(<span class="ruby-identifier">header</span>, <span class="ruby-identifier">suite</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">respond_to?</span> <span class="ruby-identifier">header</span>
+
+  <span class="ruby-identifier">filter</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:filter</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&#39;/./&#39;</span>
+  <span class="ruby-identifier">filter</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span> <span class="ruby-node">$1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">filter</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\/(.*)\//</span>
+
+  <span class="ruby-identifier">assertions</span> = <span class="ruby-identifier">suite</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{type}_methods&quot;</span>).<span class="ruby-identifier">grep</span>(<span class="ruby-identifier">filter</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">method</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">inst</span> = <span class="ruby-identifier">suite</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">method</span>
+    <span class="ruby-identifier">inst</span>.<span class="ruby-identifier">_assertions</span> = <span class="ruby-number">0</span>
+
+    <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;#{suite}##{method} = &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@verbose</span>
+
+    <span class="ruby-ivar">@start_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-identifier">inst</span>.<span class="ruby-identifier">run</span> <span class="ruby-keyword">self</span>
+    <span class="ruby-identifier">time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@start_time</span>
+
+    <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;%.2f s = &quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">time</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@verbose</span>
+    <span class="ruby-identifier">print</span> <span class="ruby-identifier">result</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@verbose</span>
+
+    <span class="ruby-identifier">inst</span>.<span class="ruby-identifier">_assertions</span>
+  }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">assertions</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">assertions</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-number">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">n</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-_run_suites">
+            
+              <b>_run_suites</b>(suites, type)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-_run_suites" name="method-i-_run_suites" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-_run_suites_source')" id="l_method-i-_run_suites_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L769" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-_run_suites_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 769</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">_run_suites</span> <span class="ruby-identifier">suites</span>, <span class="ruby-identifier">type</span>
+  <span class="ruby-identifier">suites</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">suite</span><span class="ruby-operator">|</span> <span class="ruby-identifier">_run_suite</span> <span class="ruby-identifier">suite</span>, <span class="ruby-identifier">type</span> }
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-options">
+            
+              <b>options</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-options" name="method-i-options" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-options_source')" id="l_method-i-options_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L632" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-options_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 632</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">options</span>
+  <span class="ruby-ivar">@options</span> <span class="ruby-operator">||=</span> {}
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-output">
+            
+              <b>output</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-output" name="method-i-output" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-output_source')" id="l_method-i-output_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L720" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-output_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 720</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">output</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">output</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-process_args">
+            
+              <b>process_args</b>(args = [])
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-process_args" name="method-i-process_args" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-process_args_source')" id="l_method-i-process_args_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L837" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-process_args_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 837</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">process_args</span> <span class="ruby-identifier">args</span> = []
+  <span class="ruby-identifier">options</span> = {}
+  <span class="ruby-identifier">orig_args</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span>  = <span class="ruby-string">&#39;minitest options:&#39;</span>
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">version</span> = <span class="ruby-constant">MiniTest</span><span class="ruby-operator">::</span><span class="ruby-constant">Unit</span><span class="ruby-operator">::</span><span class="ruby-constant">VERSION</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span> <span class="ruby-string">&#39;-h&#39;</span>, <span class="ruby-string">&#39;--help&#39;</span>, <span class="ruby-string">&#39;Display this help.&#39;</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">opts</span>
+      <span class="ruby-identifier">exit</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span> <span class="ruby-string">&#39;-s&#39;</span>, <span class="ruby-string">&#39;--seed SEED&#39;</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-string">&quot;Sets random seed&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">m</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">options</span>[<span class="ruby-value">:seed</span>] = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span> <span class="ruby-string">&#39;-v&#39;</span>, <span class="ruby-string">&#39;--verbose&#39;</span>, <span class="ruby-string">&quot;Verbose. Show progress processing files.&quot;</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>] = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span> <span class="ruby-string">&#39;-n&#39;</span>, <span class="ruby-string">&#39;--name PATTERN&#39;</span>, <span class="ruby-string">&quot;Filter test names on pattern.&quot;</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">options</span>[<span class="ruby-value">:filter</span>] = <span class="ruby-identifier">a</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span> <span class="ruby-identifier">args</span>
+    <span class="ruby-identifier">orig_args</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">args</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:seed</span>] <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">srand</span>
+    <span class="ruby-identifier">options</span>[<span class="ruby-value">:seed</span>] = <span class="ruby-identifier">srand</span> <span class="ruby-operator">%</span> <span class="ruby-number">0xFFFF</span>
+    <span class="ruby-identifier">orig_args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;--seed&quot;</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:seed</span>].<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">srand</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:seed</span>]
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">verbose</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+  <span class="ruby-ivar">@help</span> = <span class="ruby-identifier">orig_args</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/[\s|&amp;&lt;&gt;$()]/</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">inspect</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">s</span> }.<span class="ruby-identifier">join</span> <span class="ruby-string">&quot; &quot;</span>
+
+  <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-puke">
+            
+              <b>puke</b>(klass, meth, e)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-puke" name="method-i-puke" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Writes status for failed test <code>meth</code> in <code>klass</code> which
+finished with exception <code>e</code></p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-puke_source')" id="l_method-i-puke_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L813" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-puke_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 813</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">puke</span> <span class="ruby-identifier">klass</span>, <span class="ruby-identifier">meth</span>, <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">e</span> = <span class="ruby-keyword">case</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-constant">MiniTest</span><span class="ruby-operator">::</span><span class="ruby-constant">Skip</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@skips</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;S&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@verbose</span>
+        <span class="ruby-node">&quot;Skipped:\n#{meth}(#{klass}) [#{location e}]:\n#{e.message}\n&quot;</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-constant">MiniTest</span><span class="ruby-operator">::</span><span class="ruby-constant">Assertion</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@failures</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+        <span class="ruby-node">&quot;Failure:\n#{meth}(#{klass}) [#{location e}]:\n#{e.message}\n&quot;</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@errors</span> <span class="ruby-operator">+=</span> <span class="ruby-number">1</span>
+        <span class="ruby-identifier">bt</span> = <span class="ruby-constant">MiniTest</span><span class="ruby-operator">::</span><span class="ruby-identifier">filter_backtrace</span>(<span class="ruby-identifier">e</span>.<span class="ruby-identifier">backtrace</span>).<span class="ruby-identifier">join</span> <span class="ruby-string">&quot;\n    &quot;</span>
+        <span class="ruby-node">&quot;Error:\n#{meth}(#{klass}):\n#{e.class}: #{e.message}\n    #{bt}\n&quot;</span>
+      <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@report</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">e</span>
+  <span class="ruby-identifier">e</span>[<span class="ruby-number">0</span>, <span class="ruby-number">1</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-run">
+            
+              <b>run</b>(args = [])
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-run" name="method-i-run" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Begins the full test run. Delegates to <code>runner</code>&#39;s #_run
+method.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-run_source')" id="l_method-i-run_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L883" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-run_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 883</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">run</span> <span class="ruby-identifier">args</span> = []
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">runner</span>.<span class="ruby-identifier">_run</span>(<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-run_tests">
+            
+              <b>run_tests</b>()
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-run_tests" name="method-i-run_tests" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Runs test suites matching <code>filter</code>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-run_tests_source')" id="l_method-i-run_tests_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L908" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-run_tests_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 908</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">run_tests</span>
+  <span class="ruby-identifier">_run_anything</span> <span class="ruby-value">:test</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-status">
+            
+              <b>status</b>(io = self.output)
+            
+            <a href="../../classes/MiniTest/Unit.html#method-i-status" name="method-i-status" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Writes status to <code>io</code></p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-status_source')" id="l_method-i-status_source">show</a>
+                
+                  | <a href="https://github.com/ruby/ruby/blob/344849694ac75672a34c11985314d03da5781c9e/lib/minitest/unit.rb#L915" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-status_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File ../ruby/lib/minitest/unit.rb, line 915</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">status</span> <span class="ruby-identifier">io</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">output</span>
+  <span class="ruby-identifier">format</span> = <span class="ruby-string">&quot;%d tests, %d assertions, %d failures, %d errors, %d skips&quot;</span>
+  <span class="ruby-identifier">io</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">%</span> [<span class="ruby-identifier">test_count</span>, <span class="ruby-identifier">assertion_count</span>, <span class="ruby-identifier">failures</span>, <span class="ruby-identifier">errors</span>, <span class="ruby-identifier">skips</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    

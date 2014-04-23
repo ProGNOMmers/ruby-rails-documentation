@@ -1,0 +1,1958 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>String</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/main.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/github.css" type="text/css" media="screen" />
+<script src="../js/jquery-1.3.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-effect.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/highlight.pack.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+
+<body>     
+    <div class="banner">
+        
+            <span>Ruby on Rails 3.0.20</span><br />
+        
+        <h1>
+            <span class="type">Class</span> 
+            String 
+            
+                <span class="parent">&lt; 
+                    
+                    <a href="Object.html">Object</a>
+                    
+                </span>
+            
+        </h1>
+        <ul class="files">
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/object/blank_rb.html">activesupport/lib/active_support/core_ext/object/blank.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/access_rb.html">activesupport/lib/active_support/core_ext/string/access.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/behavior_rb.html">activesupport/lib/active_support/core_ext/string/behavior.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/conversions_rb.html">activesupport/lib/active_support/core_ext/string/conversions.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/encoding_rb.html">activesupport/lib/active_support/core_ext/string/encoding.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/exclude_rb.html">activesupport/lib/active_support/core_ext/string/exclude.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/filters_rb.html">activesupport/lib/active_support/core_ext/string/filters.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/inflections_rb.html">activesupport/lib/active_support/core_ext/string/inflections.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/multibyte_rb.html">activesupport/lib/active_support/core_ext/string/multibyte.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/output_safety_rb.html">activesupport/lib/active_support/core_ext/string/output_safety.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/starts_ends_with_rb.html">activesupport/lib/active_support/core_ext/string/starts_ends_with.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/strip_rb.html">activesupport/lib/active_support/core_ext/string/strip.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/core_ext/string/xchar_rb.html">activesupport/lib/active_support/core_ext/string/xchar.rb</a></li>
+            
+            <li><a href="../files/activesupport/lib/active_support/json/encoding_rb.html">activesupport/lib/active_support/json/encoding.rb</a></li>
+            
+        </ul>
+    </div>
+    <div id="bodyContent">
+        <div id="content">
+  
+    <div class="description">
+      
+<p>String inflections define new methods on the String class to transform
+names for different purposes. For instance, you can figure out the name of
+a database from the name of a class.</p>
+
+<pre><code>&quot;ScaleScore&quot;.tableize # =&gt; &quot;scale_scores&quot;
+</code></pre>
+
+    </div>
+  
+
+
+  
+
+
+  
+  
+
+
+  
+
+
+  
+    <!-- Method ref -->
+    <div class="sectiontitle">Methods</div>
+    <dl class="methods">
+      
+        <dt>A</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-acts_like_string-3F">acts_like_string?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-at">at</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>C</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-camelcase">camelcase</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-camelize">camelize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-classify">classify</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-constantize">constantize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>D</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-dasherize">dasherize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-demodulize">demodulize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>E</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-encoding_aware-3F">encoding_aware?</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-exclude-3F">exclude?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>F</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-first">first</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-foreign_key">foreign_key</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-from">from</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>H</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-humanize">humanize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>I</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-is_utf8-3F">is_utf8?</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>L</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-last">last</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>M</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-mb_chars">mb_chars</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>O</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-ord">ord</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>P</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-parameterize">parameterize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-pluralize">pluralize</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>S</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-singularize">singularize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-squish">squish</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-squish-21">squish!</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-strip_heredoc">strip_heredoc</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>T</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-tableize">tableize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-titlecase">titlecase</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-titleize">titleize</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to">to</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_date">to_date</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_datetime">to_datetime</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-to_time">to_time</a>,
+              </li>
+            
+              
+              <li>
+                <a href="#method-i-truncate">truncate</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+        <dt>U</dt>
+        <dd>
+          <ul>
+            
+              
+              <li>
+                <a href="#method-i-underscore">underscore</a>
+              </li>
+            
+          </ul>
+        </dd>
+      
+    </dl>
+  
+
+  
+
+
+
+  
+
+    
+
+    
+
+    
+
+
+    
+
+
+    <!-- Methods -->
+        
+      <div class="sectiontitle">Instance Public methods</div>
+      
+        <div class="method">
+          <div class="title method-title" id="method-i-acts_like_string-3F">
+            
+              <b>acts_like_string?</b>()
+            
+            <a href="../classes/String.html#method-i-acts_like_string-3F" name="method-i-acts_like_string-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Enable more predictable duck-typing on String-like classes. See <a
+href="Object.html#method-i-acts_like-3F">Object#acts_like?</a>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-acts_like_string-3F_source')" id="l_method-i-acts_like_string-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/b70239b0cfb5ea8c00ff6375d007a924e21b4515/activesupport/lib/active_support/core_ext/string/behavior.rb#L4" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-acts_like_string-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/behavior.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">acts_like_string?</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-at">
+            
+              <b>at</b>(position)
+            
+            <a href="../classes/String.html#method-i-at" name="method-i-at" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the character at the <code>position</code> treating the string as
+an array (where 0 is the first character).</p>
+
+<p>Examples:</p>
+
+<pre><code>&quot;hello&quot;.at(0)  # =&gt; &quot;h&quot;
+&quot;hello&quot;.at(4)  # =&gt; &quot;o&quot;
+&quot;hello&quot;.at(10) # =&gt; ERROR if &lt; 1.9, nil in 1.9
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-at_source')" id="l_method-i-at_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activesupport/lib/active_support/core_ext/string/access.rb#L11" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-at_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/access.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">at</span>(<span class="ruby-identifier">position</span>)
+  <span class="ruby-identifier">mb_chars</span>[<span class="ruby-identifier">position</span>, <span class="ruby-number">1</span>].<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-camelcase">
+            
+              <b>camelcase</b>(first_letter = :upper)
+            
+            <a href="../classes/String.html#method-i-camelcase" name="method-i-camelcase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="String.html#method-i-camelize">camelize</a>
+            </div>
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-camelize">
+            
+              <b>camelize</b>(first_letter = :upper)
+            
+            <a href="../classes/String.html#method-i-camelize" name="method-i-camelize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>By default, <code>camelize</code> converts strings to UpperCamelCase. If
+the argument to camelize is set to <code>:lower</code> then camelize
+produces lowerCamelCase.</p>
+
+<p><code>camelize</code> will also convert &#39;/&#39; to &#39;::&#39; which
+is useful for converting paths to namespaces.</p>
+
+<pre><code>&quot;active_record&quot;.camelize                # =&gt; &quot;ActiveRecord&quot;
+&quot;active_record&quot;.camelize(:lower)        # =&gt; &quot;activeRecord&quot;
+&quot;active_record/errors&quot;.camelize         # =&gt; &quot;ActiveRecord::Errors&quot;
+&quot;active_record/errors&quot;.camelize(:lower) # =&gt; &quot;activeRecord::Errors&quot;
+</code></pre>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="String.html#method-i-camelcase">camelcase</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-camelize_source')" id="l_method-i-camelize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L55" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-camelize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">camelize</span>(<span class="ruby-identifier">first_letter</span> = <span class="ruby-value">:upper</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">first_letter</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:upper</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">camelize</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">true</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:lower</span> <span class="ruby-keyword">then</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">camelize</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">false</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-classify">
+            
+              <b>classify</b>()
+            
+            <a href="../classes/String.html#method-i-classify" name="method-i-classify" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Create a class name from a plural table name like Rails does for table
+names to models. Note that this returns a string and not a class. (To
+convert to an actual class follow <code>classify</code> with
+<code>constantize</code>.)</p>
+
+<pre><code>&quot;egg_and_hams&quot;.classify # =&gt; &quot;EggAndHam&quot;
+&quot;posts&quot;.classify        # =&gt; &quot;Post&quot;
+</code></pre>
+
+<p>Singular names are not handled correctly.</p>
+
+<pre><code>&quot;business&quot;.classify # =&gt; &quot;Busines&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-classify_source')" id="l_method-i-classify_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L140" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-classify_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">classify</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">classify</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-constantize">
+            
+              <b>constantize</b>()
+            
+            <a href="../classes/String.html#method-i-constantize" name="method-i-constantize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p><code>constantize</code> tries to find a declared constant with the name
+specified in the string. It raises a <a href="NameError.html">NameError</a>
+when the name is not in CamelCase or is not initialized.</p>
+
+<p>Examples</p>
+
+<pre><code>&quot;Module&quot;.constantize # =&gt; Module
+&quot;Class&quot;.constantize  # =&gt; Class
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-constantize_source')" id="l_method-i-constantize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-constantize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">constantize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">constantize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-dasherize">
+            
+              <b>dasherize</b>()
+            
+            <a href="../classes/String.html#method-i-dasherize" name="method-i-dasherize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Replaces underscores with dashes in the string.</p>
+
+<pre><code>&quot;puni_puni&quot; # =&gt; &quot;puni-puni&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-dasherize_source')" id="l_method-i-dasherize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L89" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-dasherize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 89</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">dasherize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">dasherize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-demodulize">
+            
+              <b>demodulize</b>()
+            
+            <a href="../classes/String.html#method-i-demodulize" name="method-i-demodulize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Removes the module part from the constant expression in the string.</p>
+
+<pre><code>&quot;ActiveRecord::CoreExtensions::String::Inflections&quot;.demodulize # =&gt; &quot;Inflections&quot;
+&quot;Inflections&quot;.demodulize                                       # =&gt; &quot;Inflections&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-demodulize_source')" id="l_method-i-demodulize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L97" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-demodulize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">demodulize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">demodulize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-encoding_aware-3F">
+            
+              <b>encoding_aware?</b>()
+            
+            <a href="../classes/String.html#method-i-encoding_aware-3F" name="method-i-encoding_aware-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-encoding_aware-3F_source')" id="l_method-i-encoding_aware-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/80b60671f7216c571ea8711d1de8ca824aefbe54/activesupport/lib/active_support/core_ext/string/encoding.rb#L3" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-encoding_aware-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/encoding.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">encoding_aware?</span>
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-exclude-3F">
+            
+              <b>exclude?</b>(string)
+            
+            <a href="../classes/String.html#method-i-exclude-3F" name="method-i-exclude-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The inverse of String#include?. Returns true if the string does not include
+the other string.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-exclude-3F_source')" id="l_method-i-exclude-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/19c48281a7bd94a42a80c1f8fc905e95820e8506/activesupport/lib/active_support/core_ext/string/exclude.rb#L3" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-exclude-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/exclude.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">exclude?</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-operator">!</span><span class="ruby-identifier">include?</span>(<span class="ruby-identifier">string</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-first">
+            
+              <b>first</b>(limit = 1)
+            
+            <a href="../classes/String.html#method-i-first" name="method-i-first" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the first character of the string or the first <code>limit</code>
+characters.</p>
+
+<p>Examples:</p>
+
+<pre><code>&quot;hello&quot;.first     # =&gt; &quot;h&quot;
+&quot;hello&quot;.first(2)  # =&gt; &quot;he&quot;
+&quot;hello&quot;.first(10) # =&gt; &quot;hello&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-first_source')" id="l_method-i-first_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activesupport/lib/active_support/core_ext/string/access.rb#L41" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-first_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/access.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">first</span>(<span class="ruby-identifier">limit</span> = <span class="ruby-number">1</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">limit</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>
+    <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">limit</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">mb_chars</span>[<span class="ruby-number">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">limit</span>].<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-foreign_key">
+            
+              <b>foreign_key</b>(separate_class_name_and_id_with_underscore = true)
+            
+            <a href="../classes/String.html#method-i-foreign_key" name="method-i-foreign_key" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates a foreign key name from a class name.
+<code>separate_class_name_and_id_with_underscore</code> sets whether the
+method should put &#39;_&#39; between the name and &#39;id&#39;.</p>
+
+<p>Examples</p>
+
+<pre><code>&quot;Message&quot;.foreign_key        # =&gt; &quot;message_id&quot;
+&quot;Message&quot;.foreign_key(false) # =&gt; &quot;messageid&quot;
+&quot;Admin::Post&quot;.foreign_key    # =&gt; &quot;post_id&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-foreign_key_source')" id="l_method-i-foreign_key_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L161" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-foreign_key_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 161</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">foreign_key</span>(<span class="ruby-identifier">separate_class_name_and_id_with_underscore</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">foreign_key</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">separate_class_name_and_id_with_underscore</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-from">
+            
+              <b>from</b>(position)
+            
+            <a href="../classes/String.html#method-i-from" name="method-i-from" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the remaining of the string from the <code>position</code> treating
+the string as an array (where 0 is the first character).</p>
+
+<p>Examples:</p>
+
+<pre><code>&quot;hello&quot;.from(0)  # =&gt; &quot;hello&quot;
+&quot;hello&quot;.from(2)  # =&gt; &quot;llo&quot;
+&quot;hello&quot;.from(10) # =&gt; &quot;&quot; if &lt; 1.9, nil in 1.9
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-from_source')" id="l_method-i-from_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activesupport/lib/active_support/core_ext/string/access.rb#L21" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-from_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/access.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">from</span>(<span class="ruby-identifier">position</span>)
+  <span class="ruby-identifier">mb_chars</span>[<span class="ruby-identifier">position</span><span class="ruby-operator">..</span><span class="ruby-number">-1</span>].<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-humanize">
+            
+              <b>humanize</b>()
+            
+            <a href="../classes/String.html#method-i-humanize" name="method-i-humanize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Capitalizes the first word, turns underscores into spaces, and strips
+&#39;_id&#39;. Like <code>titleize</code>, this is meant for creating
+pretty output.</p>
+
+<pre><code>&quot;employee_salary&quot; # =&gt; &quot;Employee salary&quot;
+&quot;author_id&quot;       # =&gt; &quot;Author&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-humanize_source')" id="l_method-i-humanize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L149" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-humanize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">humanize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">humanize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-is_utf8-3F">
+            
+              <b>is_utf8?</b>()
+            
+            <a href="../classes/String.html#method-i-is_utf8-3F" name="method-i-is_utf8-3F" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-is_utf8-3F_source')" id="l_method-i-is_utf8-3F_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/755af497555fde16db86f7e51f6462b0aca79b49/activesupport/lib/active_support/core_ext/string/multibyte.rb#L46" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-is_utf8-3F_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/multibyte.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">is_utf8?</span> <span class="ruby-comment">#:nodoc</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">encoding</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>
+    <span class="ruby-identifier">valid_encoding?</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">ASCII_8BIT</span>, <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">US_ASCII</span>
+    <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UTF_8</span>).<span class="ruby-identifier">valid_encoding?</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-last">
+            
+              <b>last</b>(limit = 1)
+            
+            <a href="../classes/String.html#method-i-last" name="method-i-last" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the last character of the string or the last <code>limit</code>
+characters.</p>
+
+<p>Examples:</p>
+
+<pre><code>&quot;hello&quot;.last     # =&gt; &quot;o&quot;
+&quot;hello&quot;.last(2)  # =&gt; &quot;lo&quot;
+&quot;hello&quot;.last(10) # =&gt; &quot;hello&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-last_source')" id="l_method-i-last_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activesupport/lib/active_support/core_ext/string/access.rb#L57" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-last_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/access.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">last</span>(<span class="ruby-identifier">limit</span> = <span class="ruby-number">1</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">limit</span> <span class="ruby-operator">==</span> <span class="ruby-number">0</span>
+    <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">limit</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">mb_chars</span>[(<span class="ruby-operator">-</span><span class="ruby-identifier">limit</span>)<span class="ruby-operator">..</span><span class="ruby-number">-1</span>].<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-mb_chars">
+            
+              <b>mb_chars</b>()
+            
+            <a href="../classes/String.html#method-i-mb_chars" name="method-i-mb_chars" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <h2 id="method-i-mb_chars-label-Multibyte+proxy">Multibyte proxy</h2>
+
+<p><code>mb_chars</code> is a multibyte safe proxy for string methods.</p>
+
+<p>In Ruby 1.8 and older it creates and returns an instance of the <a
+href="ActiveSupport/Multibyte/Chars.html">ActiveSupport::Multibyte::Chars</a>
+class which encapsulates the original string. A Unicode safe version of all
+the String methods are defined on this proxy class. If the proxy class
+doesn&#39;t respond to a certain method, it&#39;s forwarded to the
+encapsuled string.</p>
+
+<pre><code>name = &#39;Claus Müller&#39;
+name.reverse # =&gt; &quot;rell??M sualC&quot;
+name.length  # =&gt; 13
+
+name.mb_chars.reverse.to_s # =&gt; &quot;rellüM sualC&quot;
+name.mb_chars.length       # =&gt; 12
+</code></pre>
+
+<p>In Ruby 1.9 and newer <code>mb_chars</code> returns <code>self</code>
+because String is (mostly) encoding aware. This means that it becomes easy
+to run one version of your code on multiple Ruby versions.</p>
+
+<h2 id="method-i-mb_chars-label-Method+chaining">Method chaining</h2>
+
+<p>All the methods on the Chars proxy which normally return a string will
+return a Chars object. This allows method chaining on the result of any of
+these methods.</p>
+
+<pre><code>name.mb_chars.reverse.length # =&gt; 12
+</code></pre>
+
+<h2 id="method-i-mb_chars-label-Interoperability+and+configuration">Interoperability and configuration</h2>
+
+<p>The Chars object tries to be as interchangeable with String objects as
+possible: sorting and comparing between String and Char work like expected.
+The bang! methods change the internal string representation in the Chars
+object. Interoperability problems can be resolved easily with a
+<code>to_s</code> call.</p>
+
+<p>For more information about the methods defined on the Chars proxy see <a
+href="ActiveSupport/Multibyte/Chars.html">ActiveSupport::Multibyte::Chars</a>.
+For information about how to change the default Multibyte behaviour see <a
+href="ActiveSupport/Multibyte.html">ActiveSupport::Multibyte</a>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-mb_chars_source')" id="l_method-i-mb_chars_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/755af497555fde16db86f7e51f6462b0aca79b49/activesupport/lib/active_support/core_ext/string/multibyte.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-mb_chars_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/multibyte.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">mb_chars</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Multibyte</span>.<span class="ruby-identifier">proxy_class</span>.<span class="ruby-identifier">consumes?</span>(<span class="ruby-keyword">self</span>)
+    <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Multibyte</span>.<span class="ruby-identifier">proxy_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-ord">
+            
+              <b>ord</b>()
+            
+            <a href="../classes/String.html#method-i-ord" name="method-i-ord" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the codepoint of the first character of the string, assuming a
+single-byte character encoding:</p>
+
+<pre><code>&quot;a&quot;.ord # =&gt; 97
+&quot;à&quot;.ord # =&gt; 224, in ISO-8859-1
+</code></pre>
+
+<p>This method is defined in Ruby 1.8 for Ruby 1.9 forward compatibility on
+these character encodings.</p>
+
+<p><code>ActiveSupport::Multibyte::Chars#ord</code> is forward compatible with
+Ruby 1.9 on UTF8 strings:</p>
+
+<pre><code>&quot;a&quot;.mb_chars.ord # =&gt; 97
+&quot;à&quot;.mb_chars.ord # =&gt; 224, in UTF8
+</code></pre>
+
+<p>Note that the 224 is different in both examples. In ISO-8859-1 “à” is
+represented as a single byte, 224. In UTF8 it is represented with two
+bytes, namely 195 and 160, but its Unicode codepoint is 224. If we call
+<code>ord</code> on the UTF8 string “à” the return value will be 195. That
+is not an error, because UTF8 is unsupported, the call itself would be
+bogus.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-ord_source')" id="l_method-i-ord_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6cc29ab65f7efc460aee1e374f100f03f32713a9/activesupport/lib/active_support/core_ext/string/conversions.rb#L27" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-ord_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/conversions.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">ord</span>
+  <span class="ruby-keyword">self</span>[<span class="ruby-number">0</span>]
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-parameterize">
+            
+              <b>parameterize</b>(sep = &#39;-&#39;)
+            
+            <a href="../classes/String.html#method-i-parameterize" name="method-i-parameterize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Replaces special characters in a string so that it may be used as part of a
+&#39;pretty&#39; URL.</p>
+
+<h4 id="method-i-parameterize-label-Examples">Examples</h4>
+
+<pre><code>class Person
+  def to_param
+    &quot;#{id}-#{name.parameterize}&quot;
+  end
+end
+
+@person = Person.find(1)
+# =&gt; #&lt;Person id: 1, name: &quot;Donald E. Knuth&quot;&gt;
+
+&lt;%= link_to(@person.name, person_path %&gt;
+# =&gt; &lt;a href=&quot;/person/1-donald-e-knuth&quot;&gt;Donald E. Knuth&lt;/a&gt;</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-parameterize_source')" id="l_method-i-parameterize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L116" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-parameterize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">parameterize</span>(<span class="ruby-identifier">sep</span> = <span class="ruby-string">&#39;-&#39;</span>)
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">parameterize</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">sep</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-pluralize">
+            
+              <b>pluralize</b>()
+            
+            <a href="../classes/String.html#method-i-pluralize" name="method-i-pluralize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the plural form of the word in the string.</p>
+
+<pre><code>&quot;post&quot;.pluralize             # =&gt; &quot;posts&quot;
+&quot;octopus&quot;.pluralize          # =&gt; &quot;octopi&quot;
+&quot;sheep&quot;.pluralize            # =&gt; &quot;sheep&quot;
+&quot;words&quot;.pluralize            # =&gt; &quot;words&quot;
+&quot;the blue mailman&quot;.pluralize # =&gt; &quot;the blue mailmen&quot;
+&quot;CamelOctopus&quot;.pluralize     # =&gt; &quot;CamelOctopi&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-pluralize_source')" id="l_method-i-pluralize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L19" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-pluralize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 19</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">pluralize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">pluralize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-singularize">
+            
+              <b>singularize</b>()
+            
+            <a href="../classes/String.html#method-i-singularize" name="method-i-singularize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The reverse of <code>pluralize</code>, returns the singular form of a word
+in a string.</p>
+
+<pre><code>&quot;posts&quot;.singularize            # =&gt; &quot;post&quot;
+&quot;octopi&quot;.singularize           # =&gt; &quot;octopus&quot;
+&quot;sheep&quot;.singularize            # =&gt; &quot;sheep&quot;
+&quot;word&quot;.singularize             # =&gt; &quot;word&quot;
+&quot;the blue mailmen&quot;.singularize # =&gt; &quot;the blue mailman&quot;
+&quot;CamelOctopi&quot;.singularize      # =&gt; &quot;CamelOctopus&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-singularize_source')" id="l_method-i-singularize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-singularize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">singularize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">singularize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-squish">
+            
+              <b>squish</b>()
+            
+            <a href="../classes/String.html#method-i-squish" name="method-i-squish" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the string, first removing all whitespace on both ends of the
+string, and then changing remaining consecutive whitespace groups into one
+space each.</p>
+
+<p>Examples:</p>
+
+<pre><code>%{ Multi-line
+   string }.squish                   # =&gt; &quot;Multi-line string&quot;
+&quot; foo   bar    \n   \t   boo&quot;.squish # =&gt; &quot;foo bar boo&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-squish_source')" id="l_method-i-squish_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/315e8952dfbaecd4d5175ea4d0fd95611cad9e01/activesupport/lib/active_support/core_ext/string/filters.rb#L12" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-squish_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/filters.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">squish</span>
+  <span class="ruby-identifier">dup</span>.<span class="ruby-identifier">squish!</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-squish-21">
+            
+              <b>squish!</b>()
+            
+            <a href="../classes/String.html#method-i-squish-21" name="method-i-squish-21" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Performs a destructive squish. See <a
+href="String.html#method-i-squish">#squish</a>.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-squish-21_source')" id="l_method-i-squish-21_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/315e8952dfbaecd4d5175ea4d0fd95611cad9e01/activesupport/lib/active_support/core_ext/string/filters.rb#L17" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-squish-21_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/filters.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">squish!</span>
+  <span class="ruby-identifier">strip!</span>
+  <span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp">/\s+/</span>, <span class="ruby-string">&#39; &#39;</span>)
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-strip_heredoc">
+            
+              <b>strip_heredoc</b>()
+            
+            <a href="../classes/String.html#method-i-strip_heredoc" name="method-i-strip_heredoc" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Strips indentation in heredocs.</p>
+
+<p>For example in</p>
+
+<pre><code>if options[:usage]
+  puts &lt;&lt;-USAGE.strip_heredoc
+    This command does such and such.
+
+    Supported options are:
+      -h         This message
+      ...
+  USAGE
+end</code></pre>
+
+<p>the user would see the usage message aligned against the left margin.</p>
+
+<p>Technically, it looks for the least indented line in the whole string, and
+removes that amount of leading whitespace.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-strip_heredoc_source')" id="l_method-i-strip_heredoc_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6ed616d51aadc5b0be9adbfcbd8b412e7e8eb897/activesupport/lib/active_support/core_ext/string/strip.rb#L22" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-strip_heredoc_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/strip.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">strip_heredoc</span>
+  <span class="ruby-identifier">indent</span> = <span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/^[ \t]*(?=\S)/</span>).<span class="ruby-identifier">min</span>.<span class="ruby-identifier">try</span>(<span class="ruby-value">:size</span>) <span class="ruby-operator">||</span> <span class="ruby-number">0</span>
+  <span class="ruby-identifier">gsub</span>(<span class="ruby-node">/^[ \t]{#{indent}}/</span>, <span class="ruby-string">&#39;&#39;</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-tableize">
+            
+              <b>tableize</b>()
+            
+            <a href="../classes/String.html#method-i-tableize" name="method-i-tableize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Creates the name of a table like Rails does for models to table names. This
+method uses the <code>pluralize</code> method on the last word in the
+string.</p>
+
+<pre><code>&quot;RawScaledScorer&quot;.tableize # =&gt; &quot;raw_scaled_scorers&quot;
+&quot;egg_and_ham&quot;.tableize     # =&gt; &quot;egg_and_hams&quot;
+&quot;fancyCategory&quot;.tableize   # =&gt; &quot;fancy_categories&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-tableize_source')" id="l_method-i-tableize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L126" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-tableize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">tableize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">tableize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-titlecase">
+            
+              <b>titlecase</b>()
+            
+            <a href="../classes/String.html#method-i-titlecase" name="method-i-titlecase" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+            <div class="aka">
+              Alias for: <a href="String.html#method-i-titleize">titleize</a>
+            </div>
+          
+          
+          
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-titleize">
+            
+              <b>titleize</b>()
+            
+            <a href="../classes/String.html#method-i-titleize" name="method-i-titleize" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Capitalizes all the words and replaces some characters in the string to
+create a nicer looking title. <code>titleize</code> is meant for creating
+pretty output. It is not used in the Rails internals.</p>
+
+<p><code>titleize</code> is also aliased as <code>titlecase</code>.</p>
+
+<pre><code>&quot;man from the boondocks&quot;.titleize # =&gt; &quot;Man From The Boondocks&quot;
+&quot;x-men: the last stand&quot;.titleize  # =&gt; &quot;X Men: The Last Stand&quot;
+</code></pre>
+            </div>
+          
+          
+          
+            <div class="aka">
+              Also aliased as: <a href="String.html#method-i-titlecase">titlecase</a>
+            </div>
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-titleize_source')" id="l_method-i-titleize_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L71" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-titleize_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">titleize</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">titleize</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to">
+            
+              <b>to</b>(position)
+            
+            <a href="../classes/String.html#method-i-to" name="method-i-to" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Returns the beginning of the string up to the <code>position</code>
+treating the string as an array (where 0 is the first character).</p>
+
+<p>Examples:</p>
+
+<pre><code>&quot;hello&quot;.to(0)  # =&gt; &quot;h&quot;
+&quot;hello&quot;.to(2)  # =&gt; &quot;hel&quot;
+&quot;hello&quot;.to(10) # =&gt; &quot;hello&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_source')" id="l_method-i-to_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/3270c58ebb3143b3ab3b349fe339cdd4587468ee/activesupport/lib/active_support/core_ext/string/access.rb#L31" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-to_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/access.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to</span>(<span class="ruby-identifier">position</span>)
+  <span class="ruby-identifier">mb_chars</span>[<span class="ruby-number">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">position</span>].<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_date">
+            
+              <b>to_date</b>()
+            
+            <a href="../classes/String.html#method-i-to_date" name="method-i-to_date" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_date_source')" id="l_method-i-to_date_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6cc29ab65f7efc460aee1e374f100f03f32713a9/activesupport/lib/active_support/core_ext/string/conversions.rb#L42" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-to_date_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/conversions.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_date</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">_parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:year</span>, <span class="ruby-value">:mon</span>, <span class="ruby-value">:mday</span>))
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_datetime">
+            
+              <b>to_datetime</b>()
+            
+            <a href="../classes/String.html#method-i-to_datetime" name="method-i-to_datetime" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_datetime_source')" id="l_method-i-to_datetime_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6cc29ab65f7efc460aee1e374f100f03f32713a9/activesupport/lib/active_support/core_ext/string/conversions.rb#L47" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-to_datetime_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/conversions.rb, line 47</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_datetime</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-identifier">d</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">_parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:year</span>, <span class="ruby-value">:mon</span>, <span class="ruby-value">:mday</span>, <span class="ruby-value">:hour</span>, <span class="ruby-value">:min</span>, <span class="ruby-value">:sec</span>, <span class="ruby-value">:zone</span>, <span class="ruby-value">:sec_fraction</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span> }
+  <span class="ruby-identifier">d</span>[<span class="ruby-number">5</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">pop</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">civil</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">d</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-to_time">
+            
+              <b>to_time</b>(form = :utc)
+            
+            <a href="../classes/String.html#method-i-to_time" name="method-i-to_time" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Form can be either :utc (default) or :local.</p>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-to_time_source')" id="l_method-i-to_time_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/6cc29ab65f7efc460aee1e374f100f03f32713a9/activesupport/lib/active_support/core_ext/string/conversions.rb#L35" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-to_time_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/conversions.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">to_time</span>(<span class="ruby-identifier">form</span> = <span class="ruby-value">:utc</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">blank?</span>
+  <span class="ruby-identifier">d</span> = <span class="ruby-operator">::</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">_parse</span>(<span class="ruby-keyword">self</span>, <span class="ruby-keyword">false</span>).<span class="ruby-identifier">values_at</span>(<span class="ruby-value">:year</span>, <span class="ruby-value">:mon</span>, <span class="ruby-value">:mday</span>, <span class="ruby-value">:hour</span>, <span class="ruby-value">:min</span>, <span class="ruby-value">:sec</span>, <span class="ruby-value">:sec_fraction</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">arg</span> <span class="ruby-operator">||</span> <span class="ruby-number">0</span> }
+  <span class="ruby-identifier">d</span>[<span class="ruby-number">6</span>] <span class="ruby-operator">*=</span> <span class="ruby-number">1000000</span>
+  <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{form}_time&quot;</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">d</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-truncate">
+            
+              <b>truncate</b>(length, options = {})
+            
+            <a href="../classes/String.html#method-i-truncate" name="method-i-truncate" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>Truncates a given <code>text</code> after a given <code>length</code> if
+<code>text</code> is longer than <code>length</code>:</p>
+
+<pre><code>&quot;Once upon a time in a world far far away&quot;.truncate(27)
+# =&gt; &quot;Once upon a time in a wo...&quot;
+</code></pre>
+
+<p>The last characters will be replaced with the <code>:omission</code> string
+(defaults to “…”) for a total length not exceeding <code>:length</code>:</p>
+
+<pre><code>&quot;Once upon a time in a world far far away&quot;.truncate(27, :separator =&gt; &#39; &#39;)
+# =&gt; &quot;Once upon a time in a...&quot;
+</code></pre>
+
+<p>Pass a <code>:separator</code> to truncate <code>text</code> at a natural
+break:</p>
+
+<pre><code>&quot;And they found that many people were sleeping better.&quot;.truncate(25, :omission =&gt; &quot;... (continued)&quot;)
+# =&gt; &quot;And they f... (continued)&quot;
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-truncate_source')" id="l_method-i-truncate_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/315e8952dfbaecd4d5175ea4d0fd95611cad9e01/activesupport/lib/active_support/core_ext/string/filters.rb#L38" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-truncate_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/filters.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">truncate</span>(<span class="ruby-identifier">length</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">text</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:omission</span>] <span class="ruby-operator">||=</span> <span class="ruby-string">&quot;...&quot;</span>
+
+  <span class="ruby-identifier">length_with_room_for_omission</span> = <span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:omission</span>].<span class="ruby-identifier">mb_chars</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-identifier">chars</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">mb_chars</span>
+  <span class="ruby-identifier">stop</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:separator</span>] <span class="ruby-operator">?</span>
+    (<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">rindex</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:separator</span>].<span class="ruby-identifier">mb_chars</span>, <span class="ruby-identifier">length_with_room_for_omission</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">length_with_room_for_omission</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">length_with_room_for_omission</span>
+
+  (<span class="ruby-identifier">chars</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">length</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">chars</span>[<span class="ruby-number">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">stop</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:omission</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">text</span>).<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+        
+        <div class="method">
+          <div class="title method-title" id="method-i-underscore">
+            
+              <b>underscore</b>()
+            
+            <a href="../classes/String.html#method-i-underscore" name="method-i-underscore" class="permalink">Link</a>
+          </div>
+          
+          
+            <div class="description">
+              <p>The reverse of <code>camelize</code>. Makes an underscored, lowercase form
+from the expression in the string.</p>
+
+<p><code>underscore</code> will also change &#39;::&#39; to &#39;/&#39; to
+convert namespaces to paths.</p>
+
+<pre><code>&quot;ActiveRecord&quot;.underscore         # =&gt; &quot;active_record&quot;
+&quot;ActiveRecord::Errors&quot;.underscore # =&gt; active_record/errors
+</code></pre>
+            </div>
+          
+          
+          
+
+          
+          
+          
+            
+            <div class="sourcecode">
+              
+              <p class="source-link">
+                Source: 
+                <a href="javascript:toggleSource('method-i-underscore_source')" id="l_method-i-underscore_source">show</a>
+                
+                  | <a href="https://github.com/mdesantis/rails/blob/27512c21611e1081b2e5f68f54b33482acf6917a/activesupport/lib/active_support/core_ext/string/inflections.rb#L82" target="_blank" class="github_url">on GitHub</a>
+                
+              </p>
+              <div id="method-i-underscore_source" class="dyn-source">
+                <pre><span class="ruby-comment"># File activesupport/lib/active_support/core_ext/string/inflections.rb, line 82</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword ruby-title">underscore</span>
+  <span class="ruby-constant">ActiveSupport</span><span class="ruby-operator">::</span><span class="ruby-constant">Inflector</span>.<span class="ruby-identifier">underscore</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+              </div>
+            </div>
+            
+          </div>
+                    </div>
+
+    </div>
+  </body>
+</html>    
