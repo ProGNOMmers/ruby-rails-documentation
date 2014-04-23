@@ -95,7 +95,7 @@ New versions will be added as soon as a new Ruby or Ruby on Rails version will b
 
 ## Local copy
 
-If you want a local copy, just clone the gh-pages branch: `git clone git://github.com/mdesantis/ruby-rails-documentations.git -b gh-pages`
+If you want a local copy, you can download the [gh-pages archive <sub> ~ 200 MB</sub>](https://github.com/mdesantis/ruby-rails-documentations/archive/gh-pages.zip) or clone the gh-pages branch using `git clone git://github.com/mdesantis/ruby-rails-documentations.git -b gh-pages`.
 
 ## Generating the docs
 
