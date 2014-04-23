@@ -2,7 +2,7 @@
 
 I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
 
-But RailsAPI is online no more, so this project aims to replace it.
+But RailsAPI is no more online. This project provides a replacement.
 
 ## Current releases
 
@@ -15,79 +15,79 @@ The documentations are available online [here](http://mdesantis.github.io/ruby-r
     <th>Docs</th>
   </tr>
   <tr>
-    <td>2.1.0</td>
-    <td>4.1.0.beta1</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v4.1.0.beta1/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.1.0</td>
-    <td>4.0.2</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v4.0.2/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.1.0</td>
-    <td>3.2.16</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v3.2.16/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.1.0</td>
-    <td>3.1.12</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v3.1.12/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.1.0</td>
+    <td>1.9.3-p545</td>
     <td>3.0.20</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.1.0,%20Ruby%20On%20Rails%20v3.0.20/index.html">link</a></td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v1.9.3-p545, Ruby on Rails v3.0.20/index.html">link</a></td>
   </tr>
   <tr>
-    <td>2.0.0-p253</td>
-    <td>4.1.0.beta1</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p253,%20Ruby%20On%20Rails%20v4.1.0.beta1/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.0.0-p253</td>
-    <td>4.0.2</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p253,%20Ruby%20On%20Rails%20v4.0.2/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.0.0-p253</td>
-    <td>3.2.16</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p253,%20Ruby%20On%20Rails%20v3.2.16/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>2.0.0-p253</td>
+    <td>1.9.3-p545</td>
     <td>3.1.12</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p253,%20Ruby%20On%20Rails%20v3.1.12/index.html">link</a></td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v1.9.3-p545, Ruby on Rails v3.1.12/index.html">link</a></td>
   </tr>
   <tr>
-    <td>2.0.0-p253</td>
+    <td>1.9.3-p545</td>
+    <td>3.2.17</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v1.9.3-p545, Ruby on Rails v3.2.17/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>1.9.3-p545</td>
+    <td>4.0.4</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v1.9.3-p545, Ruby on Rails v4.0.4/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>1.9.3-p545</td>
+    <td>4.1.0</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v1.9.3-p545, Ruby on Rails v4.1.0/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.0.0-p451</td>
     <td>3.0.20</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v2.0.0-p253,%20Ruby%20On%20Rails%20v3.0.20/index.html">link</a></td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.0.0-p451, Ruby on Rails v3.0.20/index.html">link</a></td>
   </tr>
   <tr>
-    <td>1.9.3-p484</td>
-    <td>4.1.0.beta1</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v1.9.3-p484,%20Ruby%20On%20Rails%20v4.1.0.beta1/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>1.9.3-p484</td>
-    <td>4.0.2</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v1.9.3-p484,%20Ruby%20On%20Rails%20v4.0.2/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>1.9.3-p484</td>
-    <td>3.2.16</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v1.9.3-p484,%20Ruby%20On%20Rails%20v3.2.16/index.html">link</a></td>
-  </tr>
-  <tr>
-    <td>1.9.3-p484</td>
+    <td>2.0.0-p451</td>
     <td>3.1.12</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v1.9.3-p484,%20Ruby%20On%20Rails%20v3.1.12/index.html">link</a></td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.0.0-p451, Ruby on Rails v3.1.12/index.html">link</a></td>
   </tr>
   <tr>
-    <td>1.9.3-p484</td>
+    <td>2.0.0-p451</td>
+    <td>3.2.17</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.0.0-p451, Ruby on Rails v3.2.17/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.0.0-p451</td>
+    <td>4.0.4</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.0.0-p451, Ruby on Rails v4.0.4/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.0.0-p451</td>
+    <td>4.1.0</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.0.0-p451, Ruby on Rails v4.1.0/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
     <td>3.0.20</td>
-    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby%20v1.9.3-p484,%20Ruby%20On%20Rails%20v3.0.20/index.html">link</a></td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.1.1, Ruby on Rails v3.0.20/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
+    <td>3.1.12</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.1.1, Ruby on Rails v3.1.12/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
+    <td>3.2.17</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.1.1, Ruby on Rails v3.2.17/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
+    <td>4.0.4</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.1.1, Ruby on Rails v4.0.4/index.html">link</a></td>
+  </tr>
+  <tr>
+    <td>2.1.1</td>
+    <td>4.1.0</td>
+    <td><a href="http://mdesantis.github.io/ruby-rails-documentations/Ruby v2.1.1, Ruby on Rails v4.1.0/index.html">link</a></td>
   </tr>
 </table>
 
@@ -133,7 +133,7 @@ README.EXT.ja
 README.ja
 ```
 
-to [1.9.3-p484 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_484/.document) so to add these files to the documentation and set the Ruby docs main page to the README
+to [1.9.3-p545 `.document` file](https://github.com/ruby/ruby/blob/v1_9_3_545/.document) so to add these files to the documentation and set the Ruby docs main page to the README (actually it doesn't work, see [Known Issues](#known-issues))
 
 * I use a Ruby on Rails fork in order to:
 * * port the Rails 4.x docs generation, which includes sdoc support, to 3.x, which doesn't
