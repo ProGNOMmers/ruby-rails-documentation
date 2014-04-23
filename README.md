@@ -1,8 +1,8 @@
 # [Ruby and Ruby on Rails merged documentations](http://mdesantis.github.io/ruby-rails-documentations/)
 
-I :heart:'d RailsAPI: it included the Ruby and Ruby On Rails docs merged together.
+I :heart:'d RailsAPI: it used to provide the Ruby and Ruby On Rails docs merged together.
 
-But RailsAPI is no more online. This project provides a replacement.
+But RailsAPI is online no more. This project provides a replacement.
 
 ## Current releases
 
